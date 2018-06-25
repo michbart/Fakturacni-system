@@ -3,12 +3,12 @@ Aplikace na vytváření faktur
 
 # Funkce
 -správa příjemců <br>
--vytváření a správa faktur
--generování PDF souborů a QR kódů
--offline přístup
+-vytváření a správa faktur <br>
+-generování PDF souborů a QR kódů <br>
+-offline přístup <br>
 
 # Autoři
-Nikola Kraus
-Michal Bartoš
-Petr Zázvorka
-Tomáš Štveráček
+Nikola Kraus <br>
+Michal Bartoš <br>
+Petr Zázvorka <br>
+Tomáš Štveráček <br>
