@@ -2,7 +2,7 @@
 Aplikace na vytváření faktur
 
 # Funkce
--správa příjemců
+-správa příjemců <br>
 -vytváření a správa faktur
 -generování PDF souborů a QR kódů
 -offline přístup
