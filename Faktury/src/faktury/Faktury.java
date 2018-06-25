@@ -9,7 +9,7 @@ package faktury;
  *
  * @author NikolaKraus
  */
-public class Faktury {
+public class FakturyMain {
 
     /**
      * @param args the command line arguments
