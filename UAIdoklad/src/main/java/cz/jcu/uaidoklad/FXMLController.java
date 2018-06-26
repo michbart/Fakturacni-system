@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -16,7 +17,6 @@ import javafx.stage.StageStyle;
 
 public class FXMLController implements Initializable {
 
-    private Label label;
     @FXML
     private Button PrihlasitBtn;
     @FXML
@@ -31,8 +31,23 @@ public class FXMLController implements Initializable {
         // TODO
     }
 
+    
+    
+    
     @FXML
     private void PrihlasitClickedBtn(ActionEvent event) {
+        String login = loginTextField.getText();
+        String heslo = HesloTextField.getText();
+
+        Boolean kontrola = login.isEmpty() || heslo.isEmpty();
+        if (kontrola) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Nezadali jste heslo nebo login.");
+            alert.showAndWait();
+            return;
+        }
+
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/HlavniOkno.fxml"));
             Scene scene = new Scene(root);
@@ -46,10 +61,25 @@ public class FXMLController implements Initializable {
         } catch (Exception e) {
             System.out.println("Chyba");
         }
+        //zavre se uvodni okno
+        Stage stage = (Stage) PrihlasitBtn.getScene().getWindow();
+        stage.close();
+
     }
 
     @FXML
     private void RegistrovatClickedBtn(ActionEvent event) {
+        String login = loginTextField.getText();
+        String heslo = HesloTextField.getText();
+
+        Boolean kontrola = login.isEmpty() || heslo.isEmpty();
+        if (kontrola) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Nezadali jste heslo nebo login.");
+            alert.showAndWait();
+            return;
+        }
 
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/Registrace.fxml"));

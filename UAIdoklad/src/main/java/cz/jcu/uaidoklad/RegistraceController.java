@@ -99,6 +99,8 @@ public class RegistraceController implements Initializable {
         } catch (Exception e) {
             System.out.println("Chyba");
         }
+        Stage stage = (Stage) RegistrovatBtn.getScene().getWindow();
+        stage.close();
     }
     
 }
