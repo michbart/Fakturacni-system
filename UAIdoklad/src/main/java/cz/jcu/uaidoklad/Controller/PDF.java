@@ -5,10 +5,51 @@
  */
 package cz.jcu.uaidoklad.Controller;
 
+import cz.jcu.uaidoklad.Model.Faktura;
+
 /**
  *
  * @author Michal
  */
 public class PDF {
+    private Faktura fakt;
     
+    public PDF(Faktura f){
+        this.fakt = f;
+    }
+    
+    /**
+     * Vykresli ohraniceni
+     */
+    private void vykresliOhraniceni(){
+        
+    }
+    
+    /**
+     * Vypise info o dodavateli
+     */
+    private void vypisDodavatele(){
+        
+    }
+    
+    /**
+     * Vypise info o odberateli
+     */
+    private void vypisOdberatele(){
+        
+    }
+    
+    /**
+     * Vypise polozky
+     */
+    private void vypisPolozky(){
+        //foreach z listu
+    }
+    
+    /**
+     * Vykresli QR kod
+     */
+    private void vykresliQRkod(){
+        
+    }
 }

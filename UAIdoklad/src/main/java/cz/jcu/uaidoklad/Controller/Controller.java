@@ -5,10 +5,12 @@
  */
 package cz.jcu.uaidoklad.Controller;
 
+import cz.jcu.uaidoklad.Model.Faktura;
+
 /**
  *
  * @author Michal
  */
 public interface Controller {
-    
+    void vygenerujPDF(Faktura f);
 }

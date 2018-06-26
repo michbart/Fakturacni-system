@@ -5,10 +5,17 @@
  */
 package cz.jcu.uaidoklad.Controller;
 
+import cz.jcu.uaidoklad.Model.Faktura;
+
 /**
  *
  * @author Michal
  */
-public class ControllerClass {
+public class ControllerClass implements Controller {
+
+    @Override
+    public void vygenerujPDF(Faktura f) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
