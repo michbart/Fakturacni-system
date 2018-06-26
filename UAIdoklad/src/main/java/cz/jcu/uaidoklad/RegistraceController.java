@@ -86,6 +86,19 @@ public class RegistraceController implements Initializable {
 
     @FXML
     private void RegistrovatClickedBtn(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/HlavniOkno.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+
+            stage.initStyle(StageStyle.DECORATED);
+            stage.setTitle("UAIdoklad");
+            stage.setScene(scene);
+            stage.show();
+            
+        } catch (Exception e) {
+            System.out.println("Chyba");
+        }
     }
     
 }

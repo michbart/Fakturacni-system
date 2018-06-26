@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.web.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #455A64;" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="cz.jcu.uaidoklad.HlavniOknoController">
+    <stylesheets>
+        <URL value="@/styles/hlavniokno.css" />
+    </stylesheets>
+   <children>
+      <Button fx:id="OdhlasitBtn" layoutX="485.0" layoutY="334.0" mnemonicParsing="false" onAction="#OdhlasitClickedBtn" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #78909C;" text="Odhlásit se" />
+      <Button fx:id="UlozitBtn" layoutX="287.0" layoutY="334.0" mnemonicParsing="false" onAction="#UlozitClickedBtn" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #78909C;" text="Uložit" />
+      <Button fx:id="UpravitBtn" layoutX="179.0" layoutY="334.0" mnemonicParsing="false" onAction="#UpravitClickedBtn" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #78909C;" text="Upravit" />
+      <Button fx:id="PDFBtn" layoutX="383.0" layoutY="334.0" mnemonicParsing="false" onAction="#PDFClickedBtn" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #78909C;" text="PDF" />
+      <TabPane prefHeight="315.0" prefWidth="605.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab style="-fx-background-color: #78909C;" text="Informace">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #78909C;" />
+            </content>
+          </Tab>
+          <Tab style="-fx-background-color: #78909C;" text="Vytvořit fakturu">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #78909C;" />
+            </content>
+          </Tab>
+            <Tab style="-fx-background-color: #78909C;" text="Seznam faktur">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="248.0" prefWidth="557.0" style="-fx-background-color: #78909C;" />
+               </content>
+            </Tab>
+            <Tab style="-fx-background-color: #78909C;" text="Kontakty">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="286.0" prefWidth="605.0" style="-fx-background-color: #78909C;" />
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
