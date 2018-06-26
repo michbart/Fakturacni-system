@@ -51,5 +51,9 @@ public class FXMLController implements Initializable {
         } catch (Exception e) {
             System.out.println("Chyba");
         }
+            
+        //zavre se uvodni okno
+        Stage stage = (Stage) RegistrovatBtn.getScene().getWindow();
+        stage.close();
     }
 }
