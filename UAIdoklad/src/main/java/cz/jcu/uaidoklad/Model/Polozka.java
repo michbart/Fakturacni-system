@@ -9,6 +9,6 @@ package cz.jcu.uaidoklad.Model;
  *
  * @author Michal
  */
-public interface Model {
+public class Polozka {
     
 }
