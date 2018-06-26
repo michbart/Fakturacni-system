@@ -6,6 +6,7 @@
 package cz.jcu.uaidoklad.Controller;
 
 import cz.jcu.uaidoklad.Model.Faktura;
+import cz.jcu.uaidoklad.Model.Uzivatel;
 
 /**
  *
@@ -13,4 +14,5 @@ import cz.jcu.uaidoklad.Model.Faktura;
  */
 public interface Controller {
     void vygenerujPDF(Faktura f);
+
 }

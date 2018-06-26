@@ -6,6 +6,7 @@
 package cz.jcu.uaidoklad.Controller;
 
 import cz.jcu.uaidoklad.Model.Faktura;
+import cz.jcu.uaidoklad.Model.Uzivatel;
 
 /**
  *
@@ -18,5 +19,8 @@ public class ControllerClass implements Controller {
         new PDF(f).vygeneruj();
         //treba vyhodit okno ze bylo provedeno uspesne
     }
+
+    
+
     
 }
