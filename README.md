@@ -1,4 +1,4 @@
-# Fakturační systém
+# UAIdoklad
 Aplikace na vytváření faktur
 
 # Funkce
