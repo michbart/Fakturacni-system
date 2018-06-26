@@ -13,8 +13,36 @@ import java.util.ArrayList;
  */
 public class FakturaB extends Faktura {
     
-    public FakturaB(Uzivatel dodavatel, Uzivatel odberatel, ArrayList<Polozka> polozky) {
-        super(dodavatel, odberatel, polozky);
+    /* X a Y pozice zacatku bloku informaci o dodavateli */
+    public final int BLOK_DODAVATEL_X=0;
+    public final int BLOK_DODAVATEL_Y=0;
+
+    /* X a Y pozice zacatku bloku informaci o odberateli */
+    public final int BLOK_ODBERATEL_X = 0;
+    public final int BLOK_ODBERATEL_Y = 0;
+    
+    public FakturaB(int cislo, Uzivatel dodavatel, Uzivatel odberatel, ArrayList<Polozka> polozky) {
+        super(cislo, dodavatel, odberatel, polozky);
+    }
+
+    @Override
+    public int blokDodavatelX() {
+        return BLOK_DODAVATEL_X;
+    }
+
+    @Override
+    public int blokDodavatelY() {
+        return BLOK_DODAVATEL_Y;
+    }
+
+    @Override
+    public int blokOdberatelX() {
+        return BLOK_ODBERATEL_X;
+    }
+
+    @Override
+    public int blokOdberatelY() {
+        return BLOK_ODBERATEL_Y;
     }
     
 }

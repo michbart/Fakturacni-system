@@ -15,7 +15,8 @@ public class ControllerClass implements Controller {
 
     @Override
     public void vygenerujPDF(Faktura f) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        new PDF(f).vygeneruj();
+        //treba vyhodit okno ze bylo provedeno uspesne
     }
     
 }
