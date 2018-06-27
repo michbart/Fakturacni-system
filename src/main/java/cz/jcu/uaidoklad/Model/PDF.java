@@ -11,6 +11,8 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -32,6 +34,7 @@ public class PDF {
     private PDFont fontNormal = PDType1Font.HELVETICA;
     private PDFont fontBold = PDType1Font.HELVETICA_BOLD;
     private PDPageContentStream cs;
+    Databaze db;
     public int BLOK_DODAVATEL_X;
     public int BLOK_DODAVATEL_Y;
     public int BLOK_ODBERATEL_X;
@@ -45,8 +48,9 @@ public class PDF {
     public int BLOK_QR_X;
     public int BLOK_QR_Y;
 
-    public PDF(Faktura f) {
+    public PDF(Faktura f, Databaze db) {
         this.fakt = f;
+        this.db=db;
         document = new PDDocument();
         page = new PDPage();
         document.addPage(page);
@@ -234,7 +238,7 @@ public class PDF {
     }
 
     /**
-     * Vypise polozky faktury
+     * Vypise polozky faktury pro vzor A
      */
     private void vypisPolozky() throws IOException {
         Polozka po;
@@ -243,18 +247,22 @@ public class PDF {
         cs.setFont(fontNormal, 10);
         cs.newLineAtOffset(BLOK_POLOZKY_X, BLOK_POLOZKY_Y-20); 
         for(int id : fakt.getPolozky().keySet()){
-            po = db.getPolozka(id);//polozka
-            pocet = fakt.getPolozky().get(id);
-            cs.showText(po.getNazev());
-            cs.newLineAtOffset(275, 0);         
-            cs.showText(String.valueOf(pocet)); 
-            cs.newLineAtOffset(40, 0);
-            cs.showText(String.valueOf(po.getCena()));
-            cs.newLineAtOffset(75, 0);
-            cs.showText("21");
-            cs.newLineAtOffset(50, 0);
-            cs.showText(String.valueOf(pocet*(po.getCena()*1.21)));
-            cs.newLineAtOffset(-440, -20);
+            try {
+                po = db.getPolozka(id);//polozka
+                pocet = fakt.getPolozky().get(id);
+                cs.showText(po.getNazev());
+                cs.newLineAtOffset(275, 0);
+                cs.showText(String.valueOf(pocet));
+                cs.newLineAtOffset(40, 0);
+                cs.showText(String.valueOf(po.getCena()));
+                cs.newLineAtOffset(75, 0);
+                cs.showText("21");
+                cs.newLineAtOffset(50, 0);
+                cs.showText(String.valueOf(pocet*(po.getCena()*1.21)));
+                cs.newLineAtOffset(-440, -20);
+            } catch (Exception ex) {
+                //Logger.getLogger(PDF.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         cs.endText();
     }

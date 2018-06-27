@@ -39,9 +39,7 @@ public class QRkod {
             MatrixToImageWriter.writeToStream(bitMatrix, "PNG", pngOutputStream);
             byte[] pngData = pngOutputStream.toByteArray();
             return pngData;
-        } catch (WriterException ex) {
-            //Logger.getLogger(qrkod.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
+        } catch (WriterException | IOException ex) {
             //Logger.getLogger(qrkod.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;

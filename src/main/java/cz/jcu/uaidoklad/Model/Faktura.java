@@ -20,14 +20,26 @@ public abstract class Faktura implements Serializable {
     protected HashMap<Integer, Integer> polozky;
     protected int cislo;
     protected String datumSplatnosti;
+    protected String zpusobPlatby;
 
-    public Faktura(int id, int cislo, Uzivatel dodavatel, Uzivatel odberatel, HashMap<Integer, Integer> polozky, String datumSplatnosti) {
+    /**
+     * Konstruktor nove faktury
+     * @param id
+     * @param cislo
+     * @param dodavatel
+     * @param odberatel
+     * @param polozky
+     * @param datumSplatnosti
+     * @param zpusobPlatby 
+     */
+    public Faktura(int id, int cislo, Uzivatel dodavatel, Uzivatel odberatel, HashMap<Integer, Integer> polozky, String datumSplatnosti, String zpusobPlatby) {
         this.id = id;
         this.dodavatel = dodavatel;
         this.odberatel = odberatel;
         this.polozky = polozky;
         this.cislo = cislo;
         this.datumSplatnosti = datumSplatnosti;
+        this.zpusobPlatby = zpusobPlatby;
     }
 
     public abstract int blokDodavatelX();
@@ -49,9 +61,9 @@ public abstract class Faktura implements Serializable {
     public abstract int blokCelkemX();
 
     public abstract int blokCelkemY();
-    
+
     public abstract int blokQrX();
-    
+
     public abstract int blokQrY();
     
     public abstract int blokInfo2X();
@@ -66,6 +78,11 @@ public abstract class Faktura implements Serializable {
     
     public abstract int blokCislaY();
 
+    /**
+     * Getter pro ziskani ID faktury
+     *
+     * @return ID faktury
+     */
     public int getId() {
         return id;
     }
@@ -73,7 +90,12 @@ public abstract class Faktura implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
-    
+
+    /**
+     * Getter pro ziskani data splatnosti
+     *
+     * @return datum splatnosti
+     */
     public String getDatumSplatnosti() {
         return datumSplatnosti;
     }
@@ -82,7 +104,6 @@ public abstract class Faktura implements Serializable {
         this.datumSplatnosti = datumSplatnosti;
     }
 
-    
     /**
      * Getter pro ziskani cisla faktury
      *
@@ -110,8 +131,6 @@ public abstract class Faktura implements Serializable {
         return odberatel;
     }
 
-    
-
     public HashMap<Integer, Integer> getPolozky() {
         return polozky;
     }
@@ -121,7 +140,7 @@ public abstract class Faktura implements Serializable {
      *
      * @return polozky faktury
      */
-    public void setPolozky(HashMap<Integer, Integer> polozky) {    
+    public void setPolozky(HashMap<Integer, Integer> polozky) {
         this.polozky = polozky;
     }
 
@@ -136,7 +155,5 @@ public abstract class Faktura implements Serializable {
     public void setOdberatel(Uzivatel odberatel) {
         this.odberatel = odberatel;
     }
-
-    
 
 }
