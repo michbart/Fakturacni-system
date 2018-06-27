@@ -3,16 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cz.jcu.uaidoklad.Controller;
-
-import cz.jcu.uaidoklad.Model.Faktura;
-import cz.jcu.uaidoklad.Model.Uzivatel;
+package cz.jcu.uaidoklad.Model;
 
 /**
  *
  * @author Michal
  */
-public interface Controller {
-    
-
+public interface CompanyInvoiceInterface {
+    void vygenerujPDF(Faktura f, Databaze db);
 }

@@ -5,7 +5,6 @@
  */
 package cz.jcu.uaidoklad.Model;
 
-import cz.jcu.uaidoklad.Model.Faktura;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

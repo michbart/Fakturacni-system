@@ -15,11 +15,7 @@ import cz.jcu.uaidoklad.Model.Uzivatel;
  */
 public class ControllerClass implements Controller {
 
-    @Override
-    public void vygenerujPDF(Faktura f) {
-        new PDF(f).vygeneruj();
-        //treba vyhodit okno ze bylo provedeno uspesne
-    }
+    
 
     
 
