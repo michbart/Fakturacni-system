@@ -49,8 +49,8 @@ public class FakturaB extends Faktura {
     public final int BLOK_CELKEM2_X = 30;
     public final int BLOK_CELKEM2_Y = 752;
 
-    public FakturaB(int id, int cislo, Uzivatel dodavatel, Uzivatel odberatel, HashMap<Integer, Integer> polozky, String datumSplatnosti) {
-        super(id, cislo, dodavatel, odberatel, polozky, datumSplatnosti);
+    public FakturaB(int id, int cislo, Uzivatel dodavatel, Uzivatel odberatel, HashMap<Integer, Integer> polozky, String datumSplatnosti, String zpusobPlatby) {
+        super(id, cislo, dodavatel, odberatel, polozky, datumSplatnosti, zpusobPlatby);
     }
 
     @Override

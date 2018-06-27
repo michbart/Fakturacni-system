@@ -31,8 +31,8 @@ public class FakturaA extends Faktura {
     public final int BLOK_QR_Y = 420;
 
 
-    public FakturaA(int id, int cislo, Uzivatel dodavatel, Uzivatel odberatel, HashMap<Integer, Integer> polozky, String datumSplatnosti) {
-        super(id, cislo, dodavatel, odberatel, polozky, datumSplatnosti);
+    public FakturaA(int id, int cislo, Uzivatel dodavatel, Uzivatel odberatel, HashMap<Integer, Integer> polozky, String datumSplatnosti, String zpusobPlatby) {
+        super(id, cislo, dodavatel, odberatel, polozky, datumSplatnosti, zpusobPlatby);
 
     }
 
