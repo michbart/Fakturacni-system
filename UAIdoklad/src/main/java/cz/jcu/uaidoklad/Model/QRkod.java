@@ -5,12 +5,32 @@
  */
 package cz.jcu.uaidoklad.Model;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Michal
  */
 public class QRkod {
     
+    public QRkod(){
+        
+    }
+    /**
+     * Vygeneruje QR kod pro PDF
+     * @param text info o fakture
+     * @param width sirka QR kodu
+     * @param height vyska QR kodu
+     * @return data o QR kodu
+     */
     public byte[] getQRCodeImage(String text, int width, int height)  {
         try {
             QRCodeWriter qrCodeWriter = new QRCodeWriter();
@@ -21,9 +41,9 @@ public class QRkod {
             byte[] pngData = pngOutputStream.toByteArray();
             return pngData;
         } catch (WriterException ex) {
-            Logger.getLogger(qrkod.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(qrkod.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(qrkod.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(qrkod.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
