@@ -10,17 +10,23 @@
 
 <AnchorPane id="AnchorPane" prefHeight="300.0" prefWidth="400.0" style="-fx-background-color: #455A64;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.jcu.uaidoklad.FXMLController">
    <children>
-      <Button fx:id="PrihlasitBtn" alignment="CENTER" layoutX="52.0" layoutY="203.0" mnemonicParsing="false" onAction="#PrihlasitClickedBtn" prefHeight="40.0" prefWidth="110.0" style="-fx-background-color: #78909C;" text="Přihlásit" />
-      <Button fx:id="RegistrovatBtn" alignment="CENTER" layoutX="239.0" layoutY="203.0" mnemonicParsing="false" onAction="#RegistrovatClickedBtn" prefHeight="40.0" prefWidth="110.0" style="-fx-background-color: #78909C;" text="Registrovat" />
+      <Button fx:id="PrihlasitBtn" alignment="CENTER" layoutX="52.0" layoutY="203.0" mnemonicParsing="false" onAction="#PrihlasitClickedBtn" prefHeight="40.0" prefWidth="110.0" style="-fx-background-color: #78909C;" text="Přihlásit">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button fx:id="RegistrovatBtn" alignment="CENTER" layoutX="239.0" layoutY="203.0" mnemonicParsing="false" onAction="#RegistrovatClickedBtn" prefHeight="40.0" prefWidth="110.0" style="-fx-background-color: #78909C;" text="Registrovat">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
       <TextField fx:id="loginTextField" layoutX="107.0" layoutY="62.0" promptText="Login" style="-fx-background-color: #CFD8DC;">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
-      <TextField fx:id="HesloTextField" layoutX="107.0" layoutY="127.0" promptText="Heslo" style="-fx-background-color: #CFD8DC;">
+      <PasswordField fx:id="HesloPassField" layoutX="107.0" layoutY="126.0" prefHeight="31.0" prefWidth="187.0" promptText="Heslo" style="-fx-background-color: #CFD8DC;">
          <font>
             <Font size="15.0" />
          </font>
-      </TextField>
+      </PasswordField>
    </children>
 </AnchorPane>

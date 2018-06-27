@@ -14,6 +14,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -32,6 +35,44 @@ public class HlavniOknoController implements Initializable {
     private Button UpravitBtn;
     @FXML
     private Button PDFBtn;
+    @FXML
+    private Tab InformaceTab;
+    @FXML
+    private Tab VytvorFakturuTab;
+    @FXML
+    private Tab SeznamFakturTab;
+    @FXML
+    private Tab KontaktyTab;
+    @FXML
+    private AnchorPane InformacePane;
+    @FXML
+    private AnchorPane VytvorFakturuPane;
+    @FXML
+    private AnchorPane SeznamFakturPane;
+    @FXML
+    private Tab PridatKontaktTab;
+    @FXML
+    private AnchorPane PridatKontaktPane;
+    @FXML
+    private TextField NazevOdberateleTField;
+    @FXML
+    private TextField UliceOdberateleTField;
+    @FXML
+    private TextField MestoOdberateleTField;
+    @FXML
+    private TextField PSCOdberateleTField;
+    @FXML
+    private TextField StatOdberateleTField;
+    @FXML
+    private TextField MobilOdberateleTField;
+    @FXML
+    private TextField EmailOdberateleTField;
+    @FXML
+    private TextField ICOOdberateleTField;
+    @FXML
+    private TextField DICOdberateleTField;
+    @FXML
+    private AnchorPane KontaktyPane;
 
     /**
      * Initializes the controller class.
