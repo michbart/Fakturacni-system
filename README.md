@@ -1,8 +1,8 @@
 # UAIdoklad
-Aplikace na vytváření faktur
+Jednoduchý informační systém, aplikace umožňuje vytváření zákazníků a faktur. Aplikace umožňuje offline přístup k již uloženým datům.
 
 # Funkce
--správa příjemců <br>
+-správa zákazníků <br>
 -vytváření a správa faktur <br>
 -generování PDF souborů a QR kódů <br>
 -offline přístup <br>
