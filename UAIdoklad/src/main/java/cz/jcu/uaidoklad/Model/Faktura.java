@@ -15,6 +15,7 @@ import jdk.nashorn.internal.runtime.regexp.joni.EncodingHelper;
  */
 public abstract class Faktura implements Serializable {
 
+    protected int id;
     protected Uzivatel dodavatel;
     protected Uzivatel odberatel;
     protected ArrayList<Polozka> polozky;

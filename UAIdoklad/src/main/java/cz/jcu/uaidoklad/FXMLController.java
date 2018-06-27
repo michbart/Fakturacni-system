@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -24,20 +25,36 @@ public class FXMLController implements Initializable {
     @FXML
     private TextField loginTextField;
     @FXML
-    private TextField HesloTextField;
+    private PasswordField HesloPassField;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
 
-    
-    
-    
-    @FXML
-    private void PrihlasitClickedBtn(ActionEvent event) {
+    /**
+     * metoda kotrolujici, jestli je zadany text v text fieldu
+     */
+    /*
+    void kontrola() {
         String login = loginTextField.getText();
         String heslo = HesloTextField.getText();
+
+        Boolean kontrola = login.isEmpty() || heslo.isEmpty();
+        if (kontrola) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Nezadali jste heslo nebo login.");
+            alert.showAndWait();
+            return ;
+        }
+    }
+     */
+    @FXML
+    private void PrihlasitClickedBtn(ActionEvent event) {
+
+        String login = loginTextField.getText();
+        String heslo = HesloPassField.getText();
 
         Boolean kontrola = login.isEmpty() || heslo.isEmpty();
         if (kontrola) {
@@ -70,7 +87,7 @@ public class FXMLController implements Initializable {
     @FXML
     private void RegistrovatClickedBtn(ActionEvent event) {
         String login = loginTextField.getText();
-        String heslo = HesloTextField.getText();
+        String heslo = HesloPassField.getText();
 
         Boolean kontrola = login.isEmpty() || heslo.isEmpty();
         if (kontrola) {
