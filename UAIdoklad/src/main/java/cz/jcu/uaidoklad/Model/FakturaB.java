@@ -21,8 +21,8 @@ public class FakturaB extends Faktura {
     public final int BLOK_ODBERATEL_X = 0;
     public final int BLOK_ODBERATEL_Y = 0;
     
-    public FakturaB(int cislo, Uzivatel dodavatel, Uzivatel odberatel, ArrayList<Polozka> polozky) {
-        super(cislo, dodavatel, odberatel, polozky);
+    public FakturaB(int id, int cislo, Uzivatel dodavatel, Uzivatel odberatel, ArrayList<Polozka> polozky) {
+        super(id, cislo, dodavatel, odberatel, polozky);
     }
 
     @Override
