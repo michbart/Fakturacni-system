@@ -18,7 +18,7 @@ public abstract class Faktura implements Serializable {
     protected Uzivatel dodavatel;
     protected Uzivatel odberatel;
     protected ArrayList<Polozka> polozky;
-    protected int cislo;    
+    protected int cislo;
 
     public Faktura(int id, int cislo, Uzivatel dodavatel, Uzivatel odberatel, ArrayList<Polozka> polozky) {
         this.dodavatel = dodavatel;
@@ -28,24 +28,34 @@ public abstract class Faktura implements Serializable {
     }
 
     public abstract int blokDodavatelX();
+
     public abstract int blokDodavatelY();
+
     public abstract int blokOdberatelX();
+
     public abstract int blokOdberatelY();
+
     public abstract int blokInfoX();
+
     public abstract int blokInfoY();
+
     public abstract int blokPolozkyX();
+
     public abstract int blokPolozkyY();
+
     public abstract int blokCelkemX();
+
     public abstract int blokCelkemY();
-    
+
     /**
      * Getter pro ziskani cisla faktury
+     *
      * @return cislo faktury
      */
     public int getCislo() {
         return cislo;
     }
-    
+
     /**
      * Getter pro ziskani dodavatele faktury
      *
@@ -66,6 +76,7 @@ public abstract class Faktura implements Serializable {
 
     /**
      * Getter pro ziskani polozek faktury
+     *
      * @return polozky faktury
      */
     public ArrayList<Polozka> getPolozky() {
@@ -87,5 +98,5 @@ public abstract class Faktura implements Serializable {
     public void setPolozky(ArrayList<Polozka> polozky) {
         this.polozky = polozky;
     }
-    
+
 }
