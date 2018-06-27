@@ -53,6 +53,18 @@ public abstract class Faktura implements Serializable {
     public abstract int blokQrX();
     
     public abstract int blokQrY();
+    
+    public abstract int blokInfo2X();
+    
+    public abstract int blokInfo2Y();
+    
+    public abstract int blokCelkem2X();
+    
+    public abstract int blokCelkem2Y();
+    
+    public abstract int blokCislaX();
+    
+    public abstract int blokCislaY();
 
     public int getId() {
         return id;

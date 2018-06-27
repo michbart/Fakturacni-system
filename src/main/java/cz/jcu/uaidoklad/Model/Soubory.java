@@ -69,7 +69,7 @@ public class Soubory {
         
    // TO DO: zatim neznam parametr faktury pri ukladani -> faktura.ziskatNazev();
    
-    try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(new File(cestaKSouborum + faktur + ".dat")));) {
+    try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(new File(cestaKSouborum + faktura + ".dat")));) {
             oos.writeObject(faktura);
         } catch (Exception e) {
             throw new Exception("Nastala chyba pri ukladani faktury do souboru.");
