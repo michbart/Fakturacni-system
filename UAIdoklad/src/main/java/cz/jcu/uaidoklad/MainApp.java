@@ -6,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import cz.jcu.uaidoklad.Model.Faktura;
+import cz.jcu.uaidoklad.Model.FakturaA;
 
 
 public class MainApp extends Application {

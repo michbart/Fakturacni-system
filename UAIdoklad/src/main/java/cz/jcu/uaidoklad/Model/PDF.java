@@ -3,16 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cz.jcu.uaidoklad.Controller;
+package cz.jcu.uaidoklad.Model;
 
 import cz.jcu.uaidoklad.Model.Faktura;
+import cz.jcu.uaidoklad.Model.QRkod;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 
 import java.io.IOException;
+import javax.imageio.ImageIO;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.apache.pdfbox.pdmodel.graphics.image.LosslessFactory;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 /**
  *
@@ -36,6 +42,8 @@ public class PDF {
     public int BLOK_POLOZKY_Y;
     public int BLOK_CELKEM_X;
     public int BLOK_CELKEM_Y;
+    public int BLOK_QR_X;
+    public int BLOK_QR_Y;
 
     public PDF(Faktura f) {
         this.fakt = f;
@@ -65,6 +73,8 @@ public class PDF {
         BLOK_POLOZKY_Y = fakt.blokPolozkyY();
         BLOK_CELKEM_X = fakt.blokCelkemX();
         BLOK_CELKEM_Y = fakt.blokCelkemY();
+        BLOK_QR_X = fakt.blokQrX();
+        BLOK_QR_Y = fakt.blokQrY();
     }
 
     /**
@@ -227,20 +237,36 @@ public class PDF {
      * Vypise polozky
      */
     private void vypisPolozky() throws IOException {
-        //foreach z listu
-        //cs.endText();
+        cs.beginText();
+        cs.setFont(fontNormal, 10);
+        cs.newLineAtOffset(BLOK_POLOZKY_X, BLOK_POLOZKY_Y-20); 
+        for(Polozka po : fakt.getPolozky()){
+            cs.showText(po.getNazev());
+            cs.newLineAtOffset(110, 0);
+            cs.showText(String.valueOf(po.getCena()));
+            cs.newLineAtOffset(-110, -20);
+        }
+        cs.endText();
     }
 
     /**
-     * Vykresli QR kod
+     * Vykresli QR kod s informacemi o platbe
      * TODO
      */
     private void vykresliQRkod() throws IOException { 
-        cs.drawLine(70, 570, 220, 570);
-        cs.drawLine(70, 570, 70, 420);
-        cs.drawLine(220, 570, 220, 420);
-        cs.drawLine(70, 420, 220, 420);
-        
+//        cs.drawLine(70, 570, 220, 570);
+//        cs.drawLine(70, 570, 70, 420);
+//        cs.drawLine(220, 570, 220, 420);
+//        cs.drawLine(70, 420, 220, 420);
+        QRkod kod = new QRkod();
+        ByteArrayInputStream bais = new ByteArrayInputStream(kod.getQRCodeImage(
+                "Cislo faktury: " + fakt.getCislo() + "\n" +
+                "Bankovni spojeni: " + fakt.getDodavatel().getCisloUctu() + "\n" +
+                "Datum splatnosti: " + fakt.getDatumSplatnosti()
+                , 200, 200));
+        BufferedImage bim = ImageIO.read(bais);
+        PDImageXObject pdImage = LosslessFactory.createFromImage(document, bim);
+        cs.drawImage(pdImage, BLOK_QR_X, BLOK_QR_Y);
     }
 
     /**
@@ -249,7 +275,7 @@ public class PDF {
      */
     private void ukonciZapis() throws IOException {
         cs.close();
-        document.save("file.pdf");
+        document.save(fakt.getCislo() + ".pdf");
         document.close();
     }
 }

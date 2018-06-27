@@ -27,9 +27,13 @@ public class FakturaA extends Faktura {
     public final int BLOK_POLOZKY_Y = 390;
     public final int BLOK_CELKEM_X = 300;
     public final int BLOK_CELKEM_Y = 50;
-    
-    public FakturaA(int id, int cislo, Uzivatel dodavatel, Uzivatel odberatel, ArrayList<Polozka> polozky) {
-        super(id, cislo, dodavatel, odberatel, polozky);
+    public final int BLOK_QR_X = 70;
+    public final int BLOK_QR_Y = 420;
+
+
+    public FakturaA(int id, int cislo, Uzivatel dodavatel, Uzivatel odberatel, ArrayList<Polozka> polozky, String datumSplatnosti) {
+        super(id, cislo, dodavatel, odberatel, polozky, datumSplatnosti);
+
     }
 
     @Override
@@ -80,5 +84,15 @@ public class FakturaA extends Faktura {
     @Override
     public int blokCelkemY() {
         return BLOK_CELKEM_Y;
+    }
+
+    @Override
+    public int blokQrX() {
+        return BLOK_QR_X;
+    }
+
+    @Override
+    public int blokQrY() {
+        return BLOK_QR_Y;
     }
 }
