@@ -23,6 +23,7 @@ public abstract class Faktura implements Serializable {
     protected String datumSplatnosti;
 
     public Faktura(int id, int cislo, Uzivatel dodavatel, Uzivatel odberatel, ArrayList<Polozka> polozky, String datumSplatnosti) {
+        this.id = id;
         this.dodavatel = dodavatel;
         this.odberatel = odberatel;
         this.polozky = polozky;
@@ -53,6 +54,14 @@ public abstract class Faktura implements Serializable {
     public abstract int blokQrX();
     
     public abstract int blokQrY();
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     
     public String getDatumSplatnosti() {
         return datumSplatnosti;
