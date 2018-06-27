@@ -3,11 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cz.jcu.uaidoklad.Controller;
+package cz.jcu.uaidoklad.Model;
 
 import cz.jcu.uaidoklad.Model.Faktura;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 
@@ -49,7 +51,7 @@ public class Soubory {
         File soubor = new File(cesta);
         if (!soubor.isDirectory()) {
             if (!soubor.mkdirs()) {
-                throw new Exception("Nastala chyba pri tvorbe adresare);
+                throw new Exception("Nastala chyba pri tvorbe adresare");
             }
         }
     }
@@ -67,7 +69,7 @@ public class Soubory {
         
    // TO DO: zatim neznam parametr faktury pri ukladani -> faktura.ziskatNazev();
    
-    try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(new File(cestaKSouborum + faktura.ziskatNazev() + ".dat")));) {
+    try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(new File(cestaKSouborum + faktur + ".dat")));) {
             oos.writeObject(faktura);
         } catch (Exception e) {
             throw new Exception("Nastala chyba pri ukladani faktury do souboru.");
