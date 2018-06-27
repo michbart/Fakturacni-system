@@ -13,6 +13,11 @@ import java.util.ArrayList;
  */
 public class FakturaB extends Faktura {
     
+    /* X a Y pozice cisla faktury (FAKTURA 2016-04 danovy doklad) */
+    
+    public final int BLOK_CISLA_X = 548;
+    public final int BLOK_CISLA_Y = 746;
+    
     /* X a Y pozice zacatku bloku informaci o dodavateli */
     public final int BLOK_DODAVATEL_X = 30;
     public final int BLOK_DODAVATEL_Y = 315;
@@ -84,57 +89,66 @@ public class FakturaB extends Faktura {
     
     @Override
     public int blokQRY() {
-        return BLOK_QR_Y ;
+        return BLOK_QR_Y;
     }
     
     @Override
     public int blokInfoX() {
-        return BLOK_INFO_X
+        return BLOK_INFO_X;
     }
 
     @Override
     public int blokInfoY() {
-        return BLOK_INFO_Y
+        return BLOK_INFO_Y;
     }
     
     @Override
     public int blokInfo2X() {
-        return BLOK_INFO2_X
+        return BLOK_INFO2_X;
     }
 
     @Override
     public int blokInfo2Y() {
-        return BLOK_INFO2_Y
+        return BLOK_INFO2_Y;
     }
 
     @Override
     public int blokPolozkyX() {
-        return BLOK_POLOZKY_X
+        return BLOK_POLOZKY_X;
     }
 
     @Override
     public int blokPolozkyY() {
-        return BLOK_POLOZKY_Y
+        return BLOK_POLOZKY_Y;
     }
 
     @Override
     public int blokCelkemX() {
-        return BLOK_CELKEM_X
+        return BLOK_CELKEM_X;
     }
 
     @Override
     public int blokCelkemY() {
-        return BLOK_CELKEM_Y
+        return BLOK_CELKEM_Y;
     }
     
     @Override
     public int blokCelkem2X() {
-        return BLOK_CELKEM2_X
+        return BLOK_CELKEM2_X;
     }
 
     @Override
-    public int blokCelkemY() {
-        return BLOK_CELKEM2_Y
+    public int blokCelkem2Y() {
+        return BLOK_CELKEM2_Y;
+    }
+    
+    @Override
+    public int blokCislaX() {
+        return BLOK_CISLA_X;
+    }
+    @Override
+    public int blokCislaY() {
+        return BLOK_CISLA_Y;
     }
     
 }
