@@ -31,8 +31,8 @@ public class FakturaA extends Faktura {
     public final int BLOK_QR_Y = 420;
 
 
-    public FakturaA(int id, int cislo, Uzivatel dodavatel, Uzivatel odberatel, HashMap<Integer, Integer> polozky, String datumSplatnosti) {
-        super(id, cislo, dodavatel, odberatel, polozky, datumSplatnosti);
+    public FakturaA(int id, int cislo, Uzivatel dodavatel, Uzivatel odberatel, HashMap<Integer, Integer> polozky, String datumSplatnosti, String zpusobPlatby) {
+        super(id, cislo, dodavatel, odberatel, polozky, datumSplatnosti, zpusobPlatby);
 
     }
 
@@ -94,5 +94,35 @@ public class FakturaA extends Faktura {
     @Override
     public int blokQrY() {
         return BLOK_QR_Y;
+    }
+
+    @Override
+    public int blokInfo2X() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int blokInfo2Y() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int blokCelkem2X() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int blokCelkem2Y() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int blokCislaX() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int blokCislaY() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
