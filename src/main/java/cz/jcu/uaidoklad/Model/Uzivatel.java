@@ -13,6 +13,7 @@ public class Uzivatel {
 
     private int id;
     private String nazev;
+    private String login;
     private int heslo;
     private String ulice;
     private int psc;
@@ -23,24 +24,28 @@ public class Uzivatel {
     private int telefon;
     private String email;
     private String cisloUctu;
-/**
- * Construktor pro prihlaseneho uzivatele
- * @param id
- * @param nazev
- * @param heslo
- * @param ulice
- * @param psc
- * @param mesto
- * @param stat
- * @param ic
- * @param dic
- * @param telefon
- * @param email
- * @param cisloUctu 
- */
-    public Uzivatel(int id, String nazev,int heslo, String ulice, int psc, String mesto, String stat, int ic, int dic, int telefon, String email, String cisloUctu) {
+
+    /**
+     * Construktor pro prihlaseneho uzivatele
+     *
+     * @param id
+     * @param nazev
+     * @param login
+     * @param heslo
+     * @param ulice
+     * @param psc
+     * @param mesto
+     * @param stat
+     * @param ic
+     * @param dic
+     * @param telefon
+     * @param email
+     * @param cisloUctu
+     */
+    public Uzivatel(int id, String nazev, String login, int heslo, String ulice, int psc, String mesto, String stat, int ic, int dic, int telefon, String email, String cisloUctu) {
         this.id = id;
         this.nazev = nazev;
+        this.login = login;
         this.heslo = heslo;
         this.ulice = ulice;
         this.psc = psc;
@@ -52,30 +57,50 @@ public class Uzivatel {
         this.email = email;
         this.cisloUctu = cisloUctu;
     }
-/**
- * Construktor pro zakazniky
- * @param id
- * @param nazev
- * @param ulice
- * @param psc
- * @param mesto
- * @param stat
- * @param ic
- * @param dic
- * @param telefon
- * @param email
- * @param cisloUctu 
- */
+
+    /**
+     * Construktor pro zakazniky
+     *
+     * @param id
+     * @param nazev
+     * @param ulice
+     * @param psc
+     * @param mesto
+     * @param stat
+     * @param ic
+     * @param dic
+     * @param telefon
+     * @param email
+     * @param cisloUctu
+     */
     public Uzivatel(int id, String nazev, String ulice, int psc, String mesto, String stat, int ic, int dic, int telefon, String email, String cisloUctu) {
-        
+        this.id = id;
+        this.nazev = nazev;
+        this.ulice = ulice;
+        this.psc = psc;
+        this.mesto = mesto;
+        this.stat = stat;
+        this.ic = ic;
+        this.dic = dic;
+        this.telefon = telefon;
+        this.email = email;
+        this.cisloUctu = cisloUctu;
     }
-    
+
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public int getHeslo() {
@@ -104,7 +129,7 @@ public class Uzivatel {
 
     public String getStat() {
         return stat;
-        
+
     }
 
     public int getIc() {
