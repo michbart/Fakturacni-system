@@ -5,6 +5,11 @@
  */
 package cz.jcu.uaidoklad.Controller;
 
+import cz.jcu.uaidoklad.Model.Faktura;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+
 
 /**
  *
@@ -22,10 +27,10 @@ public class Soubory {
      * @throws Exception 
      */
     
-    public Soubor(String cestaKSouborum) throws Exception {
-        File soubor = new File(cesta);
+    public Soubory(String cestaKSouborum) throws Exception {
+        File soubor = new File(cestaKSouborum);
         if (!soubor.isDirectory()){
-            if soubor.mkdirs()){
+            if (soubor.mkdirs()){
                 throw new Exception("Nastala chyba pri tvorbe adresare");
             }
         }

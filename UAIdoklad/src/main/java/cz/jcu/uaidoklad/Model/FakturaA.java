@@ -28,8 +28,8 @@ public class FakturaA extends Faktura {
     public final int BLOK_CELKEM_X = 300;
     public final int BLOK_CELKEM_Y = 50;
     
-    public FakturaA(int cislo, Uzivatel dodavatel, Uzivatel odberatel, ArrayList<Polozka> polozky) {
-        super(cislo, dodavatel, odberatel, polozky);
+    public FakturaA(int id, int cislo, Uzivatel dodavatel, Uzivatel odberatel, ArrayList<Polozka> polozky) {
+        super(id, cislo, dodavatel, odberatel, polozky);
     }
 
     @Override
