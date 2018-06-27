@@ -15,12 +15,14 @@ import jdk.nashorn.internal.runtime.regexp.joni.EncodingHelper;
  */
 public abstract class Faktura implements Serializable {
 
+    protected int id;
     protected Uzivatel dodavatel;
     protected Uzivatel odberatel;
     protected ArrayList<Polozka> polozky;
     protected int cislo;
 
     public Faktura(int id, int cislo, Uzivatel dodavatel, Uzivatel odberatel, ArrayList<Polozka> polozky) {
+        this.id = id;
         this.dodavatel = dodavatel;
         this.odberatel = odberatel;
         this.polozky = polozky;

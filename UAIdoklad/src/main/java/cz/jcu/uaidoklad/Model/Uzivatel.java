@@ -11,7 +11,9 @@ package cz.jcu.uaidoklad.Model;
  */
 public class Uzivatel {
 
+    private int id;
     private String nazev;
+    private int heslo;
     private String ulice;
     private int psc;
     private String mesto;
@@ -22,8 +24,10 @@ public class Uzivatel {
     private String email;
     private String cisloUctu;
 
-    public Uzivatel(String nazev, String ulice, int psc, String mesto, String stat, int ic, int dic, int telefon, String email, String cisloUctu) {
+    public Uzivatel(int id, String nazev,int heslo, String ulice, int psc, String mesto, String stat, int ic, int dic, int telefon, String email, String cisloUctu) {
+        this.id = id;
         this.nazev = nazev;
+        this.heslo = heslo;
         this.ulice = ulice;
         this.psc = psc;
         this.mesto = mesto;
@@ -33,6 +37,14 @@ public class Uzivatel {
         this.telefon = telefon;
         this.email = email;
         this.cisloUctu = cisloUctu;
+    }
+
+    public int getHeslo() {
+        return heslo;
+    }
+
+    public void setHeslo(int heslo) {
+        this.heslo = heslo;
     }
 
     public String getNazev() {
@@ -53,6 +65,7 @@ public class Uzivatel {
 
     public String getStat() {
         return stat;
+        
     }
 
     public int getIc() {
