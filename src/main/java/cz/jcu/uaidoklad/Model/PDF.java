@@ -34,7 +34,7 @@ public class PDF {
     private PDFont fontNormal = PDType1Font.HELVETICA;
     private PDFont fontBold = PDType1Font.HELVETICA_BOLD;
     private PDPageContentStream cs;
-    Databaze db;
+    private Databaze db;
     public int BLOK_DODAVATEL_X;
     public int BLOK_DODAVATEL_Y;
     public int BLOK_ODBERATEL_X;
@@ -269,7 +269,6 @@ public class PDF {
 
     /**
      * Vykresli QR kod s informacemi o platbe
-     * TODO
      */
     private void vykresliQRkod() throws IOException { 
 //        cs.drawLine(70, 570, 220, 570);
