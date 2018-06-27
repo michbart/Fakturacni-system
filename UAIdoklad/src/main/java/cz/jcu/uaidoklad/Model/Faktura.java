@@ -20,6 +20,7 @@ public abstract class Faktura implements Serializable {
     protected ArrayList<Polozka> polozky;
     protected int cislo;    
 
+    
     public Faktura(int cislo, Uzivatel dodavatel, Uzivatel odberatel, ArrayList<Polozka> polozky) {
         this.dodavatel = dodavatel;
         this.odberatel = odberatel;
