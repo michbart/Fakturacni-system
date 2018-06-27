@@ -7,6 +7,7 @@ package cz.jcu.uaidoklad.Model;
 
 import com.mysql.jdbc.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.HashMap;
  *
  * @author Michal
  */
-public class Databaze implements DBInterface{
+public class Databaze implements DBInterface {
 
     private String driver = "com.mysql.jdbc.Driver";
     private Connection pripojeni;
@@ -109,11 +110,42 @@ public class Databaze implements DBInterface{
         } catch (Exception ex) {
             throw new Exception("Nastala chyba při pŕepisování dat v databázi." + ex.getMessage());
         }
-    }   
+    }
+
+    private ArrayList<String> ziskatUdajeDB(String dotaz, String sloupec) throws Exception {
+        ArrayList<String> vysledek = new ArrayList();
+        try (Statement st = pripojeni.createStatement();
+                ResultSet rs = st.executeQuery(dotaz);) {
+            while (rs.next()) {//ziskani dat kazdeho slouce
+                vysledek.add(rs.getString(sloupec));
+            }
+        } catch (SQLException ex) {
+            throw new Exception("Chyba při čtení z databáze: " + ex.getMessage());
+        }
+        return vysledek;
+    }
 
     @Override
     public Faktura getFakruta(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String dotaz = "SELECT * FROM nkRecept r INNER JOIN nkUzivatel u ON r.fkIdUzivatel = u.idUzivatel WHERE idRecept = '" + id + "';";
+        String dotazTyp = "SELECT * FROM nkRecept WHERE idRecept = '" + id + "';";
+        String typFaktury = ziskatUdajeDB(dotazTyp, "typ").get(0);
+        int idDodavatel;
+        int idOdberatel;
+        try (Statement st = pripojeni.createStatement();
+                ResultSet rs = st.executeQuery(dotaz);) {
+            Faktura vystup;
+            switch (rs.getString("typ")) {
+                case "FakturaA":
+                    vystup = new Faktura(rs.getInt("id"), rs.getInt("cislo"), this.getUzivatel(idDodavatel), this.getUzivatel(idOdberatel), this.getListPolozekF(id), rs.getString("datumSplatnosti"), rs.getString("zpusobPlatby"));
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+            return vystup;
+        } catch (SQLException ex) {
+            throw new Exception("Chyba při čtení z databáze: " + ex.getMessage());
+        }
     }
 
     @Override
@@ -130,15 +162,45 @@ public class Databaze implements DBInterface{
     public void zmenFakturu(Faktura faktura) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+/**
+ * Ziskani Uzivatele z DB
+ * @param id
+ * @return
+ * @throws Exception 
+ */
     @Override
     public Uzivatel getUzivatel(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String dotaz = "SELECT * FROM Uzivatel WHERE idRecept = '" + id + "';";
+        Uzivatel vystup;
+
+        try (Statement st = pripojeni.createStatement();
+                ResultSet rs = st.executeQuery(dotaz);) {
+            vystup = new Uzivatel(rs.getInt("id"), rs.getString("nazev"), rs.getString("login"), rs.getInt("heslo"), rs.getString("ulice"), rs.getInt("psc"), rs.getString("mesto"), rs.getString("stat"), rs.getInt("ic"), rs.getInt("dic"), Integer.getInteger(rs.getString("telefon")), rs.getString("email"), rs.getString("cisloUctu"));
+        } catch (SQLException ex) {
+            throw new Exception("Chyba při čtení z databáze: " + ex.getMessage());
+        }
+        return vystup;
     }
 
+    /**
+     * Ziskani Uzivatele z DB
+     * @param login
+     * @param heslo
+     * @return
+     * @throws Exception 
+     */
     @Override
     public Uzivatel getUzivatel(String login, int heslo) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String dotaz = "SELECT * FROM Uzivatel WHERE login = '" + login + "' AND heslo = '" + heslo + "';";
+        Uzivatel vystup;
+
+        try (Statement st = pripojeni.createStatement();
+                ResultSet rs = st.executeQuery(dotaz);) {
+            vystup = new Uzivatel(rs.getInt("id"), rs.getString("nazev"), rs.getString("login"), rs.getInt("heslo"), rs.getString("ulice"), rs.getInt("psc"), rs.getString("mesto"), rs.getString("stat"), rs.getInt("ic"), rs.getInt("dic"), Integer.getInteger(rs.getString("telefon")), rs.getString("email"), rs.getString("cisloUctu"));
+        } catch (SQLException ex) {
+            throw new Exception("Chyba při čtení z databáze: " + ex.getMessage());
+        }
+        return vystup;
     }
 
     @Override
@@ -161,6 +223,11 @@ public class Databaze implements DBInterface{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    private HashMap<Integer,Integer> getListPolozekF(int idFaktury){
+        HashMap<Integer,Integer> vystup = new HashMap();
+        
+        return vystup;
+    }
     @Override
     public void zmenPolozku(Polozka polozka) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
