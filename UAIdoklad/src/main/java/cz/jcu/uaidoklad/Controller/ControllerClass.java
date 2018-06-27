@@ -5,6 +5,7 @@
  */
 package cz.jcu.uaidoklad.Controller;
 
+import cz.jcu.uaidoklad.Model.PDF;
 import cz.jcu.uaidoklad.Model.Faktura;
 import cz.jcu.uaidoklad.Model.Uzivatel;
 

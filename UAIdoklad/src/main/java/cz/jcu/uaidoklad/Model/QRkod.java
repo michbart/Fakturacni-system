@@ -12,8 +12,6 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -24,6 +22,7 @@ public class QRkod {
     public QRkod(){
         
     }
+    
     /**
      * Vygeneruje QR kod pro PDF
      * @param text info o fakture

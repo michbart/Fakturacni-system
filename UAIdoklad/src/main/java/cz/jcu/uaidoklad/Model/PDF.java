@@ -3,16 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cz.jcu.uaidoklad.Controller;
+package cz.jcu.uaidoklad.Model;
 
 import cz.jcu.uaidoklad.Model.Faktura;
+import cz.jcu.uaidoklad.Model.QRkod;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 
 import java.io.IOException;
+import javax.imageio.ImageIO;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.apache.pdfbox.pdmodel.graphics.image.LosslessFactory;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 /**
  *
@@ -240,7 +246,11 @@ public class PDF {
         cs.drawLine(70, 570, 70, 420);
         cs.drawLine(220, 570, 220, 420);
         cs.drawLine(70, 420, 220, 420);
-        
+        QRkod kod = new QRkod();
+        ByteArrayInputStream bais = new ByteArrayInputStream(kod.getQRCodeImage("neco2", 150, 150));
+        BufferedImage bim = ImageIO.read(bais);
+        PDImageXObject pdImage = LosslessFactory.createFromImage(document, bim);
+        cs.drawImage(pdImage, 70, 420);
     }
 
     /**
