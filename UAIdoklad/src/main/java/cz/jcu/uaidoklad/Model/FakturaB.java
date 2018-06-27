@@ -20,9 +20,11 @@ public class FakturaB extends Faktura {
     /* X a Y pozice zacatku bloku informaci o odberateli */
     public final int BLOK_ODBERATEL_X = 0;
     public final int BLOK_ODBERATEL_Y = 0;
+    public final int BLOK_QR_X = 0;
+    public final int BLOK_QR_Y = 0;
     
-    public FakturaB(int id, int cislo, Uzivatel dodavatel, Uzivatel odberatel, ArrayList<Polozka> polozky) {
-        super(id, cislo, dodavatel, odberatel, polozky);
+    public FakturaB(int id, int cislo, Uzivatel dodavatel, Uzivatel odberatel, ArrayList<Polozka> polozky, String datumSplatnosti) {
+        super(id, cislo, dodavatel, odberatel, polozky, datumSplatnosti);
     }
 
     @Override
@@ -72,6 +74,16 @@ public class FakturaB extends Faktura {
 
     @Override
     public int blokCelkemY() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int blokQrX() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int blokQrY() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

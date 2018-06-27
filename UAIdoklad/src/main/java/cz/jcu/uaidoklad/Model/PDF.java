@@ -42,6 +42,8 @@ public class PDF {
     public int BLOK_POLOZKY_Y;
     public int BLOK_CELKEM_X;
     public int BLOK_CELKEM_Y;
+    public int BLOK_QR_X;
+    public int BLOK_QR_Y;
 
     public PDF(Faktura f) {
         this.fakt = f;
@@ -71,6 +73,8 @@ public class PDF {
         BLOK_POLOZKY_Y = fakt.blokPolozkyY();
         BLOK_CELKEM_X = fakt.blokCelkemX();
         BLOK_CELKEM_Y = fakt.blokCelkemY();
+        BLOK_QR_X = fakt.blokQrX();
+        BLOK_QR_Y = fakt.blokQrY();
     }
 
     /**
@@ -233,24 +237,36 @@ public class PDF {
      * Vypise polozky
      */
     private void vypisPolozky() throws IOException {
-        //foreach z listu
-        //cs.endText();
+        cs.beginText();
+        cs.setFont(fontNormal, 10);
+        cs.newLineAtOffset(BLOK_POLOZKY_X, BLOK_POLOZKY_Y-20); 
+        for(Polozka po : fakt.getPolozky()){
+            cs.showText(po.getNazev());
+            cs.newLineAtOffset(110, 0);
+            cs.showText(String.valueOf(po.getCena()));
+            cs.newLineAtOffset(-110, -20);
+        }
+        cs.endText();
     }
 
     /**
-     * Vykresli QR kod
+     * Vykresli QR kod s informacemi o platbe
      * TODO
      */
     private void vykresliQRkod() throws IOException { 
-        cs.drawLine(70, 570, 220, 570);
-        cs.drawLine(70, 570, 70, 420);
-        cs.drawLine(220, 570, 220, 420);
-        cs.drawLine(70, 420, 220, 420);
+//        cs.drawLine(70, 570, 220, 570);
+//        cs.drawLine(70, 570, 70, 420);
+//        cs.drawLine(220, 570, 220, 420);
+//        cs.drawLine(70, 420, 220, 420);
         QRkod kod = new QRkod();
-        ByteArrayInputStream bais = new ByteArrayInputStream(kod.getQRCodeImage("neco2", 150, 150));
+        ByteArrayInputStream bais = new ByteArrayInputStream(kod.getQRCodeImage(
+                "Cislo faktury: " + fakt.getCislo() + "\n" +
+                "Bankovni spojeni: " + fakt.getDodavatel().getCisloUctu() + "\n" +
+                "Datum splatnosti: " + fakt.getDatumSplatnosti()
+                , 200, 200));
         BufferedImage bim = ImageIO.read(bais);
         PDImageXObject pdImage = LosslessFactory.createFromImage(document, bim);
-        cs.drawImage(pdImage, 70, 420);
+        cs.drawImage(pdImage, BLOK_QR_X, BLOK_QR_Y);
     }
 
     /**
@@ -259,7 +275,7 @@ public class PDF {
      */
     private void ukonciZapis() throws IOException {
         cs.close();
-        document.save("file.pdf");
+        document.save(fakt.getCislo() + ".pdf");
         document.close();
     }
 }

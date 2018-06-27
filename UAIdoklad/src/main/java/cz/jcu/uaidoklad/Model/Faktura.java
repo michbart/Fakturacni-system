@@ -19,12 +19,14 @@ public abstract class Faktura implements Serializable {
     protected Uzivatel odberatel;
     protected ArrayList<Polozka> polozky;
     protected int cislo;
+    protected String datumSplatnosti;
 
-    public Faktura(int id, int cislo, Uzivatel dodavatel, Uzivatel odberatel, ArrayList<Polozka> polozky) {
+    public Faktura(int id, int cislo, Uzivatel dodavatel, Uzivatel odberatel, ArrayList<Polozka> polozky, String datumSplatnosti) {
         this.dodavatel = dodavatel;
         this.odberatel = odberatel;
         this.polozky = polozky;
         this.cislo = cislo;
+        this.datumSplatnosti = datumSplatnosti;
     }
 
     public abstract int blokDodavatelX();
@@ -46,7 +48,20 @@ public abstract class Faktura implements Serializable {
     public abstract int blokCelkemX();
 
     public abstract int blokCelkemY();
+    
+    public abstract int blokQrX();
+    
+    public abstract int blokQrY();
+    
+    public String getDatumSplatnosti() {
+        return datumSplatnosti;
+    }
 
+    public void setDatumSplatnosti(String datumSplatnosti) {
+        this.datumSplatnosti = datumSplatnosti;
+    }
+
+    
     /**
      * Getter pro ziskani cisla faktury
      *
