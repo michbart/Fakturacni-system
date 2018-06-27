@@ -12,16 +12,31 @@ import java.util.ArrayList;
  * @author NikolaKraus
  */
 public interface DBInterface {
-    public Faktura getFakruta(int id)throws Exception;
-    public ArrayList<Faktura> getListFaktur()throws Exception;
-    public void zmenFakturu(Faktura faktura)throws Exception;
-    public Uzivatel getUzivatel(int id)throws Exception;
-    public Uzivatel getUzivatel(String login, int heslo)throws Exception;
-    public void zmenUzivatele(Uzivatel uzivatel)throws Exception;
-    public ArrayList<Uzivatel> getListUzivatel()throws Exception;
-    public ArrayList <Polozka> getListPolozek()throws Exception;
-    public void zmenPolozku()throws Exception;
-    public Polozka getPolozka(int id)throws Exception;
-    
-    
+
+    public Faktura getFakruta(int id) throws Exception;
+
+    public void smazFaktura(int id) throws Exception;
+
+    public ArrayList<Faktura> getListFaktur() throws Exception;
+
+    public void zmenFakturu(Faktura faktura) throws Exception;
+
+    public Uzivatel getUzivatel(int id) throws Exception;
+
+    public Uzivatel getUzivatel(String login, int heslo) throws Exception;
+
+    public void smazUzivatele(int id);
+
+    public void zmenUzivatele(Uzivatel uzivatel) throws Exception;
+
+    public ArrayList<Uzivatel> getListUzivatel() throws Exception;
+
+    public ArrayList<Polozka> getListPolozek() throws Exception;
+
+    public void zmenPolozku(Polozka polozka) throws Exception;
+
+    public void smazPolozku(int id) throws Exception;
+
+    public Polozka getPolozka(int id) throws Exception;
+
 }
