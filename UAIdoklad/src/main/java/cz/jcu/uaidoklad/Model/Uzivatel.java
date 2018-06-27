@@ -23,7 +23,21 @@ public class Uzivatel {
     private int telefon;
     private String email;
     private String cisloUctu;
-
+/**
+ * Construktor pro prihlaseneho uzivatele
+ * @param id
+ * @param nazev
+ * @param heslo
+ * @param ulice
+ * @param psc
+ * @param mesto
+ * @param stat
+ * @param ic
+ * @param dic
+ * @param telefon
+ * @param email
+ * @param cisloUctu 
+ */
     public Uzivatel(int id, String nazev,int heslo, String ulice, int psc, String mesto, String stat, int ic, int dic, int telefon, String email, String cisloUctu) {
         this.id = id;
         this.nazev = nazev;
@@ -37,6 +51,31 @@ public class Uzivatel {
         this.telefon = telefon;
         this.email = email;
         this.cisloUctu = cisloUctu;
+    }
+/**
+ * Construktor pro zakazniky
+ * @param id
+ * @param nazev
+ * @param ulice
+ * @param psc
+ * @param mesto
+ * @param stat
+ * @param ic
+ * @param dic
+ * @param telefon
+ * @param email
+ * @param cisloUctu 
+ */
+    public Uzivatel(int id, String nazev, String ulice, int psc, String mesto, String stat, int ic, int dic, int telefon, String email, String cisloUctu) {
+        
+    }
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getHeslo() {

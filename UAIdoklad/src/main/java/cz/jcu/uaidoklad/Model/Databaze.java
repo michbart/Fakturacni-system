@@ -9,13 +9,14 @@ import com.mysql.jdbc.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
  *
  * @author Michal
  */
-public class Databaze {
+public class Databaze implements DBInterface{
 
     private String driver = "com.mysql.jdbc.Driver";
     private Connection pripojeni;
@@ -64,7 +65,7 @@ public class Databaze {
         String hodnoty = "";
         for (String nazev : nazevHodnota.keySet()) {
             nazvy = nazvy + nazev + ", ";
-            hodnoty = hodnoty + hodnoty + ", ";
+            hodnoty = hodnoty + nazevHodnota.get(nazev) + ", ";
         }
         try {
             String dotaz = "INSERT INTO " + tabulka + " (" + nazvy.substring(0, nazvy.length() - 2) + ") VALUES(" + hodnoty.substring(0, hodnoty.length() - 2) + ");";
@@ -93,20 +94,21 @@ public class Databaze {
 
     /**
      * prepsani atributu v DB
+     *
      * @param tabulka nazev tabulky
      * @param sloupecZmena co se ma prepsat
      * @param hodnotaZmena na co se ma prepsat
      * @param nazevId nazev id prvku
      * @param id id prvku
-     * @throws Exception 
+     * @throws Exception
      */
-    public void upravitDB(String tabulka, String sloupecZmena, String hodnotaZmena, String nazevId, String id) throws Exception {
+    private void upravitDB(String tabulka, String sloupecZmena, String hodnotaZmena, String nazevId, String id) throws Exception {
         try {
             String dotaz = "UPDATE " + tabulka + " SET " + sloupecZmena + " = '" + hodnotaZmena + "' WHERE " + nazevId + " = " + id;
             poslatPrikaz(dotaz);
         } catch (Exception ex) {
             throw new Exception("Nastala chyba při pŕepisování dat v databázi." + ex.getMessage());
         }
-    }
+    }   
 
 }
