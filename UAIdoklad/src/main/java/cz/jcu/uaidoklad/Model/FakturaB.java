@@ -5,7 +5,7 @@
  */
 package cz.jcu.uaidoklad.Model;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -13,18 +13,54 @@ import java.util.ArrayList;
  */
 public class FakturaB extends Faktura {
     
+    /* X a Y pozice cisla faktury (FAKTURA 2016-04 danovy doklad) */
+    
+    public final int BLOK_CISLA_X = 548;
+    public final int BLOK_CISLA_Y = 746;
+    
     /* X a Y pozice zacatku bloku informaci o dodavateli */
-    public final int BLOK_DODAVATEL_X=0;
-    public final int BLOK_DODAVATEL_Y=0;
+    public final int BLOK_DODAVATEL_X = 30;
+    public final int BLOK_DODAVATEL_Y = 315;
 
     /* X a Y pozice zacatku bloku informaci o odberateli */
-    public final int BLOK_ODBERATEL_X = 0;
-    public final int BLOK_ODBERATEL_Y = 0;
-    public final int BLOK_QR_X = 0;
-    public final int BLOK_QR_Y = 0;
+    public final int BLOK_ODBERATEL_X = 390;
+    public final int BLOK_ODBERATEL_Y = 654;
     
-    public FakturaB(int id, int cislo, Uzivatel dodavatel, Uzivatel odberatel, ArrayList<Polozka> polozky, String datumSplatnosti) {
-        super(id, cislo, dodavatel, odberatel, polozky, datumSplatnosti);
+    /* X a Y pozice zacatku bloku QR kodu */
+    
+    public final int BLOK_QR_X = 515;
+    public final int BLOK_QR_Y = 300;
+    
+    /* X a Y pozice zacatku bloku info (data splatnosti)  */
+    
+    public final int BLOK_INFO_X = 373;
+    public final int BLOK_INFO_Y = 654;
+    
+    /* X a Y pozice zacatku bloku info (ucet, var. symbol, zpusob platby)  */
+    
+    public final int BLOK_INFO2_X = 30;
+    public final int BLOK_INFO2_Y = 755;
+    
+    /* X a Y pozice zacatku bloku polozek */
+    
+
+    public final int BLOK_POLOZKY_X = 30;
+    public final int BLOK_POLOZKY_Y = 593;
+    
+    /* X a Y pozice zacatku bloku celkem (cena bez dph a s dph*/
+    
+    public final int BLOK_CELKEM_X = 391;
+    public final int BLOK_CELKEM_Y = 462;
+    
+    /* X a Y pozice zacatku bloku celkem (cena vcetne dph - zvyraznena) */
+    
+    public final int BLOK_CELKEM2_X = 30;
+    public final int BLOK_CELKEM2_Y = 752;
+    
+     
+    
+    public FakturaB(int cislo, Uzivatel dodavatel, Uzivatel odberatel, ArrayList<Polozka> polozky) {
+        super(cislo, dodavatel, odberatel, polozky);
     }
 
     @Override
@@ -46,35 +82,74 @@ public class FakturaB extends Faktura {
     public int blokOdberatelY() {
         return BLOK_ODBERATEL_Y;
     }
-
+    
+    @Override
+    public int blokQRX() {
+        return BLOK_QR_X ;
+    }
+    
+    @Override
+    public int blokQRY() {
+        return BLOK_QR_Y;
+    }
+    
     @Override
     public int blokInfoX() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return BLOK_INFO_X;
     }
 
     @Override
     public int blokInfoY() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return BLOK_INFO_Y;
+    }
+    
+    @Override
+    public int blokInfo2X() {
+        return BLOK_INFO2_X;
+    }
+
+    @Override
+    public int blokInfo2Y() {
+        return BLOK_INFO2_Y;
     }
 
     @Override
     public int blokPolozkyX() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return BLOK_POLOZKY_X;
     }
 
     @Override
     public int blokPolozkyY() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return BLOK_POLOZKY_Y;
     }
 
     @Override
     public int blokCelkemX() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return BLOK_CELKEM_X;
     }
 
     @Override
     public int blokCelkemY() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return BLOK_CELKEM_Y;
+    }
+    
+    @Override
+    public int blokCelkem2X() {
+        return BLOK_CELKEM2_X;
+    }
+
+    @Override
+    public int blokCelkem2Y() {
+        return BLOK_CELKEM2_Y;
+    }
+    
+    @Override
+    public int blokCislaX() {
+        return BLOK_CISLA_X;
+    }
+    @Override
+    public int blokCislaY() {
+        return BLOK_CISLA_Y;
     }
 
     @Override

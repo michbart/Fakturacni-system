@@ -14,6 +14,7 @@ public class Polozka {
     private String nazev;
     private double cena;
     private String mernaJednotka;
+    public final int DPH=21;
 
     public Polozka(String nazev, double cena, String mernaJednotka) {
         this.nazev = nazev;
