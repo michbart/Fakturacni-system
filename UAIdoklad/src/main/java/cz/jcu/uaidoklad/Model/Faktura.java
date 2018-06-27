@@ -6,8 +6,7 @@
 package cz.jcu.uaidoklad.Model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import jdk.nashorn.internal.runtime.regexp.joni.EncodingHelper;
+import java.util.HashMap;
 
 /**
  *
@@ -18,11 +17,11 @@ public abstract class Faktura implements Serializable {
     protected int id;
     protected Uzivatel dodavatel;
     protected Uzivatel odberatel;
-    protected ArrayList<Polozka> polozky;
+    protected HashMap<Integer, Integer> polozky;
     protected int cislo;
     protected String datumSplatnosti;
 
-    public Faktura(int id, int cislo, Uzivatel dodavatel, Uzivatel odberatel, ArrayList<Polozka> polozky, String datumSplatnosti) {
+    public Faktura(int id, int cislo, Uzivatel dodavatel, Uzivatel odberatel, HashMap<Integer, Integer> polozky, String datumSplatnosti) {
         this.id = id;
         this.dodavatel = dodavatel;
         this.odberatel = odberatel;
@@ -99,13 +98,19 @@ public abstract class Faktura implements Serializable {
         return odberatel;
     }
 
+    
+
+    public HashMap<Integer, Integer> getPolozky() {
+        return polozky;
+    }
+
     /**
      * Getter pro ziskani polozek faktury
      *
      * @return polozky faktury
      */
-    public ArrayList<Polozka> getPolozky() {
-        return polozky;
+    public void setPolozky(HashMap<Integer, Integer> polozky) {    
+        this.polozky = polozky;
     }
 
     public void setCislo(int cislo) {
@@ -120,8 +125,6 @@ public abstract class Faktura implements Serializable {
         this.odberatel = odberatel;
     }
 
-    public void setPolozky(ArrayList<Polozka> polozky) {
-        this.polozky = polozky;
-    }
+    
 
 }

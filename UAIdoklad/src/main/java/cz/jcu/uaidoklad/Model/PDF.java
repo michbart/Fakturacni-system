@@ -234,17 +234,27 @@ public class PDF {
     }
 
     /**
-     * Vypise polozky
+     * Vypise polozky faktury
      */
     private void vypisPolozky() throws IOException {
+        Polozka po;
+        int pocet;
         cs.beginText();
         cs.setFont(fontNormal, 10);
         cs.newLineAtOffset(BLOK_POLOZKY_X, BLOK_POLOZKY_Y-20); 
-        for(Polozka po : fakt.getPolozky()){
+        for(int id : fakt.getPolozky().keySet()){
+            po = db.getPolozka(id);//polozka
+            pocet = fakt.getPolozky().get(id);
             cs.showText(po.getNazev());
-            cs.newLineAtOffset(110, 0);
+            cs.newLineAtOffset(275, 0);         
+            cs.showText(String.valueOf(pocet)); 
+            cs.newLineAtOffset(40, 0);
             cs.showText(String.valueOf(po.getCena()));
-            cs.newLineAtOffset(-110, -20);
+            cs.newLineAtOffset(75, 0);
+            cs.showText("21");
+            cs.newLineAtOffset(50, 0);
+            cs.showText(String.valueOf(pocet*(po.getCena()*1.21)));
+            cs.newLineAtOffset(-440, -20);
         }
         cs.endText();
     }

@@ -5,7 +5,7 @@
  */
 package cz.jcu.uaidoklad.Model;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -23,7 +23,7 @@ public class FakturaB extends Faktura {
     public final int BLOK_QR_X = 0;
     public final int BLOK_QR_Y = 0;
     
-    public FakturaB(int id, int cislo, Uzivatel dodavatel, Uzivatel odberatel, ArrayList<Polozka> polozky, String datumSplatnosti) {
+    public FakturaB(int id, int cislo, Uzivatel dodavatel, Uzivatel odberatel, HashMap<Integer, Integer> polozky, String datumSplatnosti) {
         super(id, cislo, dodavatel, odberatel, polozky, datumSplatnosti);
     }
 
