@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.web.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="624.0" prefWidth="760.0" style="-fx-background-color: #455A64;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.jcu.uaidoklad.HlavniOknoController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1199.0" style="-fx-background-color: #455A64;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.jcu.uaidoklad.HlavniOknoController">
     <stylesheets>
         <URL value="@/styles/hlavniokno.css" />
     </stylesheets>
    <children>
-      <TabPane prefHeight="650.0" prefWidth="801.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="-26.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-41.0" AnchorPane.topAnchor="0.0">
+      <TabPane prefHeight="700.0" prefWidth="1200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
           <Tab fx:id="InformaceTab" text="Informace">
             <content>
@@ -82,50 +86,45 @@
             <content>
               <AnchorPane fx:id="VytvorFakturuPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #78909C;">
                      <children>
-                        <Label layoutX="336.0" layoutY="14.0" text="Tvorba faktury">
+                        <Label layoutX="526.0" layoutY="14.0" text="Tvorba faktury" AnchorPane.leftAnchor="526.0" AnchorPane.rightAnchor="526.0" AnchorPane.topAnchor="14.0">
                            <font>
                               <Font size="23.0" />
                            </font>
                         </Label>
-                        <ChoiceBox fx:id="KontaktChoiceBox" layoutX="15.0" layoutY="76.0" opacity="0.77" prefWidth="150.0" style="-fx-background-color: #455A64;" />
-                        <Label layoutX="33.0" layoutY="48.0" text="Vyberte uživatele">
+                        <ChoiceBox fx:id="KontaktChoiceBox" layoutX="53.0" layoutY="76.0" opacity="0.77" prefWidth="150.0" style="-fx-background-color: #455A64;" AnchorPane.leftAnchor="53.0" AnchorPane.topAnchor="76.0" />
+                        <Label layoutX="53.0" layoutY="48.0" text="Vyberte zákazníka" AnchorPane.leftAnchor="53.0" AnchorPane.topAnchor="48.0">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <Label layoutX="210.0" layoutY="116.0" text="Položky">
+                        <Label layoutX="53.0" layoutY="129.0" text="Položky" AnchorPane.leftAnchor="53.0" AnchorPane.topAnchor="129.0">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="PopisZboziTextField" layoutX="210.0" layoutY="150.0" prefHeight="25.0" prefWidth="347.0" promptText="Popis" style="-fx-background-color: #CFD8DC;" />
-                        <TextField fx:id="PocetKsZboziTextField" layoutX="570.0" layoutY="150.0" prefHeight="25.0" prefWidth="31.0" promptText="ks" style="-fx-background-color: #CFD8DC;" />
-                        <TextField fx:id="CenaKusZboziTField" layoutX="615.0" layoutY="150.0" prefHeight="25.0" prefWidth="69.0" promptText="Cena" style="-fx-background-color: #CFD8DC;" />
-                        <Button fx:id="DalsiPolozkaBtn" layoutX="695.0" layoutY="150.0" mnemonicParsing="false" onAction="#DalsiPolozkaClickedBtn" style="-fx-background-color: #455A64;" text="+" />
-                        <ChoiceBox fx:id="ZpusobUhradyChoiceBox" layoutX="566.0" layoutY="76.0" opacity="0.77" prefWidth="150.0" style="-fx-background-color: #455A64;" />
-                        <Label layoutX="431.0" layoutY="78.0" text="Způsob úhrady:">
+                        <TextField fx:id="PopisZboziTextField" layoutX="797.0" layoutY="159.0" prefHeight="25.0" prefWidth="347.0" promptText="Popis" style="-fx-background-color: #CFD8DC;" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="159.0" />
+                        <TextField fx:id="PocetKsZboziTextField" layoutX="949.0" layoutY="219.0" prefHeight="31.0" prefWidth="57.0" promptText="ks" style="-fx-background-color: #CFD8DC;" AnchorPane.rightAnchor="193.0" AnchorPane.topAnchor="219.0" />
+                        <TextField fx:id="CenaKusZboziTField" layoutX="797.0" layoutY="219.0" prefHeight="31.0" prefWidth="118.0" promptText="Cena" style="-fx-background-color: #CFD8DC;" AnchorPane.rightAnchor="284.0" AnchorPane.topAnchor="219.0" />
+                        <Button fx:id="DalsiPolozkaBtn" layoutX="745.0" layoutY="159.0" mnemonicParsing="false" onAction="#DalsiPolozkaClickedBtn" style="-fx-background-color: #455A64;" text="+" AnchorPane.rightAnchor="423.0" AnchorPane.topAnchor="159.0" />
+                        <ChoiceBox fx:id="ZpusobUhradyChoiceBox" layoutX="261.0" layoutY="76.0" opacity="0.77" prefWidth="150.0" style="-fx-background-color: #455A64;" AnchorPane.leftAnchor="261.0" AnchorPane.topAnchor="76.0" />
+                        <Label layoutX="261.0" layoutY="48.0" text="Způsob úhrady:" AnchorPane.leftAnchor="261.0" AnchorPane.topAnchor="48.0">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <DatePicker fx:id="datumSplatnostiDate" layoutX="191.0" layoutY="76.0" promptText="Datum splatnosti" style="-fx-background-color: #455A64;" />
-                        <ListView fx:id="PolozkZboziListView" layoutX="210.0" layoutY="185.0" prefHeight="322.0" prefWidth="506.0" style="-fx-background-color: #90A4AE;" />
-                        <Button fx:id="ZavritBtn" layoutX="650.0" layoutY="550.0" mnemonicParsing="false" onAction="#ZavritClickedBtn" prefHeight="40.0" prefWidth="86.0" style="-fx-background-color: #455A64;" text="Zavřít">
+                        <DatePicker fx:id="datumSplatnostiDate" layoutX="466.0" layoutY="76.0" promptText="Datum splatnosti" style="-fx-background-color: #455A64;" AnchorPane.leftAnchor="466.0" AnchorPane.topAnchor="76.0" />
+                        <ListView fx:id="PolozkZboziListView" layoutX="53.0" layoutY="159.0" prefHeight="450.0" prefWidth="668.0" style="-fx-background-color: #90A4AE;" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="53.0" AnchorPane.rightAnchor="478.0" AnchorPane.topAnchor="159.0" />
+                        <Button fx:id="ZavritBtn" layoutX="927.0" layoutY="311.0" mnemonicParsing="false" onAction="#ZavritClickedBtn" prefHeight="40.0" prefWidth="86.0" style="-fx-background-color: #455A64;" text="Zavřít" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="311.0">
                            <font>
                               <Font size="13.0" />
                            </font>
                         </Button>
-                        <Button fx:id="PDFBtn" layoutX="550.0" layoutY="550.0" mnemonicParsing="false" onAction="#PDFClickedBtn" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #455A64;" text="PDF">
+                        <Button fx:id="PDFBtn" layoutX="931.0" layoutY="311.0" mnemonicParsing="false" onAction="#PDFClickedBtn" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #455A64;" text="PDF" AnchorPane.rightAnchor="188.0" AnchorPane.topAnchor="311.0">
                            <font>
                               <Font size="13.0" />
                            </font>
                         </Button>
-                        <Button fx:id="UlozitBtn" layoutX="450.0" layoutY="550.0" mnemonicParsing="false" onAction="#UlozitClickedBtn" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #455A64;" text="Uložit">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="UpravitBtn" layoutX="350.0" layoutY="550.0" mnemonicParsing="false" onAction="#UpravitClickedBtn" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #455A64;" text="Upravit">
+                        <Button fx:id="UlozitBtn" layoutX="797.0" layoutY="311.0" mnemonicParsing="false" onAction="#UlozitClickedBtn" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #455A64;" text="Uložit" AnchorPane.rightAnchor="322.0" AnchorPane.topAnchor="311.0">
                            <font>
                               <Font size="13.0" />
                            </font>

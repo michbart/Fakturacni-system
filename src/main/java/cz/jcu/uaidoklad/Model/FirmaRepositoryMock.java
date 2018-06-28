@@ -37,8 +37,6 @@ public class FirmaRepositoryMock implements FirmaRepository {
         return firmy;
     }
 
-    
-    
     private void vytvorFirmy() {
         f1 = new Firma(1, "nazev", "ulice", 555, "mesto", "stat", 123, 456, "1111111", "email", "123/0900");
         f2 = new Firma(2, "nazev2", "ulice2", 555, "mesto2", "stat2", 123, 456, "1111111", "email2", "123/0900");
