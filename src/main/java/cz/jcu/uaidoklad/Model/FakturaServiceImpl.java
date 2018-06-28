@@ -6,6 +6,7 @@
 package cz.jcu.uaidoklad.Model;
 
 import java.util.HashMap;
+import java.util.List;
 
 /**
  *
@@ -20,6 +21,36 @@ public class FakturaServiceImpl implements FakturaService {
     @Override
     public void vygenerujPDF(Faktura f, Databaze db) {
         new PDF(fa, db).vygeneruj();
+    }
+
+    @Override
+    public Faktura getFakturaById(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Faktura> getFaktury() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void createFaktura(Faktura f) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void updateFaktura(Faktura f) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void deleteFaktura(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void exportAsPDF(Faktura f, Databaze db) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
