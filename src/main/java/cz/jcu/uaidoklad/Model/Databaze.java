@@ -140,12 +140,13 @@ public class Databaze implements DBInterface {
         //String typFaktury = ziskatUdajeDB(dotaz, "typ").get(0);
         Uzivatel Dodavatel = this.getUzivatel(Integer.valueOf(ziskatUdajeDB(dotaz, "dodavatel").get(0)));
         Uzivatel Odberatel = this.getUzivatel(Integer.valueOf(ziskatUdajeDB(dotaz, "odberatel").get(0)));
+        HashMap<Integer, Integer> listPolozek = this.getListPolozekF(id);
         try (Statement st = pripojeni.createStatement();
                 ResultSet rs = st.executeQuery(dotaz);) {
             Faktura vystup;
 //            switch (rs.getString("typ")) {
 //                case "FakturaA":
-            vystup = new Faktura(rs.getInt("id"), rs.getInt("cislo"), Dodavatel, Odberatel, this.getListPolozekF(id), rs.getString("datumSplatnosti"), rs.getString("zpusobPlatby"));
+            vystup = new Faktura(rs.getInt("id"), rs.getInt("cislo"), Dodavatel, Odberatel, this.getListPolozekF(id), rs.getString("datumSplatnosti"), rs.getString("zpusobPlatby"), rs.getInt("typ"));
 //                    break;
 //                default:
 //                    throw new AssertionError();
@@ -168,7 +169,7 @@ public class Databaze implements DBInterface {
         try (Statement st = pripojeni.createStatement();
                 ResultSet rs = st.executeQuery(dotaz);) {
             while (rs.next()) {
-                vystup.add(new Faktura(rs.getInt("id"), rs.getInt("cislo"), this.getListPolozekF(rs.getInt("id")), rs.getString("datumSplatnosti"), rs.getString("zpusobPlatby"))); 
+                vystup.add(new Faktura(rs.getInt("id"), rs.getInt("cislo"), rs.getString("datumSplatnosti"), rs.getString("zpusobPlatby"), rs.getInt("typ"))); 
             }
         } catch (SQLException ex) {
             throw new Exception("Chyba při čtení z databáze: " + ex.getMessage());
@@ -177,6 +178,7 @@ public class Databaze implements DBInterface {
             String dotaz2 = "SELECT * FROM Faktura WHERE idRecept = '" + f.getId() + "';";
             f.setDodavatel(this.getUzivatel(Integer.valueOf(ziskatUdajeDB(dotaz2, "dodavatel").get(0))));
             f.setOdberatel(this.getUzivatel(Integer.valueOf(ziskatUdajeDB(dotaz2, "odberatel").get(0))));
+            f.setPolozky(this.getListPolozekF(f.getId()));
         }
         return vystup;
     }
@@ -189,7 +191,6 @@ public class Databaze implements DBInterface {
         upravitDB("Faktura", "polozky", String.valueOf(faktura.getPolozky()), "id", String.valueOf(faktura.getId()));
         upravitDB("Faktura", "datumSplatnosti", String.valueOf(faktura.getDatumSplatnosti()), "id", String.valueOf(faktura.getId()));
         upravitDB("Faktura", "zpusobPlatby", String.valueOf(faktura.getZpusobPlatby()), "id", String.valueOf(faktura.getId()));
-
     }
 
     /**
@@ -269,6 +270,7 @@ public class Databaze implements DBInterface {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    
     private HashMap<Integer, Integer> getListPolozekF(int idFaktury) {
         HashMap<Integer, Integer> vystup = new HashMap();
 

@@ -71,9 +71,8 @@ public class Faktura implements Serializable {
         vyberTyp(typ);
     }
 
-    public Faktura(int id, int cislo, HashMap<Integer, Integer> polozky, String datumSplatnosti, String zpusobPlatby, int typ) {
+    public Faktura(int id, int cislo, String datumSplatnosti, String zpusobPlatby, int typ) {
         this.id = id;
-        this.polozky = polozky;
         this.cislo = cislo;
         this.datumSplatnosti = datumSplatnosti;
         this.zpusobPlatby = zpusobPlatby;
