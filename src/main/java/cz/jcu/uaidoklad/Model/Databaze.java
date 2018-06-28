@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -21,6 +23,7 @@ public class Databaze implements DBInterface {
 
     private String driver = "com.mysql.jdbc.Driver";
     private Connection pripojeni;
+    
 
     /**
      * Constructor - pripojeni k DB
@@ -92,6 +95,7 @@ public class Databaze implements DBInterface {
             throw new Exception("Nastala chyba při mazání v databázi." + ex.getMessage());
         }
     }
+     
 
     /**
      * prepsani atributu v DB
@@ -150,17 +154,24 @@ public class Databaze implements DBInterface {
 
     @Override
     public void smazFaktura(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        smazatDB("Faktura", "id", String.valueOf(id));
     }
 
     @Override
     public ArrayList<Faktura> getListFaktur() throws Exception {
+        
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void zmenFakturu(Faktura faktura) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        upravitDB("Faktura", "cislo", String.valueOf(faktura.getCislo()), "id", String.valueOf(faktura.getId()));
+        upravitDB("Faktura", "dodavatel", String.valueOf(faktura.getDodavatel()), "id", String.valueOf(faktura.getId()));
+        upravitDB("Faktura", "odberatel", String.valueOf(faktura.getOdberatel()), "id", String.valueOf(faktura.getId()));
+        upravitDB("Faktura", "polozky", String.valueOf(faktura.getPolozky()), "id", String.valueOf(faktura.getId()));
+        upravitDB("Faktura", "datumSplatnosti", String.valueOf(faktura.getDatumSplatnosti()), "id", String.valueOf(faktura.getId()));
+        upravitDB("Faktura", "zpusobPlatby", String.valueOf(faktura.getZpusobPlatby()), "id", String.valueOf(faktura.getId()));
+      
     }
 /**
  * Ziskani Uzivatele z DB
@@ -204,13 +215,27 @@ public class Databaze implements DBInterface {
     }
 
     @Override
-    public void smazUzivatele(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void smazUzivatele(int id) throws Exception{
+        
+            smazatDB("Uzivatel", "id", String.valueOf(id));
+     
     }
 
     @Override
     public void zmenUzivatele(Uzivatel uzivatel) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        upravitDB("Uzivatel", "nazev", String.valueOf(uzivatel.getNazev()), "id", String.valueOf(uzivatel.getId()));
+        upravitDB("Uzivatel", "login", String.valueOf(uzivatel.getLogin()), "id", String.valueOf(uzivatel.getId()));
+        upravitDB("Uzivatel", "heslo", String.valueOf(uzivatel.getHeslo()), "id", String.valueOf(uzivatel.getId()));
+        upravitDB("Uzivatel", "ulice", String.valueOf(uzivatel.getUlice()), "id", String.valueOf(uzivatel.getId()));
+        upravitDB("Uzivatel", "pcs", String.valueOf(uzivatel.getPsc()), "id", String.valueOf(uzivatel.getId()));
+        upravitDB("Uzivatel", "mesto", String.valueOf(uzivatel.getMesto()), "id", String.valueOf(uzivatel.getId()));
+        upravitDB("Uzivatel", "stat", String.valueOf(uzivatel.getStat()), "id", String.valueOf(uzivatel.getId()));
+        upravitDB("Uzivatel", "ic", String.valueOf(uzivatel.getIc()), "id", String.valueOf(uzivatel.getId()));
+        upravitDB("Uzivatel", "dic", String.valueOf(uzivatel.getDic()), "id", String.valueOf(uzivatel.getId()));
+        upravitDB("Uzivatel", "telefon", String.valueOf(uzivatel.getTelefon()), "id", String.valueOf(uzivatel.getId()));
+        upravitDB("Uzivatel", "email", String.valueOf(uzivatel.getEmail()), "id", String.valueOf(uzivatel.getId()));
+        upravitDB("Uzivatel", "cisloUctu", String.valueOf(uzivatel.getCisloUctu()), "id", String.valueOf(uzivatel.getId()));
+        
     }
 
     @Override

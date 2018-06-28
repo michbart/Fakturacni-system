@@ -103,6 +103,11 @@ public abstract class Faktura implements Serializable {
     public void setDatumSplatnosti(String datumSplatnosti) {
         this.datumSplatnosti = datumSplatnosti;
     }
+    
+    public String getZpusobPlatby(){
+        return zpusobPlatby;
+    }
+    
 
     /**
      * Getter pro ziskani cisla faktury

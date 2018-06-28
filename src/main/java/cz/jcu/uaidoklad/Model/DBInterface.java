@@ -25,7 +25,7 @@ public interface DBInterface {
 
     public Uzivatel getUzivatel(String login, int heslo) throws Exception;
 
-    public void smazUzivatele(int id);
+    public void smazUzivatele(int id)throws Exception;
 
     public void zmenUzivatele(Uzivatel uzivatel) throws Exception;
 
