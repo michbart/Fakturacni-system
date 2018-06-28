@@ -50,7 +50,7 @@ public class PDF {
 
     public PDF(Faktura f, FakturaRepositoryImpl db) {
         this.fakt = f;
-        this.db=db;
+        this.db = db;
         document = new PDDocument();
         page = new PDPage();
         document.addPage(page);
@@ -66,7 +66,7 @@ public class PDF {
     /**
      * Nastavuje konstanty pro dany typ faktury
      */
-    public void nastavKonstanty() {
+    private void nastavKonstanty() {
         BLOK_DODAVATEL_X = fakt.getBLOK_DODAVATEL_X();
         BLOK_DODAVATEL_Y = fakt.getBLOK_DODAVATEL_Y();
         BLOK_ODBERATEL_X = fakt.getBLOK_ODBERATEL_X();
@@ -100,9 +100,11 @@ public class PDF {
             //TODO
         }
     }
+
     /**
      * Vykresli horizontalni cary
-     * @throws IOException 
+     *
+     * @throws IOException
      */
     private void vykresliOhraniceni() throws IOException {
 
@@ -111,12 +113,13 @@ public class PDF {
         cs.drawLine(50, 385, 560, 385);
         cs.drawLine(300, 45, 560, 45);
     }
-    
+
     /**
      * Vypise informace na spodni care pdfka
-     * @throws IOException 
+     *
+     * @throws IOException
      */
-    private void vypisCelkem() throws IOException{
+    private void vypisCelkem() throws IOException {
         cs.beginText();
         cs.newLineAtOffset(BLOK_CELKEM_X, BLOK_CELKEM_Y);
         cs.setFont(fontBold, 12);
@@ -125,12 +128,13 @@ public class PDF {
         cs.showText("50000,00 Kc"); //TODO
         cs.endText();
     }
-    
+
     /**
      * Vypise info o splatnosti, zpusobu uhrady a bankovnim spojeni
-     * @throws IOException 
+     *
+     * @throws IOException
      */
-    private void vypisInfoFaktura() throws IOException{
+    private void vypisInfoFaktura() throws IOException {
         cs.beginText();
         cs.newLineAtOffset(BLOK_INFO_X, BLOK_INFO_Y);
         cs.setFont(fontBold, 15);
@@ -160,30 +164,31 @@ public class PDF {
 
     /**
      * Vypise info nad horizontalni carou u polozek
-     * @throws IOException 
+     *
+     * @throws IOException
      */
-    private void vypisInfoPolozky() throws IOException{
+    private void vypisInfoPolozky() throws IOException {
         cs.beginText();
         cs.newLineAtOffset(BLOK_POLOZKY_X, BLOK_POLOZKY_Y);
         cs.setFont(fontBold, 10);
         cs.showText("Popis");
-        cs.newLineAtOffset(270,0);
+        cs.newLineAtOffset(270, 0);
         cs.showText("Ks");
-        cs.newLineAtOffset(40,0);
+        cs.newLineAtOffset(40, 0);
         cs.showText("Cena ks");
-        cs.newLineAtOffset(70,0);
+        cs.newLineAtOffset(70, 0);
         cs.showText("DPH %");
-        cs.newLineAtOffset(50,0);
+        cs.newLineAtOffset(50, 0);
         cs.showText("Cena s DPH");
         cs.endText();
     }
-    
+
     /**
      * Vypise info o dodavateli
      */
     private void vypisDodavatele() throws IOException {
-        cs.beginText();   
-        cs.newLineAtOffset(BLOK_DODAVATEL_X, BLOK_DODAVATEL_Y); 
+        cs.beginText();
+        cs.newLineAtOffset(BLOK_DODAVATEL_X, BLOK_DODAVATEL_Y);
         cs.setFont(fontNormal, 10);
         cs.showText("Dodavatel:");
         cs.newLineAtOffset(0, -20);
@@ -213,7 +218,7 @@ public class PDF {
     private void vypisOdberatele() throws IOException {
         cs.beginText();
         cs.setFont(fontBold, 10);
-        cs.newLineAtOffset(BLOK_ODBERATEL_X, BLOK_ODBERATEL_Y); 
+        cs.newLineAtOffset(BLOK_ODBERATEL_X, BLOK_ODBERATEL_Y);
         cs.setFont(fontNormal, 10);
         cs.showText("Odberatel:");
         cs.newLineAtOffset(0, -20);
@@ -245,8 +250,8 @@ public class PDF {
         int pocet;
         cs.beginText();
         cs.setFont(fontNormal, 10);
-        cs.newLineAtOffset(BLOK_POLOZKY_X, BLOK_POLOZKY_Y-20); 
-        for(int id : fakt.getPolozky().keySet()){
+        cs.newLineAtOffset(BLOK_POLOZKY_X, BLOK_POLOZKY_Y - 20);
+        for (int id : fakt.getPolozky().keySet()) {
             try {
                 po = db.getPolozka(id);//polozka
                 pocet = fakt.getPolozky().get(id);
@@ -258,7 +263,7 @@ public class PDF {
                 cs.newLineAtOffset(75, 0);
                 cs.showText("21");
                 cs.newLineAtOffset(50, 0);
-                cs.showText(String.valueOf(pocet*(po.getCena()*1.21)));
+                cs.showText(String.valueOf(pocet * (po.getCena() * 1.21)));
                 cs.newLineAtOffset(-440, -20);
             } catch (Exception ex) {
                 //Logger.getLogger(PDF.class.getName()).log(Level.SEVERE, null, ex);
@@ -270,17 +275,17 @@ public class PDF {
     /**
      * Vykresli QR kod s informacemi o platbe
      */
-    private void vykresliQRkod() throws IOException { 
+    private void vykresliQRkod() throws IOException {
 //        cs.drawLine(70, 570, 220, 570);
 //        cs.drawLine(70, 570, 70, 420);
 //        cs.drawLine(220, 570, 220, 420);
 //        cs.drawLine(70, 420, 220, 420);
         QRkod kod = new QRkod();
         ByteArrayInputStream bais = new ByteArrayInputStream(kod.getQRCodeImage(
-                "Cislo faktury: " + fakt.getCislo() + "\n" +
-                "Bankovni spojeni: " + fakt.getDodavatel().getCisloUctu() + "\n" +
-                "Datum splatnosti: " + fakt.getDatumSplatnosti()
-                , 200, 200));
+                "Cislo faktury: " + fakt.getCislo() + "\n"
+                + "Bankovni spojeni: " + fakt.getDodavatel().getCisloUctu() + "\n"
+                + "Datum splatnosti: " + fakt.getDatumSplatnosti(),
+                 200, 200));
         BufferedImage bim = ImageIO.read(bais);
         PDImageXObject pdImage = LosslessFactory.createFromImage(document, bim);
         cs.drawImage(pdImage, BLOK_QR_X, BLOK_QR_Y);
@@ -288,7 +293,8 @@ public class PDF {
 
     /**
      * Zavira zapis do PDF souboru
-     * @throws IOException 
+     *
+     * @throws IOException
      */
     private void ukonciZapis() throws IOException {
         cs.close();
