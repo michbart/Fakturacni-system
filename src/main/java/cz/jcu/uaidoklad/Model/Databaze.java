@@ -129,23 +129,29 @@ public class Databaze implements DBInterface {
         return vysledek;
     }
 
+    /**
+     * ziskani faktury z DB
+     *
+     * @param id id Faktury
+     * @return Faktura
+     * @throws Exception Chyba pri cteni z DB
+     */
     @Override
     public Faktura getFakruta(int id) throws Exception {
-        String dotaz = "SELECT * FROM nkRecept r INNER JOIN nkUzivatel u ON r.fkIdUzivatel = u.idUzivatel WHERE idRecept = '" + id + "';";
-        String dotazTyp = "SELECT * FROM nkRecept WHERE idRecept = '" + id + "';";
-        String typFaktury = ziskatUdajeDB(dotazTyp, "typ").get(0);
-        int idDodavatel;
-        int idOdberatel;
+        String dotaz = "SELECT * FROM Faktura WHERE idRecept = '" + id + "';";
+        //String typFaktury = ziskatUdajeDB(dotaz, "typ").get(0);
+        Uzivatel Dodavatel = this.getUzivatel(Integer.valueOf(ziskatUdajeDB(dotaz, "dodavatel").get(0)));
+        Uzivatel Odberatel = this.getUzivatel(Integer.valueOf(ziskatUdajeDB(dotaz, "odberatel").get(0)));
         try (Statement st = pripojeni.createStatement();
                 ResultSet rs = st.executeQuery(dotaz);) {
             Faktura vystup;
-            switch (rs.getString("typ")) {
-                case "FakturaA":
-                    vystup = new Faktura(rs.getInt("id"), rs.getInt("cislo"), this.getUzivatel(idDodavatel), this.getUzivatel(idOdberatel), this.getListPolozekF(id), rs.getString("datumSplatnosti"), rs.getString("zpusobPlatby"));
-                    break;
-                default:
-                    throw new AssertionError();
-            }
+//            switch (rs.getString("typ")) {
+//                case "FakturaA":
+            vystup = new Faktura(rs.getInt("id"), rs.getInt("cislo"), Dodavatel, Odberatel, this.getListPolozekF(id), rs.getString("datumSplatnosti"), rs.getString("zpusobPlatby"));
+//                    break;
+//                default:
+//                    throw new AssertionError();
+//            }
             return vystup;
         } catch (SQLException ex) {
             throw new Exception("Chyba při čtení z databáze: " + ex.getMessage());
@@ -173,15 +179,17 @@ public class Databaze implements DBInterface {
         upravitDB("Faktura", "zpusobPlatby", String.valueOf(faktura.getZpusobPlatby()), "id", String.valueOf(faktura.getId()));
       
     }
-/**
- * Ziskani Uzivatele z DB
- * @param id
- * @return
- * @throws Exception 
- */
+
+    /**
+     * Ziskani Uzivatele z DB
+     *
+     * @param id
+     * @return
+     * @throws Exception
+     */
     @Override
     public Uzivatel getUzivatel(int id) throws Exception {
-        String dotaz = "SELECT * FROM Uzivatel WHERE idRecept = '" + id + "';";
+        String dotaz = "SELECT * FROM Uzivatel WHERE id = '" + id + "';";
         Uzivatel vystup;
 
         try (Statement st = pripojeni.createStatement();
@@ -195,10 +203,11 @@ public class Databaze implements DBInterface {
 
     /**
      * Ziskani Uzivatele z DB
+     *
      * @param login
      * @param heslo
      * @return
-     * @throws Exception 
+     * @throws Exception
      */
     @Override
     public Uzivatel getUzivatel(String login, int heslo) throws Exception {
@@ -248,11 +257,12 @@ public class Databaze implements DBInterface {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private HashMap<Integer,Integer> getListPolozekF(int idFaktury){
-        HashMap<Integer,Integer> vystup = new HashMap();
-        
+    private HashMap<Integer, Integer> getListPolozekF(int idFaktury) {
+        HashMap<Integer, Integer> vystup = new HashMap();
+
         return vystup;
     }
+
     @Override
     public void zmenPolozku(Polozka polozka) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

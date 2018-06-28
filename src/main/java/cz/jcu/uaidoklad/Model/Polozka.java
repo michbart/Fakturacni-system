@@ -11,15 +11,25 @@ package cz.jcu.uaidoklad.Model;
  */
 public class Polozka {
 
+    private int id;
     private String nazev;
     private double cena;
     private String mernaJednotka;
-    public final int DPH=21;
+    public final int DPH = 21;
 
-    public Polozka(String nazev, double cena, String mernaJednotka) {
+    public Polozka(int id, String nazev, double cena, String mernaJednotka) {
+        this.id = id;
         this.nazev = nazev;
         this.cena = cena;
         this.mernaJednotka = mernaJednotka;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getMernaJednotka() {
@@ -45,7 +55,5 @@ public class Polozka {
     public void setCena(double cena) {
         this.cena = cena;
     }
-    
-    
 
 }
