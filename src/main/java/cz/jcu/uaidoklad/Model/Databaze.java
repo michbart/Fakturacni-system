@@ -265,12 +265,16 @@ public class Databaze implements DBInterface {
 
     @Override
     public void zmenPolozku(Polozka polozka) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        upravitDB("Polozka", "nazev", String.valueOf(polozka.getNazev()), "id", String.valueOf(polozka.getId()));
+        upravitDB("Polozka", "cena", String.valueOf(polozka.getCena()), "id", String.valueOf(polozka.getId()));
+        upravitDB("Polozka", "mernaJednotka", String.valueOf(polozka.getMernaJednotka()), "id", String.valueOf(polozka.getId()));
+        
     }
 
     @Override
     public void smazPolozku(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        smazatDB("Polozka", "id", String.valueOf(id));
+        
     }
 
     @Override
