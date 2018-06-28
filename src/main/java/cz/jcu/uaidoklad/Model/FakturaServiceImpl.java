@@ -16,10 +16,10 @@ public class FakturaServiceImpl implements FakturaService {
     Firma dod = new Firma(1, "nazev", "ulice", 555, "mesto", "stat", 123, 456, 1111111, "email","123/0900");
     Firma odb = new Firma(2, "nazev2", "ulice2", 555, "mesto2", "stat2", 123, 456, 1111111, "email2", "123/0900");
     HashMap<Integer, Integer> polozky = new HashMap<>();
-    private Faktura fa = new Faktura(1,12345, dod, odb, polozky, "dnes", "prevodem");
+    private Faktura fa = new Faktura(1,12345, dod, odb, polozky, "dnes", "prevodem",1);
     
     @Override
-    public void vygenerujPDF(Faktura f, Databaze db) {
+    public void exportAsPDF(Faktura f, Databaze db) {
         new PDF(fa, db).vygeneruj();
     }
 
@@ -45,11 +45,6 @@ public class FakturaServiceImpl implements FakturaService {
 
     @Override
     public void deleteFaktura(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void exportAsPDF(Faktura f, Databaze db) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
