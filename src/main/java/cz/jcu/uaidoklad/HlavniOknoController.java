@@ -171,7 +171,7 @@ public class HlavniOknoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        nastavDodavatele();
     }
 
     public HlavniOknoController() throws Exception {
@@ -191,12 +191,19 @@ public class HlavniOknoController implements Initializable {
         polozky.put(1, 2);
         c = new ControllerClass();
         firmaMock = new FirmaRepositoryMock();
-        nastavDodavatele();
+        
     }
     private void nastavDodavatele(){
-        String neco="necoooo";
-        nazevLabel.setText(neco);
-        
+        nazevLabel.setText(firmaMock.getFirmy().get(0).getNazev());
+        uliceLabel.setText(firmaMock.getFirmy().get(0).getUlice());
+        pscLabel.setText(String.valueOf(firmaMock.getFirmy().get(0).getPsc()));
+        mestoLabel.setText(firmaMock.getFirmy().get(0).getMesto());
+        statLabel.setText(firmaMock.getFirmy().get(0).getStat());
+        icoLabel.setText(String.valueOf(firmaMock.getFirmy().get(0).getIc()));
+        dicLabel.setText(String.valueOf(firmaMock.getFirmy().get(0).getDic()));
+        ucetLabel.setText(firmaMock.getFirmy().get(0).getCisloUctu());
+        emailLabel.setText(firmaMock.getFirmy().get(0).getEmail());
+        mobilLabel.setText(firmaMock.getFirmy().get(0).getTelefon());
     }
 
     @FXML
