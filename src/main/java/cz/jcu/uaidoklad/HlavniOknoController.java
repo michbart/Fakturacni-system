@@ -32,84 +32,124 @@ public class HlavniOknoController implements Initializable {
 
     @FXML
     private Button OdhlasitBtn;
+    
     @FXML
     private Button UlozitBtn;
+    
     @FXML
     private Button UpravitBtn;
+    
     @FXML
     private Button PDFBtn;
+    
     @FXML
     private Tab InformaceTab;
+    
     @FXML
     private Tab VytvorFakturuTab;
+    
     @FXML
     private Tab SeznamFakturTab;
+    
     @FXML
     private Tab KontaktyTab;
+    
     @FXML
     private AnchorPane InformacePane;
+    
     @FXML
     private AnchorPane VytvorFakturuPane;
+    
     @FXML
     private Tab PridatKontaktTab;
+    
     @FXML
     private AnchorPane PridatKontaktPane;
+    
     @FXML
     private TextField NazevOdberateleTField;
+    
     @FXML
     private TextField UliceOdberateleTField;
+    
     @FXML
     private TextField MestoOdberateleTField;
+    
     @FXML
     private TextField PSCOdberateleTField;
+    
     @FXML
     private TextField StatOdberateleTField;
+    
     @FXML
     private TextField MobilOdberateleTField;
+    
     @FXML
     private TextField EmailOdberateleTField;
+    
     @FXML
     private TextField ICOOdberateleTField;
+    
     @FXML
     private TextField DICOdberateleTField;
+    
     @FXML
     private Text NazevText;
+    
     @FXML
     private Text UliceText;
+    
     @FXML
     private Text MestoText;
+    
     @FXML
     private Text PSCText;
+    
     @FXML
     private Text StatText;
+    
     @FXML
     private Text MobilText;
+    
     @FXML
     private Text CisloUctuText;
+    
     @FXML
     private Text EmailText;
+    
     @FXML
     private Text ICOText;
+    
     @FXML
     private Text DICText;
+    
     @FXML
     private Text LoginText;
+    
     @FXML
     private ChoiceBox<?> KontaktChoiceBox;
+    
     @FXML
     private TextField DatumSplatnostiTField;
+    
     @FXML
     private TextField ZpusobUhradyTField;
+    
     @FXML
     private TextField PopisZboziTextField;
+    
     @FXML
     private TextField PocetKsZboziTextField;
+    
     @FXML
     private TextField CenaKusZboziTField;
+    
     @FXML
     private Button DalsiPolozkaBtn;
+    
     @FXML
     private ListView<?> SeznamFakturListView;
+    
     @FXML
     private ListView<?> KontaktyListView;
 

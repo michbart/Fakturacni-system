@@ -56,7 +56,7 @@ public class Soubory {
         
     overeniCesty(cestaKSouboru);
    
-    try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(new File(cestaKSouboru + cisloFaktury + ".dat")));) {
+    try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(new File(cestaKSouboru + faktura.getCislo() + ".dat")));) {
             oos.writeObject(faktura);
         } catch (Exception e) {
             throw new Exception("Nastala chyba pri ukladani faktury do souboru.");
@@ -75,7 +75,7 @@ public class Soubory {
         Faktura faktura;
         
         overeniCesty(cestaKSouboru);
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(new File(cestaKSouboru + cisloFaktury + ".dat")));) {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(new File(cestaKSouboru + nazevFaktury + ".dat")));) {
             faktura = (Faktura) ois.readObject();
         } catch (Exception ex) {
             throw new Exception("Nastala chyba nacitani faktury ze souboru.");
