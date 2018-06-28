@@ -19,11 +19,11 @@ public class FakturaServiceImpl implements FakturaService {
     private FakturaRepository db;
     
     public FakturaServiceImpl() throws Exception{
-        db = new Databaze("sql7.freemysqlhosting.net", "sql7244879", "CBmxSwfY9y");
+        db = new FakturaRepositoryImpl("sql7.freemysqlhosting.net", "sql7244879", "CBmxSwfY9y");
     }
     
     @Override
-    public void exportAsPDF(Faktura f, Databaze db) {
+    public void exportAsPDF(Faktura f, FakturaRepositoryImpl db) {
         new PDF(f, db).vygeneruj();
     }
 

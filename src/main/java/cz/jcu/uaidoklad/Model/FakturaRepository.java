@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author NikolaKraus
  */
-public interface FakturaRepository extends FakturaService{
+public interface FakturaRepository{
 
     public Faktura getFaktura(int id) throws Exception;
 
