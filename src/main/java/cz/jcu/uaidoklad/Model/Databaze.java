@@ -114,6 +114,13 @@ public class Databaze implements FakturaRepository {
         }
     }
 
+    /**
+     * vytvoreni pro precteni jednoho atributu z tabulky POMOCNE
+     * @param dotaz
+     * @param sloupec
+     * @return
+     * @throws Exception 
+     */
     private ArrayList<String> ziskatUdajeDB(String dotaz, String sloupec) throws Exception {
         ArrayList<String> vysledek = new ArrayList();
         try (Statement st = pripojeni.createStatement();
@@ -261,7 +268,11 @@ public class Databaze implements FakturaRepository {
         upravitDB("Uzivatel", "email", String.valueOf(uzivatel.getEmail()), "id", String.valueOf(uzivatel.getId()));
         upravitDB("Uzivatel", "cisloUctu", String.valueOf(uzivatel.getCisloUctu()), "id", String.valueOf(uzivatel.getId()));
     }
-
+ /**
+  * Ziskani listu Firem
+  * @return
+  * @throws Exception 
+  */
     @Override
     public ArrayList<Firma> getListUzivatel() throws Exception {
         String dotaz = "SELECT * FROM Uzivatel;";
@@ -298,6 +309,12 @@ public class Databaze implements FakturaRepository {
         return vystup;
     }
 
+    /**
+     * ziskani listu polozek faktury
+     * @param idFaktury
+     * @return
+     * @throws Exception 
+     */
     private HashMap<Integer, Integer> getListPolozekF(int idFaktury) throws Exception {
         HashMap<Integer, Integer> vystup = new HashMap();
         String dotaz = "SELECT * FROM Polozka WHERE fkIdFaktura = '" + idFaktury + "';";
