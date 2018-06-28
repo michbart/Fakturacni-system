@@ -5,6 +5,7 @@
  */
 package cz.jcu.uaidoklad;
 
+import cz.jcu.uaidoklad.Model.FakturaService;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -182,6 +183,7 @@ public class HlavniOknoController implements Initializable {
 
     @FXML
     private void PDFClickedBtn(ActionEvent event) {
+        
     }
 
     @FXML
