@@ -279,7 +279,16 @@ public class Databaze implements DBInterface {
 
     @Override
     public Polozka getPolozka(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    String dotaz = "SELECT * FROM Polozka WHERE id = '" + id + "';";
+        Polozka vystup;
+
+        try (Statement st = pripojeni.createStatement();
+                ResultSet rs = st.executeQuery(dotaz);) {
+            vystup = new Polozka(rs.getInt("id"),rs.getString("nazev"), rs.getDouble("cena") , rs.getString("mernaJednotka"));
+        } catch (SQLException ex) {
+            throw new Exception("Chyba při čtení z databáze: " + ex.getMessage());
+        }
+        return vystup;
     }
 
 }
