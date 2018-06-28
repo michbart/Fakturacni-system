@@ -248,6 +248,7 @@ public class PDF {
     private void vypisPolozky() throws IOException {
         Polozka po;
         int pocet;
+        double cena;
         cs.beginText();
         cs.setFont(fontNormal, 10);
         cs.newLineAtOffset(BLOK_POLOZKY_X, BLOK_POLOZKY_Y - 20);
@@ -263,7 +264,8 @@ public class PDF {
                 cs.newLineAtOffset(75, 0);
                 cs.showText("21");
                 cs.newLineAtOffset(50, 0);
-                cs.showText(String.valueOf(pocet * (po.getCena() * 1.21)));
+                cena = pocet * po.getCena() * 1.21;
+                cs.showText(String.valueOf(cena).format("%.02d", cena));
                 cs.newLineAtOffset(-440, -20);
             } catch (Exception ex) {
                 //Logger.getLogger(PDF.class.getName()).log(Level.SEVERE, null, ex);
