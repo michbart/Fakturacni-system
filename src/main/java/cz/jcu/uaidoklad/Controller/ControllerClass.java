@@ -9,6 +9,7 @@ import cz.jcu.uaidoklad.Model.PDF;
 import cz.jcu.uaidoklad.Model.Faktura;
 import cz.jcu.uaidoklad.Model.FakturaRepositoryImpl;
 import cz.jcu.uaidoklad.Model.FakturaService;
+import cz.jcu.uaidoklad.Model.FakturaServiceImpl;
 import cz.jcu.uaidoklad.Model.Firma;
 
 /**
@@ -19,7 +20,8 @@ public class ControllerClass implements Controller {
 
     FakturaService fs;
 
-    public ControllerClass() {
+    public ControllerClass() throws Exception {
+        fs = new FakturaServiceImpl();
     }
     
     

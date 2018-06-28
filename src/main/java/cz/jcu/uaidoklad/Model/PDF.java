@@ -91,7 +91,7 @@ public class PDF {
             vypisOdberatele();
             vypisInfoFaktura();
             vypisInfoPolozky();
-            vypisPolozky();
+            //vypisPolozky();
             vykresliQRkod();
             vypisCelkem();
             ukonciZapis();
@@ -300,7 +300,7 @@ public class PDF {
      */
     private void ukonciZapis() throws IOException {
         cs.close();
-        document.save(fakt.getCislo() + ".pdf");
+        document.save("ha" + ".pdf");
         document.close();
     }
 }

@@ -19,7 +19,7 @@ public class FakturaServiceImpl implements FakturaService {
     private FakturaRepository db;
     
     public FakturaServiceImpl() throws Exception{
-        db = new FakturaRepositoryImpl("sql7.freemysqlhosting.net", "sql7244879", "CBmxSwfY9y");
+        db = new FakturaRepositoryImpl("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7244879?characterEncoding=UTF-8", "sql7244879", "CBmxSwfY9y");
     }
     
     @Override
