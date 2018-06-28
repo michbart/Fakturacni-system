@@ -5,10 +5,12 @@
  */
 package cz.jcu.uaidoklad.Model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Michal
  */
 public interface FirmaRepository {
-    
+    ArrayList<Firma> getFirmy();
 }

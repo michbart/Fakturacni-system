@@ -5,6 +5,8 @@
  */
 package cz.jcu.uaidoklad.Model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Michal
@@ -15,4 +17,25 @@ public class FirmaRepositoryMock implements FirmaRepository {
     Firma f3 = new Firma(1, "nazev", "ulice", 555, "mesto", "stat", 123, 456, 1111111, "email","123/0900");
     Firma f4 = new Firma(2, "nazev2", "ulice2", 555, "mesto2", "stat2", 123, 456, 1111111, "email2", "123/0900");
     Firma f5 = new Firma(2, "nazev2", "ulice2", 555, "mesto2", "stat2", 123, 456, 1111111, "email2", "123/0900");
+    
+    ArrayList<Firma> firmy = new ArrayList<>();
+
+    public FirmaRepositoryMock() {
+        firmy.add(f1);
+        firmy.add(f2);
+        firmy.add(f3);
+        firmy.add(f4);
+        firmy.add(f5);
+    }
+
+    @Override
+    public ArrayList<Firma> getFirmy() {
+        return firmy;
+    }
+
+    public void setFirmy(ArrayList<Firma> firmy) {
+        this.firmy = firmy;
+    }
+    
+    
 }
