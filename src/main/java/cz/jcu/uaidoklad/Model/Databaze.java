@@ -140,12 +140,13 @@ public class Databaze implements FakturaRepository {
         //String typFaktury = ziskatUdajeDB(dotaz, "typ").get(0);
         Firma Dodavatel = this.getUzivatel(Integer.valueOf(ziskatUdajeDB(dotaz, "dodavatel").get(0)));
         Firma Odberatel = this.getUzivatel(Integer.valueOf(ziskatUdajeDB(dotaz, "odberatel").get(0)));
+        HashMap<Integer, Integer> seznamPolozek = this.getListPolozekF(id);
         try (Statement st = pripojeni.createStatement();
                 ResultSet rs = st.executeQuery(dotaz);) {
             Faktura vystup;
 //            switch (rs.getString("typ")) {
 //                case "FakturaA":
-            vystup = new Faktura(rs.getInt("id"), rs.getInt("cislo"), Dodavatel, Odberatel, this.getListPolozekF(id), rs.getString("datumSplatnosti"), rs.getString("zpusobPlatby"));
+            vystup = new Faktura(rs.getInt("id"), rs.getInt("cislo"), Dodavatel, Odberatel, seznamPolozek, rs.getString("datumSplatnosti"), rs.getString("zpusobPlatby"),rs.getInt("typ"));
 //                    break;
 //                default:
 //                    throw new AssertionError();
@@ -174,11 +175,7 @@ public class Databaze implements FakturaRepository {
         try (Statement st = pripojeni.createStatement();
                 ResultSet rs = st.executeQuery(dotaz);) {
             while (rs.next()) {
-<<<<<<< HEAD
                 vystup.add(new Faktura(rs.getInt("id"), rs.getInt("cislo"), rs.getString("datumSplatnosti"), rs.getString("zpusobPlatby"), rs.getInt("typ")));
-=======
-                vystup.add(new Faktura(rs.getInt("id"), rs.getInt("cislo"), this.getListPolozekF(rs.getInt("id")), rs.getString("datumSplatnosti"), rs.getString("zpusobPlatby"))); 
->>>>>>> 9fab8763ab2635eee5252039ea5f80aa4a75dda6
             }
         } catch (SQLException ex) {
             throw new Exception("Chyba při čtení z databáze: " + ex.getMessage());
@@ -212,12 +209,7 @@ public class Databaze implements FakturaRepository {
     @Override
     public Firma getUzivatel(int id) throws Exception {
         String dotaz = "SELECT * FROM Uzivatel WHERE id = '" + id + "';";
-<<<<<<< HEAD
-        Uzivatel vystup;
-=======
         Firma vystup;
-
->>>>>>> 9fab8763ab2635eee5252039ea5f80aa4a75dda6
         try (Statement st = pripojeni.createStatement();
                 ResultSet rs = st.executeQuery(dotaz);) {
             vystup = new Firma(rs.getInt("id"), rs.getString("nazev"), rs.getString("login"), rs.getInt("heslo"), rs.getString("ulice"), rs.getInt("psc"), rs.getString("mesto"), rs.getString("stat"), rs.getInt("ic"), rs.getInt("dic"), Integer.getInteger(rs.getString("telefon")), rs.getString("email"), rs.getString("cisloUctu"));
@@ -283,7 +275,7 @@ public class Databaze implements FakturaRepository {
         try (Statement st = pripojeni.createStatement();
                 ResultSet rs = st.executeQuery(dotaz);) {
             while (rs.next()) {
-                vystup.add(new Polozka(rs.getInt("id"),rs.getString("nazev"),rs.getDouble("cena"),rs.getString("mernaJednotka")));//int id, String nazev, double cena, String mernaJednotka
+                vystup.add(new Polozka(rs.getInt("id"), rs.getString("nazev"), rs.getDouble("cena"), rs.getString("mernaJednotka")));//int id, String nazev, double cena, String mernaJednotka
             }
         } catch (SQLException ex) {
             throw new Exception("Chyba při čtení z databáze: " + ex.getMessage());
@@ -291,11 +283,7 @@ public class Databaze implements FakturaRepository {
         return vystup;
     }
 
-<<<<<<< HEAD
     private HashMap<Integer, Integer> getListPolozekF(int idFaktury) throws Exception {
-=======
-    private HashMap<Integer, Integer> getListPolozekF(int idFaktury) {
->>>>>>> 9fab8763ab2635eee5252039ea5f80aa4a75dda6
         HashMap<Integer, Integer> vystup = new HashMap();
         String dotaz = "SELECT * FROM Polozka WHERE fkIdFaktura = '" + idFaktury + "';";
         try (Statement st = pripojeni.createStatement();
