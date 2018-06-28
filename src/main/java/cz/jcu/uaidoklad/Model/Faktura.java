@@ -21,6 +21,7 @@ public class Faktura implements Serializable {
     private int cislo;
     private String datumSplatnosti;
     private String zpusobPlatby;
+    private int typ;
     /* X a Y pozice zacatku bloku informaci o dodavateli */
     private int BLOK_DODAVATEL_X;
     private int BLOK_DODAVATEL_Y;
@@ -68,6 +69,7 @@ public class Faktura implements Serializable {
         this.cislo = cislo;
         this.datumSplatnosti = datumSplatnosti;
         this.zpusobPlatby = zpusobPlatby;
+        this.typ=typ;
         vyberTyp(typ);
     }
 
@@ -76,6 +78,7 @@ public class Faktura implements Serializable {
         this.cislo = cislo;
         this.datumSplatnosti = datumSplatnosti;
         this.zpusobPlatby = zpusobPlatby;
+        this.typ=typ;
         vyberTyp(typ);
     }
 
@@ -121,6 +124,11 @@ public class Faktura implements Serializable {
                 break;
         }
     }
+
+    public int getTyp() {
+        return typ;
+    }
+    
     
     public int getBLOK_DODAVATEL_X() {
         return BLOK_DODAVATEL_X;
