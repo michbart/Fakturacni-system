@@ -138,6 +138,30 @@ public class HlavniOknoController implements Initializable {
     @FXML
     private Text nazevLabel;
     
+    @FXML
+    private Text uliceLabel;
+    
+    @FXML
+    private Text mestoLabel;
+    
+    @FXML
+    private Text pscLabel;
+    
+    @FXML
+    private Text statLabel;
+    
+    @FXML
+    private Text icoLabel;
+    
+    @FXML
+    private Text dicLabel;
+    
+    @FXML
+    private Text ucetLabel;
+    
+    @FXML
+    private Text emailLabel;
+    
 
     /**
      * Initializes the controller class.

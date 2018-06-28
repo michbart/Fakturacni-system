@@ -84,7 +84,16 @@
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Text id="nazevLabel" fx:id="nazevLabel" layoutX="142.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.13671875" />
+                        <Text id="nazevLabel" fx:id="nazevLabel" layoutX="131.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.13671875" AnchorPane.leftAnchor="131.0" AnchorPane.topAnchor="84.05078125" />
+                        <Text id="uliceLabel" fx:id="uliceLabel" layoutX="125.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.13671875" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="124.05078125" />
+                        <Text id="mestoLabel" fx:id="mestoLabel" layoutX="125.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.13671875" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="164.05078125" />
+                        <Text id="pscLabel" fx:id="pscLabel" layoutX="125.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.13671875" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="204.05078125" />
+                        <Text id="statLabel" fx:id="statLabel" layoutX="125.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.13671875" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="244.05078125" />
+                        <Text id="icoLabel" fx:id="icoLabel" layoutX="531.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.13671875" AnchorPane.rightAnchor="435.86328125" AnchorPane.topAnchor="84.05078125" />
+                        <Text id="dicLabel" fx:id="dicLabel" layoutX="540.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.13671875" AnchorPane.rightAnchor="426.86328125" AnchorPane.topAnchor="124.05078125" />
+                        <Text id="ucetLabel" fx:id="ucetLabel" layoutX="539.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.13671875" AnchorPane.rightAnchor="427.86328125" AnchorPane.topAnchor="164.05078125" />
+                        <Text id="emailLabel" fx:id="emailLabel" layoutX="538.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.13671875" AnchorPane.rightAnchor="428.86328125" AnchorPane.topAnchor="204.05078125" />
+                        <Text id="mobilLabel" fx:id="mestoLabel" layoutX="539.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.13671875" AnchorPane.rightAnchor="427.86328125" AnchorPane.topAnchor="242.05078125" />
                      </children></AnchorPane>
             </content>
           </Tab>
