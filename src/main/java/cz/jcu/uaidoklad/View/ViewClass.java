@@ -17,6 +17,10 @@ import java.util.List;
 public class ViewClass implements View {
 
     FakturaService fs;
+
+    public ViewClass() {
+    }
+    
     
     @Override
     public Faktura getFakturaById(int id) {

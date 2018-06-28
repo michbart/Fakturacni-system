@@ -5,7 +5,14 @@
  */
 package cz.jcu.uaidoklad;
 
+import cz.jcu.uaidoklad.Controller.Controller;
+import cz.jcu.uaidoklad.Model.Faktura;
+import cz.jcu.uaidoklad.Model.FakturaRepository;
+import cz.jcu.uaidoklad.Model.FakturaRepositoryImpl;
+import cz.jcu.uaidoklad.Model.Firma;
+import cz.jcu.uaidoklad.View.View;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,7 +33,13 @@ import javafx.stage.Stage;
  * @author Tomáš
  */
 public class HlavniOknoController implements Initializable {
-
+    View v;
+    Controller c;
+    FakturaRepositoryImpl db;
+    Firma f1 = new Firma(1, "nazev", "ulice", 555, "mesto", "stat", 123, 456, 1111111, "email", "123/0900");
+    HashMap<Integer,Integer> polozky = new HashMap<>();
+    Faktura f;
+    
     @FXML
     private Button ZavritBtn;
 
@@ -124,7 +137,12 @@ public class HlavniOknoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-
+    public HlavniOknoController() throws Exception{
+        db = new FakturaRepositoryImpl("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7244879?characterEncoding=UTF-8", "sql7244879","CBmxSwfY9y");
+        f = new Faktura(1,20,f1,f1, polozky,"30.2.2019", "prevodem",1);
+        polozky.put(1,2);
+    }
+    
     @FXML
     private void ZavritClickedBtn(ActionEvent event) {
         Stage stage = (Stage) ZavritBtn.getScene().getWindow();
@@ -141,6 +159,7 @@ public class HlavniOknoController implements Initializable {
 
     @FXML
     private void PDFClickedBtn(ActionEvent event) {
+        c.exportAsPDF(f, db);
     }
 
     @FXML

@@ -84,7 +84,7 @@ public class PDF {
     /**
      * Vygeneruje kompletni fakturu
      */
-    public void vygeneruj() {
+    public void vygeneruj() throws Exception {
         try {
             vykresliOhraniceni();
             vypisDodavatele();
@@ -96,7 +96,7 @@ public class PDF {
             vypisCelkem();
             ukonciZapis();
         } catch (IOException ex) {
-            //Logger.getLogger(PDF.class.getName()).log(Level.SEVERE, null, ex);
+            throw new Exception("faggit");
             //TODO
         }
     }
@@ -153,12 +153,12 @@ public class PDF {
         cs.newLineAtOffset(100, 50);
         cs.showText("26.6.2018"); //TODO
         cs.newLineAtOffset(0, -15);
-        cs.showText(fakt.getDatumSplatnosti()); //TODO
+        cs.showText(fakt.getDatumSplatnosti()); 
         cs.newLineAtOffset(0, -15);
-        cs.showText(fakt.getZpusobPlatby()); //TODO
+        cs.showText(fakt.getZpusobPlatby()); 
         cs.newLineAtOffset(0, -20);
         cs.setFont(fontBold, 10);
-        cs.showText(fakt.getDodavatel().getCisloUctu()); //TODO
+        cs.showText(fakt.getDodavatel().getCisloUctu());
         cs.endText();
     }
 

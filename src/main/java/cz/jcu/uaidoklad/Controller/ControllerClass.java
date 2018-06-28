@@ -19,6 +19,10 @@ public class ControllerClass implements Controller {
 
     FakturaService fs;
 
+    public ControllerClass() {
+    }
+    
+    
     @Override
     public void createFaktura(Faktura f) {
         fs.createFaktura(f);
