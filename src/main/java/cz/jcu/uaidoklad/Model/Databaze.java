@@ -134,6 +134,7 @@ public class Databaze implements DBInterface {
      * @return Faktura
      * @throws Exception Chyba pri cteni z DB
      */
+    
     @Override
     public Faktura getFakruta(int id) throws Exception {
         String dotaz = "SELECT * FROM Faktura WHERE idRecept = '" + id + "';";
@@ -155,12 +156,24 @@ public class Databaze implements DBInterface {
             throw new Exception("Chyba při čtení z databáze: " + ex.getMessage());
         }
     }
+    
+    /** Smazani faktury z DB
+     * 
+     * @param id
+     * @throws Exception
+     */
 
     @Override
     public void smazFaktura(int id) throws Exception {
         smazatDB("Faktura", "id", String.valueOf(id));
     }
 
+    
+    /** Ziska faktury z DB
+     *
+     * @throws Exception
+     */
+    
     @Override
     public ArrayList<Faktura> getListFaktur() throws Exception {
         ArrayList<Faktura> vystup = new ArrayList();
@@ -181,6 +194,13 @@ public class Databaze implements DBInterface {
         return vystup;
     }
 
+    
+    /** Zmena faktury v DB
+     * 
+     * @param faktura
+     * @throws Exception
+     */
+    
     @Override
     public void zmenFakturu(Faktura faktura) throws Exception {
         upravitDB("Faktura", "cislo", String.valueOf(faktura.getCislo()), "id", String.valueOf(faktura.getId()));
@@ -199,6 +219,7 @@ public class Databaze implements DBInterface {
      * @return
      * @throws Exception
      */
+    
     @Override
     public Uzivatel getUzivatel(int id) throws Exception {
         String dotaz = "SELECT * FROM Uzivatel WHERE id = '" + id + "';";
@@ -221,6 +242,7 @@ public class Databaze implements DBInterface {
      * @return
      * @throws Exception
      */
+    
     @Override
     public Uzivatel getUzivatel(String login, int heslo) throws Exception {
         String dotaz = "SELECT * FROM Uzivatel WHERE login = '" + login + "' AND heslo = '" + heslo + "';";
@@ -235,13 +257,28 @@ public class Databaze implements DBInterface {
         return vystup;
     }
 
-    @Override
+   
+   
+    
+    /** Smazani uzivatele z DB
+     * 
+     * @param id
+     * @throws Exception
+     */
+    
+    @Override      
     public void smazUzivatele(int id) throws Exception {
 
         smazatDB("Uzivatel", "id", String.valueOf(id));
 
     }
 
+    /** Zmena uzivatele v DB
+     * 
+     * @param uzivatel
+     * @throws Exception
+     */
+    
     @Override
     public void zmenUzivatele(Uzivatel uzivatel) throws Exception {
         upravitDB("Uzivatel", "nazev", String.valueOf(uzivatel.getNazev()), "id", String.valueOf(uzivatel.getId()));
@@ -275,6 +312,12 @@ public class Databaze implements DBInterface {
         return vystup;
     }
 
+    /** Zmena polozky v DB
+     * 
+     * @param polozka
+     * @throws Exception
+     */
+    
     @Override
     public void zmenPolozku(Polozka polozka) throws Exception {
         upravitDB("Polozka", "nazev", String.valueOf(polozka.getNazev()), "id", String.valueOf(polozka.getId()));
@@ -283,12 +326,26 @@ public class Databaze implements DBInterface {
 
     }
 
+    
+    /** Smazani polozky z DB
+     * 
+     * @param id
+     * @throws Exception
+     */
+    
     @Override
     public void smazPolozku(int id) throws Exception {
         smazatDB("Polozka", "id", String.valueOf(id));
 
     }
 
+    
+    /** Ziska polozku z DB
+     * 
+     * @param id
+     * @throws Exception
+     */
+    
     @Override
     public Polozka getPolozka(int id) throws Exception {
     String dotaz = "SELECT * FROM Polozka WHERE id = '" + id + "';";
