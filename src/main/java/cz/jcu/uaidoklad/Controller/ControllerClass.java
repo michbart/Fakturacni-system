@@ -7,6 +7,7 @@ package cz.jcu.uaidoklad.Controller;
 
 import cz.jcu.uaidoklad.Model.PDF;
 import cz.jcu.uaidoklad.Model.Faktura;
+import cz.jcu.uaidoklad.Model.FakturaService;
 import cz.jcu.uaidoklad.Model.Firma;
 
 /**
@@ -15,7 +16,12 @@ import cz.jcu.uaidoklad.Model.Firma;
  */
 public class ControllerClass implements Controller {
 
-    
+    FakturaService fs;
+
+    @Override
+    public void createFaktura(Faktura f) {
+        fs.createFaktura(f);
+    }
 
     
 

@@ -13,6 +13,6 @@ import cz.jcu.uaidoklad.Model.Firma;
  * @author Michal
  */
 public interface Controller {
-    
+    void createFaktura(Faktura f);
 
 }
