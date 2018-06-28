@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
@@ -13,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1199.0" style="-fx-background-color: #455A64;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.jcu.uaidoklad.HlavniOknoController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1199.0" style="-fx-background-color: #455A64;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.jcu.uaidoklad.HlavniOknoController">
     <stylesheets>
         <URL value="@/styles/hlavniokno.css" />
     </stylesheets>
@@ -29,56 +34,57 @@
                               <Font size="23.0" />
                            </font>
                         </Label>
-                        <Text fx:id="NazevText" layoutX="80.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Název:" wrappingWidth="52.53125">
+                        <Text fx:id="NazevText" layoutX="70.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Název:" wrappingWidth="52.53125" AnchorPane.leftAnchor="72.0" AnchorPane.topAnchor="82.8134765625">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="UliceText" layoutX="80.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ulice:" wrappingWidth="41.34375">
+                        <Text fx:id="UliceText" layoutX="75.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ulice:" wrappingWidth="41.34375" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="122.8134765625">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="MestoText" layoutX="80.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Město:" wrappingWidth="58.55029296875">
+                        <Text fx:id="MestoText" layoutX="77.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Město:" wrappingWidth="58.55029296875" AnchorPane.leftAnchor="77.0" AnchorPane.topAnchor="162.8134765625">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="PSCText" layoutX="80.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PSČ:" wrappingWidth="36.65673828125">
+                        <Text fx:id="PSCText" layoutX="78.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PSČ:" wrappingWidth="36.65673828125" AnchorPane.leftAnchor="78.0" AnchorPane.topAnchor="202.8134765625">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="StatText" layoutX="80.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stát:" wrappingWidth="33.7666015625">
+                        <Text fx:id="StatText" layoutX="72.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stát:" wrappingWidth="33.7666015625" AnchorPane.leftAnchor="72.0" AnchorPane.topAnchor="242.8134765625">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="MobilText" layoutX="400.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mobil:" wrappingWidth="49.34228515625">
+                        <Text fx:id="MobilText" layoutX="390.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mobil:" wrappingWidth="49.34228515625" AnchorPane.rightAnchor="759.65771484375" AnchorPane.topAnchor="241.8134765625">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="CisloUctuText" layoutX="400.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Číslo účtu:" wrappingWidth="80.0">
+                        <Text fx:id="CisloUctuText" layoutX="392.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Číslo účtu:" wrappingWidth="80.0" AnchorPane.rightAnchor="727.0" AnchorPane.topAnchor="161.8134765625">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="EmailText" layoutX="400.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" wrappingWidth="42.4052734375">
+                        <Text fx:id="EmailText" layoutX="394.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" wrappingWidth="42.4052734375" AnchorPane.rightAnchor="762.5947265625" AnchorPane.topAnchor="201.8134765625">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="ICOText" layoutX="400.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IČO:" wrappingWidth="33.58740234375">
+                        <Text fx:id="ICOText" layoutX="399.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IČO:" wrappingWidth="33.58740234375" AnchorPane.rightAnchor="766.41259765625" AnchorPane.topAnchor="81.8134765625">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="DICText" layoutX="400.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DIČ:" wrappingWidth="32.79638671875">
+                        <Text fx:id="DICText" layoutX="399.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DIČ:" wrappingWidth="32.79638671875" AnchorPane.rightAnchor="767.20361328125" AnchorPane.topAnchor="121.8134765625">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
+                        <Label fx:id="nazevLabel" layoutX="133.0" layoutY="84.0" prefHeight="17.0" prefWidth="190.0" text="Label" AnchorPane.leftAnchor="133.0" AnchorPane.topAnchor="84.0" />
                      </children></AnchorPane>
             </content>
           </Tab>
