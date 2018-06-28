@@ -14,6 +14,7 @@ import cz.jcu.uaidoklad.Model.Firma;
 import cz.jcu.uaidoklad.Model.FirmaRepositoryMock;
 import cz.jcu.uaidoklad.View.View;
 import java.net.URL;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -23,6 +24,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -46,6 +48,7 @@ public class HlavniOknoController implements Initializable {
     private HashMap<Integer, Integer> polozky;
     private Faktura f;
     private FirmaRepositoryMock firmaMock;
+    
 
     @FXML
     private Button ZavritBtn;
@@ -98,8 +101,6 @@ public class HlavniOknoController implements Initializable {
     @FXML
     private AnchorPane VytvorFakturuPane;
 
-    @FXML
-    private ChoiceBox<?> KontaktChoiceBox;
 
     @FXML
     private TextField PopisZboziTextField;
@@ -113,8 +114,6 @@ public class HlavniOknoController implements Initializable {
     @FXML
     private Button DalsiPolozkaBtn;
 
-    @FXML
-    private ChoiceBox<?> ZpusobUhradyChoiceBox;
 
     @FXML
     private DatePicker datumSplatnostiDate;
@@ -163,6 +162,10 @@ public class HlavniOknoController implements Initializable {
     
     @FXML
     private Text mobilLabel;
+    @FXML
+    private ComboBox<String> ZakaznikComboBox;
+    @FXML
+    private ComboBox<String> ZpusobUhradyComboBox;
     
 
     /**
@@ -206,7 +209,8 @@ public class HlavniOknoController implements Initializable {
     }
 
     private void naplnPlatbu(){
-        v.getPlatba();
+        ZakaznikComboBox.getItems().addAll(v.getPlatba());
+        ZpusobUhradyComboBox.getItems().addAll(v.getPlatba());
     }    
     
     @FXML
@@ -222,6 +226,7 @@ public class HlavniOknoController implements Initializable {
 
     @FXML
     private void PDFClickedBtn(ActionEvent event) {
+        
         c.exportAsPDF(f, db);
     }
 

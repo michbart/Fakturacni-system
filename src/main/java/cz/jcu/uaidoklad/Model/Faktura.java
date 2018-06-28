@@ -75,7 +75,8 @@ public class Faktura implements Serializable {
         this.datumSplatnosti = datumSplatnosti;
         this.zpusobPlatby = zpusobPlatby;
         this.typ = typ;
-        vyberTyp(typ);  
+        vyberTyp(typ);
+        
     }
 
     public Faktura(int id, int cislo, String datumSplatnosti, String zpusobPlatby, int typ) {
