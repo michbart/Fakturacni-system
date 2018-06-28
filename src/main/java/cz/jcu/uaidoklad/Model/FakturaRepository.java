@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author NikolaKraus
  */
-public interface FakturaRepository {
+public interface FakturaRepository extends FakturaService{
 
     public Faktura getFaktura(int id) throws Exception;
 
@@ -29,7 +29,7 @@ public interface FakturaRepository {
 
     //public void zmenUzivatele(Firma uzivatel) throws Exception;
 
-    public ArrayList<Firma> getListUzivatel() throws Exception;
+    //public ArrayList<Firma> getListUzivatel() throws Exception;
 
     public ArrayList<Polozka> getListPolozek() throws Exception;
 
