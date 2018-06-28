@@ -14,7 +14,7 @@
         <URL value="@/styles/hlavniokno.css" />
     </stylesheets>
    <children>
-      <Button fx:id="OdhlasitBtn" layoutX="500.0" layoutY="550.0" mnemonicParsing="false" onAction="#OdhlasitClickedBtn" prefHeight="40.0" prefWidth="86.0" style="-fx-background-color: #78909C;" text="Odhlásit se">
+      <Button fx:id="ZavritBtn" layoutX="500.0" layoutY="550.0" mnemonicParsing="false" onAction="#ZavritClickedBtn" prefHeight="40.0" prefWidth="86.0" style="-fx-background-color: #78909C;" text="Zavřít">
          <font>
             <Font size="13.0" />
          </font></Button>
@@ -125,7 +125,7 @@
                            </font>
                         </Label>
                         <DatePicker fx:id="datumSplatnostiDate" layoutX="191.0" layoutY="76.0" promptText="Datum splatnosti" style="-fx-background-color: #455A64;" />
-                        <ListView layoutX="210.0" layoutY="185.0" prefHeight="322.0" prefWidth="506.0" style="-fx-background-color: #90A4AE;" />
+                        <ListView fx:id="PolozkZboziListView" layoutX="210.0" layoutY="185.0" prefHeight="322.0" prefWidth="506.0" style="-fx-background-color: #90A4AE;" />
                      </children></AnchorPane>
             </content>
           </Tab>
