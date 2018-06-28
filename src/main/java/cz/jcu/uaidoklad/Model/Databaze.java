@@ -213,7 +213,7 @@ public class Databaze implements FakturaRepository {
      * @return
      * @throws Exception
      */
-    @Override
+//    @Override
     public Firma getUzivatel(int id) throws Exception {
         String dotaz = "SELECT * FROM Uzivatel WHERE id = '" + id + "';";
         Firma vystup;
@@ -234,7 +234,7 @@ public class Databaze implements FakturaRepository {
      * @return
      * @throws Exception
      */
-    @Override
+//    @Override
     public Firma getUzivatel(String login, int heslo) throws Exception {
         String dotaz = "SELECT * FROM Uzivatel WHERE login = '" + login + "' AND heslo = '" + heslo + "';";
         Firma vystup;
@@ -248,12 +248,12 @@ public class Databaze implements FakturaRepository {
         return vystup;
     }
 
-    @Override
+//    @Override
     public void smazUzivatele(int id) throws Exception {
         smazatDB("Uzivatel", "id", String.valueOf(id));
     }
 
-    @Override
+//    @Override
     public void zmenUzivatele(Firma uzivatel) throws Exception {
         upravitDB("Uzivatel", "nazev", String.valueOf(uzivatel.getNazev()), "id", String.valueOf(uzivatel.getId()));
         upravitDB("Uzivatel", "login", String.valueOf(uzivatel.getLogin()), "id", String.valueOf(uzivatel.getId()));
