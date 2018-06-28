@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  *
  * @author Michal
  */
-public class Databaze implements CompanyInvoiceRepository {
+public class Databaze implements FakturaRepository {
 
     private String driver = "com.mysql.jdbc.Driver";
     private Connection pripojeni;
@@ -138,8 +138,8 @@ public class Databaze implements CompanyInvoiceRepository {
     public Faktura getFakruta(int id) throws Exception {
         String dotaz = "SELECT * FROM Faktura WHERE idRecept = '" + id + "';";
         //String typFaktury = ziskatUdajeDB(dotaz, "typ").get(0);
-        Uzivatel Dodavatel = this.getUzivatel(Integer.valueOf(ziskatUdajeDB(dotaz, "dodavatel").get(0)));
-        Uzivatel Odberatel = this.getUzivatel(Integer.valueOf(ziskatUdajeDB(dotaz, "odberatel").get(0)));
+        Firma Dodavatel = this.getUzivatel(Integer.valueOf(ziskatUdajeDB(dotaz, "dodavatel").get(0)));
+        Firma Odberatel = this.getUzivatel(Integer.valueOf(ziskatUdajeDB(dotaz, "odberatel").get(0)));
         try (Statement st = pripojeni.createStatement();
                 ResultSet rs = st.executeQuery(dotaz);) {
             Faktura vystup;
@@ -200,13 +200,13 @@ public class Databaze implements CompanyInvoiceRepository {
      * @throws Exception
      */
     @Override
-    public Uzivatel getUzivatel(int id) throws Exception {
+    public Firma getUzivatel(int id) throws Exception {
         String dotaz = "SELECT * FROM Uzivatel WHERE id = '" + id + "';";
-        Uzivatel vystup;
+        Firma vystup;
 
         try (Statement st = pripojeni.createStatement();
                 ResultSet rs = st.executeQuery(dotaz);) {
-            vystup = new Uzivatel(rs.getInt("id"), rs.getString("nazev"), rs.getString("login"), rs.getInt("heslo"), rs.getString("ulice"), rs.getInt("psc"), rs.getString("mesto"), rs.getString("stat"), rs.getInt("ic"), rs.getInt("dic"), Integer.getInteger(rs.getString("telefon")), rs.getString("email"), rs.getString("cisloUctu"));
+            vystup = new Firma(rs.getInt("id"), rs.getString("nazev"), rs.getString("login"), rs.getInt("heslo"), rs.getString("ulice"), rs.getInt("psc"), rs.getString("mesto"), rs.getString("stat"), rs.getInt("ic"), rs.getInt("dic"), Integer.getInteger(rs.getString("telefon")), rs.getString("email"), rs.getString("cisloUctu"));
         } catch (SQLException ex) {
             throw new Exception("Chyba při čtení z databáze: " + ex.getMessage());
         }
@@ -222,13 +222,13 @@ public class Databaze implements CompanyInvoiceRepository {
      * @throws Exception
      */
     @Override
-    public Uzivatel getUzivatel(String login, int heslo) throws Exception {
+    public Firma getUzivatel(String login, int heslo) throws Exception {
         String dotaz = "SELECT * FROM Uzivatel WHERE login = '" + login + "' AND heslo = '" + heslo + "';";
-        Uzivatel vystup;
+        Firma vystup;
 
         try (Statement st = pripojeni.createStatement();
                 ResultSet rs = st.executeQuery(dotaz);) {
-            vystup = new Uzivatel(rs.getInt("id"), rs.getString("nazev"), rs.getString("login"), rs.getInt("heslo"), rs.getString("ulice"), rs.getInt("psc"), rs.getString("mesto"), rs.getString("stat"), rs.getInt("ic"), rs.getInt("dic"), Integer.getInteger(rs.getString("telefon")), rs.getString("email"), rs.getString("cisloUctu"));
+            vystup = new Firma(rs.getInt("id"), rs.getString("nazev"), rs.getString("login"), rs.getInt("heslo"), rs.getString("ulice"), rs.getInt("psc"), rs.getString("mesto"), rs.getString("stat"), rs.getInt("ic"), rs.getInt("dic"), Integer.getInteger(rs.getString("telefon")), rs.getString("email"), rs.getString("cisloUctu"));
         } catch (SQLException ex) {
             throw new Exception("Chyba při čtení z databáze: " + ex.getMessage());
         }
@@ -243,7 +243,7 @@ public class Databaze implements CompanyInvoiceRepository {
     }
 
     @Override
-    public void zmenUzivatele(Uzivatel uzivatel) throws Exception {
+    public void zmenUzivatele(Firma uzivatel) throws Exception {
         upravitDB("Uzivatel", "nazev", String.valueOf(uzivatel.getNazev()), "id", String.valueOf(uzivatel.getId()));
         upravitDB("Uzivatel", "login", String.valueOf(uzivatel.getLogin()), "id", String.valueOf(uzivatel.getId()));
         upravitDB("Uzivatel", "heslo", String.valueOf(uzivatel.getHeslo()), "id", String.valueOf(uzivatel.getId()));
@@ -260,7 +260,7 @@ public class Databaze implements CompanyInvoiceRepository {
     }
 
     @Override
-    public ArrayList<Uzivatel> getListUzivatel() throws Exception {
+    public ArrayList<Firma> getListUzivatel() throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

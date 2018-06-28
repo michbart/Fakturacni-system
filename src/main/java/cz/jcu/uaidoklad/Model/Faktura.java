@@ -15,8 +15,8 @@ import java.util.HashMap;
 public class Faktura implements Serializable {
 
     private int id;
-    private Uzivatel dodavatel;
-    private Uzivatel odberatel;
+    private Firma dodavatel;
+    private Firma odberatel;
     private HashMap<Integer, Integer> polozky;
     private int cislo;
     private String datumSplatnosti;
@@ -61,7 +61,7 @@ public class Faktura implements Serializable {
      * @param datumSplatnosti
      * @param zpusobPlatby
      */
-    public Faktura(int id, int cislo, Uzivatel dodavatel, Uzivatel odberatel, HashMap<Integer, Integer> polozky, String datumSplatnosti, String zpusobPlatby, int typ) {
+    public Faktura(int id, int cislo, Firma dodavatel, Firma odberatel, HashMap<Integer, Integer> polozky, String datumSplatnosti, String zpusobPlatby, int typ) {
         this.id = id;
         this.dodavatel = dodavatel;
         this.odberatel = odberatel;
@@ -249,7 +249,7 @@ public class Faktura implements Serializable {
      *
      * @return dodavatel faktury
      */
-    public Uzivatel getDodavatel() {
+    public Firma getDodavatel() {
         return dodavatel;
     }
 
@@ -258,7 +258,7 @@ public class Faktura implements Serializable {
      *
      * @return odberatel faktury
      */
-    public Uzivatel getOdberatel() {
+    public Firma getOdberatel() {
         return odberatel;
     }
 
@@ -279,11 +279,11 @@ public class Faktura implements Serializable {
         this.cislo = cislo;
     }
 
-    public void setDodavatel(Uzivatel dodavatel) {
+    public void setDodavatel(Firma dodavatel) {
         this.dodavatel = dodavatel;
     }
 
-    public void setOdberatel(Uzivatel odberatel) {
+    public void setOdberatel(Firma odberatel) {
         this.odberatel = odberatel;
     }
 

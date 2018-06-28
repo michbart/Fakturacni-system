@@ -3,21 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cz.jcu.uaidoklad.Controller;
-
-import cz.jcu.uaidoklad.Model.PDF;
-import cz.jcu.uaidoklad.Model.Faktura;
-import cz.jcu.uaidoklad.Model.Firma;
+package cz.jcu.uaidoklad.Model;
 
 /**
  *
  * @author Michal
  */
-public class ControllerClass implements Controller {
-
-    
-
-    
-
+public interface FirmaRepository {
     
 }

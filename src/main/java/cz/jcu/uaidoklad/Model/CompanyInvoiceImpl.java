@@ -9,7 +9,7 @@ package cz.jcu.uaidoklad.Model;
  *
  * @author Michal
  */
-public class CompanyInvoiceImpl implements CompanyInvoiceInterface {
+public class CompanyInvoiceImpl implements FakturaService {
     @Override
     public void vygenerujPDF(Faktura f, Databaze db) {
         new PDF(f, db).vygeneruj();

@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author NikolaKraus
  */
-public interface CompanyInvoiceRepository {
+public interface FakturaRepository {
 
     public Faktura getFakruta(int id) throws Exception;
 
@@ -21,15 +21,15 @@ public interface CompanyInvoiceRepository {
 
     public void zmenFakturu(Faktura faktura) throws Exception;
 
-    public Uzivatel getUzivatel(int id) throws Exception;
+    public Firma getUzivatel(int id) throws Exception;
 
-    public Uzivatel getUzivatel(String login, int heslo) throws Exception;
+    public Firma getUzivatel(String login, int heslo) throws Exception;
 
     public void smazUzivatele(int id)throws Exception;
 
-    public void zmenUzivatele(Uzivatel uzivatel) throws Exception;
+    public void zmenUzivatele(Firma uzivatel) throws Exception;
 
-    public ArrayList<Uzivatel> getListUzivatel() throws Exception;
+    public ArrayList<Firma> getListUzivatel() throws Exception;
 
     public ArrayList<Polozka> getListPolozek() throws Exception;
 
