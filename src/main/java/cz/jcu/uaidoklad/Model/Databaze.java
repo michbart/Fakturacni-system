@@ -146,7 +146,7 @@ public class Databaze implements FakturaRepository {
             Faktura vystup;
 //            switch (rs.getString("typ")) {
 //                case "FakturaA":
-            vystup = new Faktura(rs.getInt("id"), rs.getInt("cislo"), Dodavatel, Odberatel, seznamPolozek, rs.getString("datumSplatnosti"), rs.getString("zpusobPlatby"),rs.getInt("typ"));
+            vystup = new Faktura(rs.getInt("id"), rs.getInt("cislo"), Dodavatel, Odberatel, seznamPolozek, rs.getString("datumSplatnosti"), rs.getString("zpusobPlatby"), rs.getInt("typ"));
 //                    break;
 //                default:
 //                    throw new AssertionError();
@@ -260,18 +260,33 @@ public class Databaze implements FakturaRepository {
         upravitDB("Uzivatel", "telefon", String.valueOf(uzivatel.getTelefon()), "id", String.valueOf(uzivatel.getId()));
         upravitDB("Uzivatel", "email", String.valueOf(uzivatel.getEmail()), "id", String.valueOf(uzivatel.getId()));
         upravitDB("Uzivatel", "cisloUctu", String.valueOf(uzivatel.getCisloUctu()), "id", String.valueOf(uzivatel.getId()));
-
     }
 
     @Override
     public ArrayList<Firma> getListUzivatel() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String dotaz = "SELECT * FROM Uzivatel;";
+        ArrayList<Firma> vystup = new ArrayList();
+        try (Statement st = pripojeni.createStatement();
+                ResultSet rs = st.executeQuery(dotaz);) {
+            while (rs.next()) {
+                vystup.add(new Firma(rs.getInt("id"), rs.getString("nazev"), rs.getString("login"), rs.getInt("heslo"), rs.getString("ulice"), rs.getInt("psc"), rs.getString("mesto"), rs.getString("stat"), rs.getInt("ic"), rs.getInt("dic"), Integer.getInteger(rs.getString("telefon")), rs.getString("email"), rs.getString("cisloUctu")));
+            }
+        } catch (SQLException ex) {
+            throw new Exception("Chyba při čtení z databáze: " + ex.getMessage());
+        }
+        return vystup;
     }
 
+    /**
+     * Ziskani listu existujicich polozek z DB
+     *
+     * @return list polozek
+     * @throws Exception
+     */
     @Override
     public ArrayList<Polozka> getListPolozek() throws Exception {
         ArrayList<Polozka> vystup = new ArrayList();
-        String dotaz = "SELECT * FROM Polozka WHERE fkIdFaktura = '" + idFaktury + "';";
+        String dotaz = "SELECT * FROM Polozka ;";
         try (Statement st = pripojeni.createStatement();
                 ResultSet rs = st.executeQuery(dotaz);) {
             while (rs.next()) {
