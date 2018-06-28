@@ -11,6 +11,10 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -35,6 +39,7 @@ public class PDF {
     private PDFont fontBold = PDType1Font.HELVETICA_BOLD;
     private PDPageContentStream cs;
     private FakturaRepositoryImpl db;
+    private double celkovaCena = 0;
     public int BLOK_DODAVATEL_X;
     public int BLOK_DODAVATEL_Y;
     public int BLOK_ODBERATEL_X;
@@ -125,7 +130,7 @@ public class PDF {
         cs.setFont(fontBold, 12);
         cs.showText("Celkem k uhrade: ");
         cs.newLineAtOffset(160, 0);
-        cs.showText("50000,00 Kc"); //TODO
+        cs.showText(String.valueOf(celkovaCena + " Kc"));
         cs.endText();
     }
 
@@ -151,7 +156,9 @@ public class PDF {
         cs.showText("Bankovni ucet:");
         cs.setFont(fontNormal, 10);
         cs.newLineAtOffset(100, 50);
-        cs.showText("26.6.2018"); //TODO
+        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        
+        cs.showText(dateFormat.format(new Date())); //TODO
         cs.newLineAtOffset(0, -15);
         cs.showText(fakt.getDatumSplatnosti()); 
         cs.newLineAtOffset(0, -15);
@@ -202,7 +209,7 @@ public class PDF {
         cs.newLineAtOffset(0, -15);
         cs.showText(fakt.getDodavatel().getStat());
         cs.newLineAtOffset(200, 30);
-        cs.showText("IC:    " + fakt.getDodavatel().getIc());
+        cs.showText("IC: " + fakt.getDodavatel().getIc());
         cs.newLineAtOffset(0, -15);
         cs.showText("DIC: " + fakt.getDodavatel().getDic());
         cs.newLineAtOffset(100, 15);
@@ -232,7 +239,7 @@ public class PDF {
         cs.newLineAtOffset(0, -15);
         cs.showText(fakt.getOdberatel().getStat());
         cs.newLineAtOffset(0, -30);
-        cs.showText("IC:    " + fakt.getOdberatel().getIc());
+        cs.showText("IC: " + fakt.getOdberatel().getIc());
         cs.newLineAtOffset(0, -15);
         cs.showText("DIC: " + fakt.getOdberatel().getDic());
         cs.newLineAtOffset(100, 15);
@@ -265,6 +272,7 @@ public class PDF {
                 cs.showText("21");
                 cs.newLineAtOffset(50, 0);
                 cena = pocet * po.getCena() * 1.21;
+                celkovaCena += cena;
                 cs.showText(String.valueOf(cena).format("%.02d", cena));
                 cs.newLineAtOffset(-440, -20);
             } catch (Exception ex) {
