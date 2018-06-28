@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  *
  * @author Michal
  */
-public class Databaze implements DBInterface {
+public class Databaze implements CompanyInvoiceRepository {
 
     private String driver = "com.mysql.jdbc.Driver";
     private Connection pripojeni;
