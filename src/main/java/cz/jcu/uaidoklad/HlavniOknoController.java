@@ -15,6 +15,7 @@ import cz.jcu.uaidoklad.Model.FirmaRepositoryMock;
 import cz.jcu.uaidoklad.View.View;
 import cz.jcu.uaidoklad.View.ViewClass;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.ResourceBundle;
@@ -247,8 +248,10 @@ public class HlavniOknoController implements Initializable {
 
     @FXML
     private void PDFClickedBtn(ActionEvent event) {
-        //Faktura fa = new Faktura(1, 2000, f1, ZakaznikComboBox.getSelectionModel(), polozky, datumSplatnostiDate.getD, zpusobPlatby, 0);
-        c.exportAsPDF(f, db);
+        Faktura fa = new Faktura(100, 2000, firmaMock.getFirmy().get(0), ZakaznikComboBox.getSelectionModel().getSelectedItem(), polozky, datumSplatnostiDate.getValue().toString(), ZpusobUhradyComboBox.getValue(), 1);
+        
+        c.exportAsPDF(fa, db);
+        c.createFaktura(fa);
     }
 
     @FXML
