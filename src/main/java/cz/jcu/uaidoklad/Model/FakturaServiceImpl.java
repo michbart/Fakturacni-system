@@ -19,12 +19,16 @@ public class FakturaServiceImpl implements FakturaService {
     private FakturaRepository db;
     
     public FakturaServiceImpl() throws Exception{
-        db = new FakturaRepositoryImpl("sql7.freemysqlhosting.net", "sql7244879", "CBmxSwfY9y");
+        db = new FakturaRepositoryImpl("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7244879?characterEncoding=UTF-8", "sql7244879", "CBmxSwfY9y");
     }
     
     @Override
     public void exportAsPDF(Faktura f, FakturaRepositoryImpl db) {
-        new PDF(f, db).vygeneruj();
+        try {
+            new PDF(f, db).vygeneruj();
+        } catch (Exception ex) {
+            //Logger.getLogger(FakturaServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override

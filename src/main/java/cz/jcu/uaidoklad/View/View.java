@@ -5,10 +5,21 @@
  */
 package cz.jcu.uaidoklad.View;
 
+import cz.jcu.uaidoklad.Model.Faktura;
+import cz.jcu.uaidoklad.Model.Polozka;
+import java.util.List;
+
 /**
  *
  * @author Michal
  */
 public interface View {
-    
+
+    Faktura getFakturaById(int id);
+
+    List<Faktura> getFaktury();
+
+    Polozka getPolozkaById(int id);
+
+    List<Polozka> getPolozky();
 }
