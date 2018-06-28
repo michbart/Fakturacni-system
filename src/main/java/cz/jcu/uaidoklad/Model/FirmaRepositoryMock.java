@@ -9,6 +9,6 @@ package cz.jcu.uaidoklad.Model;
  *
  * @author Michal
  */
-public interface CompanyInvoiceInterface {
-    void vygenerujPDF(Faktura f, Databaze db);
+public class FirmaRepositoryMock {
+    
 }

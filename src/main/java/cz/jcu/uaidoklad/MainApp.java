@@ -7,7 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import cz.jcu.uaidoklad.Model.Faktura;
-import cz.jcu.uaidoklad.Model.FakturaA;
 
 
 public class MainApp extends Application {
@@ -20,10 +19,10 @@ public class MainApp extends Application {
      */
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/HlavniOkno.fxml"));
                  
         Scene scene = new Scene(root);
-        scene.getStylesheets().add("/styles/Styles.css");
+        scene.getStylesheets().add("/styles/hlavniokno.css");
         
         stage.setTitle("UAIdoklad");
         stage.setScene(scene);

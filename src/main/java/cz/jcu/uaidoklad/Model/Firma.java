@@ -9,7 +9,7 @@ package cz.jcu.uaidoklad.Model;
  *
  * @author Michal
  */
-public class Uzivatel {
+public class Firma {
 
     private int id;
     private String nazev;
@@ -42,7 +42,7 @@ public class Uzivatel {
      * @param email
      * @param cisloUctu
      */
-    public Uzivatel(int id, String nazev, String login, int heslo, String ulice, int psc, String mesto, String stat, int ic, int dic, int telefon, String email, String cisloUctu) {
+    public Firma(int id, String nazev, String login, int heslo, String ulice, int psc, String mesto, String stat, int ic, int dic, int telefon, String email, String cisloUctu) {
         this.id = id;
         this.nazev = nazev;
         this.login = login;
@@ -73,7 +73,7 @@ public class Uzivatel {
      * @param email
      * @param cisloUctu
      */
-    public Uzivatel(int id, String nazev, String ulice, int psc, String mesto, String stat, int ic, int dic, int telefon, String email, String cisloUctu) {
+    public Firma(int id, String nazev, String ulice, int psc, String mesto, String stat, int ic, int dic, int telefon, String email, String cisloUctu) {
         this.id = id;
         this.nazev = nazev;
         this.ulice = ulice;

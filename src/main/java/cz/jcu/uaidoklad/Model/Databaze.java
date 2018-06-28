@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  *
  * @author Michal
  */
-public class Databaze implements CompanyInvoiceRepository {
+public class Databaze implements FakturaRepository {
 
     private String driver = "com.mysql.jdbc.Driver";
     private Connection pripojeni;
@@ -138,15 +138,14 @@ public class Databaze implements CompanyInvoiceRepository {
     public Faktura getFakruta(int id) throws Exception {
         String dotaz = "SELECT * FROM Faktura WHERE idRecept = '" + id + "';";
         //String typFaktury = ziskatUdajeDB(dotaz, "typ").get(0);
-        Uzivatel Dodavatel = this.getUzivatel(Integer.valueOf(ziskatUdajeDB(dotaz, "dodavatel").get(0)));
-        Uzivatel Odberatel = this.getUzivatel(Integer.valueOf(ziskatUdajeDB(dotaz, "odberatel").get(0)));
-        HashMap<Integer, Integer> listPolozek = this.getListPolozekF(id);
+        Firma Dodavatel = this.getUzivatel(Integer.valueOf(ziskatUdajeDB(dotaz, "dodavatel").get(0)));
+        Firma Odberatel = this.getUzivatel(Integer.valueOf(ziskatUdajeDB(dotaz, "odberatel").get(0)));
         try (Statement st = pripojeni.createStatement();
                 ResultSet rs = st.executeQuery(dotaz);) {
             Faktura vystup;
 //            switch (rs.getString("typ")) {
 //                case "FakturaA":
-            vystup = new Faktura(rs.getInt("id"), rs.getInt("cislo"), Dodavatel, Odberatel, this.getListPolozekF(id), rs.getString("datumSplatnosti"), rs.getString("zpusobPlatby"), rs.getInt("typ"));
+            vystup = new Faktura(rs.getInt("id"), rs.getInt("cislo"), Dodavatel, Odberatel, this.getListPolozekF(id), rs.getString("datumSplatnosti"), rs.getString("zpusobPlatby"));
 //                    break;
 //                default:
 //                    throw new AssertionError();
@@ -175,7 +174,11 @@ public class Databaze implements CompanyInvoiceRepository {
         try (Statement st = pripojeni.createStatement();
                 ResultSet rs = st.executeQuery(dotaz);) {
             while (rs.next()) {
+<<<<<<< HEAD
                 vystup.add(new Faktura(rs.getInt("id"), rs.getInt("cislo"), rs.getString("datumSplatnosti"), rs.getString("zpusobPlatby"), rs.getInt("typ")));
+=======
+                vystup.add(new Faktura(rs.getInt("id"), rs.getInt("cislo"), this.getListPolozekF(rs.getInt("id")), rs.getString("datumSplatnosti"), rs.getString("zpusobPlatby"))); 
+>>>>>>> 9fab8763ab2635eee5252039ea5f80aa4a75dda6
             }
         } catch (SQLException ex) {
             throw new Exception("Chyba při čtení z databáze: " + ex.getMessage());
@@ -184,7 +187,6 @@ public class Databaze implements CompanyInvoiceRepository {
             String dotaz2 = "SELECT * FROM Faktura WHERE idRecept = '" + f.getId() + "';";
             f.setDodavatel(this.getUzivatel(Integer.valueOf(ziskatUdajeDB(dotaz2, "dodavatel").get(0))));
             f.setOdberatel(this.getUzivatel(Integer.valueOf(ziskatUdajeDB(dotaz2, "odberatel").get(0))));
-            f.setPolozky(this.getListPolozekF(f.getId()));
         }
         return vystup;
     }
@@ -197,6 +199,7 @@ public class Databaze implements CompanyInvoiceRepository {
         upravitDB("Faktura", "polozky", String.valueOf(faktura.getPolozky()), "id", String.valueOf(faktura.getId()));
         upravitDB("Faktura", "datumSplatnosti", String.valueOf(faktura.getDatumSplatnosti()), "id", String.valueOf(faktura.getId()));
         upravitDB("Faktura", "zpusobPlatby", String.valueOf(faktura.getZpusobPlatby()), "id", String.valueOf(faktura.getId()));
+
     }
 
     /**
@@ -207,12 +210,17 @@ public class Databaze implements CompanyInvoiceRepository {
      * @throws Exception
      */
     @Override
-    public Uzivatel getUzivatel(int id) throws Exception {
+    public Firma getUzivatel(int id) throws Exception {
         String dotaz = "SELECT * FROM Uzivatel WHERE id = '" + id + "';";
+<<<<<<< HEAD
         Uzivatel vystup;
+=======
+        Firma vystup;
+
+>>>>>>> 9fab8763ab2635eee5252039ea5f80aa4a75dda6
         try (Statement st = pripojeni.createStatement();
                 ResultSet rs = st.executeQuery(dotaz);) {
-            vystup = new Uzivatel(rs.getInt("id"), rs.getString("nazev"), rs.getString("login"), rs.getInt("heslo"), rs.getString("ulice"), rs.getInt("psc"), rs.getString("mesto"), rs.getString("stat"), rs.getInt("ic"), rs.getInt("dic"), Integer.getInteger(rs.getString("telefon")), rs.getString("email"), rs.getString("cisloUctu"));
+            vystup = new Firma(rs.getInt("id"), rs.getString("nazev"), rs.getString("login"), rs.getInt("heslo"), rs.getString("ulice"), rs.getInt("psc"), rs.getString("mesto"), rs.getString("stat"), rs.getInt("ic"), rs.getInt("dic"), Integer.getInteger(rs.getString("telefon")), rs.getString("email"), rs.getString("cisloUctu"));
         } catch (SQLException ex) {
             throw new Exception("Chyba při čtení z databáze: " + ex.getMessage());
         }
@@ -228,13 +236,13 @@ public class Databaze implements CompanyInvoiceRepository {
      * @throws Exception
      */
     @Override
-    public Uzivatel getUzivatel(String login, int heslo) throws Exception {
+    public Firma getUzivatel(String login, int heslo) throws Exception {
         String dotaz = "SELECT * FROM Uzivatel WHERE login = '" + login + "' AND heslo = '" + heslo + "';";
-        Uzivatel vystup;
+        Firma vystup;
 
         try (Statement st = pripojeni.createStatement();
                 ResultSet rs = st.executeQuery(dotaz);) {
-            vystup = new Uzivatel(rs.getInt("id"), rs.getString("nazev"), rs.getString("login"), rs.getInt("heslo"), rs.getString("ulice"), rs.getInt("psc"), rs.getString("mesto"), rs.getString("stat"), rs.getInt("ic"), rs.getInt("dic"), Integer.getInteger(rs.getString("telefon")), rs.getString("email"), rs.getString("cisloUctu"));
+            vystup = new Firma(rs.getInt("id"), rs.getString("nazev"), rs.getString("login"), rs.getInt("heslo"), rs.getString("ulice"), rs.getInt("psc"), rs.getString("mesto"), rs.getString("stat"), rs.getInt("ic"), rs.getInt("dic"), Integer.getInteger(rs.getString("telefon")), rs.getString("email"), rs.getString("cisloUctu"));
         } catch (SQLException ex) {
             throw new Exception("Chyba při čtení z databáze: " + ex.getMessage());
         }
@@ -247,7 +255,7 @@ public class Databaze implements CompanyInvoiceRepository {
     }
 
     @Override
-    public void zmenUzivatele(Uzivatel uzivatel) throws Exception {
+    public void zmenUzivatele(Firma uzivatel) throws Exception {
         upravitDB("Uzivatel", "nazev", String.valueOf(uzivatel.getNazev()), "id", String.valueOf(uzivatel.getId()));
         upravitDB("Uzivatel", "login", String.valueOf(uzivatel.getLogin()), "id", String.valueOf(uzivatel.getId()));
         upravitDB("Uzivatel", "heslo", String.valueOf(uzivatel.getHeslo()), "id", String.valueOf(uzivatel.getId()));
@@ -264,7 +272,7 @@ public class Databaze implements CompanyInvoiceRepository {
     }
 
     @Override
-    public ArrayList<Uzivatel> getListUzivatel() throws Exception {
+    public ArrayList<Firma> getListUzivatel() throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -283,7 +291,11 @@ public class Databaze implements CompanyInvoiceRepository {
         return vystup;
     }
 
+<<<<<<< HEAD
     private HashMap<Integer, Integer> getListPolozekF(int idFaktury) throws Exception {
+=======
+    private HashMap<Integer, Integer> getListPolozekF(int idFaktury) {
+>>>>>>> 9fab8763ab2635eee5252039ea5f80aa4a75dda6
         HashMap<Integer, Integer> vystup = new HashMap();
         String dotaz = "SELECT * FROM Polozka WHERE fkIdFaktura = '" + idFaktury + "';";
         try (Statement st = pripojeni.createStatement();
