@@ -17,9 +17,11 @@ import java.util.logging.Logger;
 public class FakturaServiceImpl implements FakturaService {
     
     private FakturaRepository db;
+    private Faktura fakt;
     
     public FakturaServiceImpl() throws Exception{
         db = new FakturaRepositoryImpl("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7244879?characterEncoding=UTF-8", "sql7244879", "CBmxSwfY9y");
+        fakt = new Faktura();
     }
     
     @Override
@@ -123,6 +125,11 @@ public class FakturaServiceImpl implements FakturaService {
         } catch (Exception ex) {
             //Logger.getLogger(FakturaServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @Override
+    public List<String> getPlatba() {
+        return fakt.getPlatba();
     }
     
 }

@@ -51,7 +51,10 @@ public class FirmaRepositoryMock implements FirmaRepository {
         f4 = new Firma(4, "asdfg", "ulice2", 789, "mesto2", "stat2", 123, 456, "1111111", "email2", "123/0900");
         f5 = new Firma(5, "hjklzx", "ulice2", 135, "mesto2", "stat2", 123, 456, "1111111", "email2", "123/0900");
     }
-
+    public String getNazev(Firma f){
+        return f.getNazev();
+    }
+    
     private void pridejFirmy() {
         firmy.add(f1);
         firmy.add(f2);

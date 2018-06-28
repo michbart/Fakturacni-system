@@ -7,7 +7,7 @@
 <?import javafx.scene.text.*?>
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -59,7 +59,7 @@
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="MobilText" layoutX="460.0537109375" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mobil:" wrappingWidth="49.34228515625" AnchorPane.rightAnchor="689.60400390625" AnchorPane.topAnchor="240.8134765625">
+                        <Text fx:id="MobilText" layoutX="460.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mobil:" wrappingWidth="49.34228515625" AnchorPane.rightAnchor="689.60400390625" AnchorPane.topAnchor="240.8134765625">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -69,31 +69,31 @@
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="EmailText" layoutX="460.0791015625" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" wrappingWidth="42.4052734375" AnchorPane.rightAnchor="696.515625" AnchorPane.topAnchor="202.8134765625">
+                        <Text fx:id="EmailText" layoutX="460.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" wrappingWidth="42.4052734375" AnchorPane.rightAnchor="696.515625" AnchorPane.topAnchor="202.8134765625">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="ICOText" layoutX="460.3984375" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IČO:" wrappingWidth="33.58740234375" AnchorPane.rightAnchor="705.01416015625" AnchorPane.topAnchor="81.8134765625">
+                        <Text fx:id="ICOText" layoutX="460.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IČO:" wrappingWidth="33.58740234375" AnchorPane.rightAnchor="705.01416015625" AnchorPane.topAnchor="81.8134765625">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="DICText" layoutX="460.556640625" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DIČ:" wrappingWidth="33.79638671875" AnchorPane.rightAnchor="704.64697265625" AnchorPane.topAnchor="121.8134765625">
+                        <Text fx:id="DICText" layoutX="460.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DIČ:" wrappingWidth="33.79638671875" AnchorPane.rightAnchor="704.64697265625" AnchorPane.topAnchor="121.8134765625">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Text id="nazevLabel" fx:id="nazevLabel" layoutX="131.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.13671875" AnchorPane.leftAnchor="131.0" AnchorPane.topAnchor="84.05078125" />
-                        <Text id="uliceLabel" fx:id="uliceLabel" layoutX="131.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.13671875" AnchorPane.leftAnchor="131.0" AnchorPane.topAnchor="123.05078125" />
-                        <Text id="mestoLabel" fx:id="mestoLabel" layoutX="131.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.13671875" AnchorPane.leftAnchor="131.0" AnchorPane.topAnchor="164.05078125" />
-                        <Text id="pscLabel" fx:id="pscLabel" layoutX="131.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.13671875" AnchorPane.leftAnchor="131.0" AnchorPane.topAnchor="204.05078125" />
-                        <Text id="statLabel" fx:id="statLabel" layoutX="131.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.13671875" AnchorPane.leftAnchor="131.0" AnchorPane.topAnchor="244.05078125" />
-                        <Text id="icoLabel" fx:id="icoLabel" layoutX="539.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.13671875" AnchorPane.rightAnchor="427.86328125" AnchorPane.topAnchor="84.05078125" />
-                        <Text id="dicLabel" fx:id="dicLabel" layoutX="539.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.13671875" AnchorPane.rightAnchor="427.86328125" AnchorPane.topAnchor="123.05078125" />
-                        <Text id="ucetLabel" fx:id="ucetLabel" layoutX="539.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.13671875" AnchorPane.rightAnchor="426.86328125" AnchorPane.topAnchor="164.05078125" />
-                        <Text id="emailLabel" fx:id="emailLabel" layoutX="539.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.13671875" AnchorPane.rightAnchor="427.86328125" AnchorPane.topAnchor="203.05078125" />
-                        <Text id="mobilLabel" fx:id="mobilLabel" layoutX="539.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.13671875" AnchorPane.rightAnchor="427.86328125" AnchorPane.topAnchor="242.05078125" />
+                        <Text id="nazevLabel" fx:id="nazevLabel" layoutX="150.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.13671875" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="84.05078125" />
+                        <Text id="uliceLabel" fx:id="uliceLabel" layoutX="150.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.13671875" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="123.05078125" />
+                        <Text id="mestoLabel" fx:id="mestoLabel" layoutX="150.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.13671875" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="164.05078125" />
+                        <Text id="pscLabel" fx:id="pscLabel" layoutX="150.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.13671875" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="204.05078125" />
+                        <Text id="statLabel" fx:id="statLabel" layoutX="150.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.13671875" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="244.05078125" />
+                        <Text id="icoLabel" fx:id="icoLabel" layoutX="539.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.13671875" AnchorPane.rightAnchor="420.0" AnchorPane.topAnchor="84.05078125" />
+                        <Text id="dicLabel" fx:id="dicLabel" layoutX="539.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.13671875" AnchorPane.rightAnchor="420.0" AnchorPane.topAnchor="123.05078125" />
+                        <Text id="ucetLabel" fx:id="ucetLabel" layoutX="539.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.13671875" AnchorPane.rightAnchor="420.0" AnchorPane.topAnchor="164.05078125" />
+                        <Text id="emailLabel" fx:id="emailLabel" layoutX="539.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.13671875" AnchorPane.rightAnchor="420.0" AnchorPane.topAnchor="203.05078125" />
+                        <Text id="mobilLabel" fx:id="mobilLabel" layoutX="539.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.13671875" AnchorPane.rightAnchor="420.0" AnchorPane.topAnchor="242.05078125" />
                      </children></AnchorPane>
             </content>
           </Tab>
@@ -106,7 +106,6 @@
                               <Font size="23.0" />
                            </font>
                         </Label>
-                        <ChoiceBox fx:id="KontaktChoiceBox" layoutX="53.0" layoutY="76.0" opacity="0.77" prefWidth="150.0" style="-fx-background-color: #455A64;" AnchorPane.leftAnchor="53.0" AnchorPane.topAnchor="76.0" />
                         <Label layoutX="53.0" layoutY="48.0" text="Vyberte zákazníka" AnchorPane.leftAnchor="53.0" AnchorPane.topAnchor="48.0">
                            <font>
                               <Font size="15.0" />
@@ -121,7 +120,6 @@
                         <TextField fx:id="PocetKsZboziTextField" layoutX="949.0" layoutY="219.0" prefHeight="31.0" prefWidth="57.0" promptText="ks" style="-fx-background-color: #CFD8DC;" AnchorPane.rightAnchor="193.0" AnchorPane.topAnchor="219.0" />
                         <TextField fx:id="CenaKusZboziTField" layoutX="797.0" layoutY="219.0" prefHeight="31.0" prefWidth="118.0" promptText="Cena" style="-fx-background-color: #CFD8DC;" AnchorPane.rightAnchor="284.0" AnchorPane.topAnchor="219.0" />
                         <Button fx:id="DalsiPolozkaBtn" layoutX="745.0" layoutY="159.0" mnemonicParsing="false" onAction="#DalsiPolozkaClickedBtn" style="-fx-background-color: #455A64;" text="+" AnchorPane.rightAnchor="423.0" AnchorPane.topAnchor="159.0" />
-                        <ChoiceBox fx:id="ZpusobUhradyChoiceBox" layoutX="261.0" layoutY="76.0" opacity="0.77" prefWidth="150.0" style="-fx-background-color: #455A64;" AnchorPane.leftAnchor="261.0" AnchorPane.topAnchor="76.0" />
                         <Label layoutX="261.0" layoutY="48.0" text="Způsob úhrady:" AnchorPane.leftAnchor="261.0" AnchorPane.topAnchor="48.0">
                            <font>
                               <Font size="15.0" />
@@ -144,6 +142,8 @@
                               <Font size="13.0" />
                            </font>
                         </Button>
+                        <ComboBox fx:id="ZakaznikComboBox" layoutX="53.0" layoutY="76.0" prefWidth="150.0" AnchorPane.leftAnchor="53.0" AnchorPane.topAnchor="76.0" />
+                        <ComboBox fx:id="ZpusobUhradyComboBox" layoutX="261.0" layoutY="76.0" prefWidth="150.0" />
                      </children></AnchorPane>
             </content>
           </Tab>

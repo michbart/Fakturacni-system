@@ -17,6 +17,8 @@ public interface FakturaService {
     
     List<Faktura> getFaktury();
     
+    List<String> getPlatba();
+    
     void createFaktura(Faktura f);
     
     void updateFaktura(Faktura f);
