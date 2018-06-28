@@ -5,47 +5,112 @@
  */
 package cz.jcu.uaidoklad.Model;
 
-import java.util.HashMap;
+
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Michal
  */
 public class FakturaServiceImpl implements FakturaService {
-    Firma dod = new Firma(1, "nazev", "ulice", 555, "mesto", "stat", 123, 456, 1111111, "email","123/0900");
-    Firma odb = new Firma(2, "nazev2", "ulice2", 555, "mesto2", "stat2", 123, 456, 1111111, "email2", "123/0900");
-    HashMap<Integer, Integer> polozky = new HashMap<>();
-    private Faktura fa = new Faktura(1,12345, dod, odb, polozky, "dnes", "prevodem",1);
+    
+    private FakturaRepository db;
+    
+    public FakturaServiceImpl() throws Exception{
+        db = new FakturaRepositoryImpl("sql7.freemysqlhosting.net", "sql7244879", "CBmxSwfY9y");
+    }
     
     @Override
-    public void exportAsPDF(Faktura f, Databaze db) {
-        new PDF(fa, db).vygeneruj();
+    public void exportAsPDF(Faktura f, FakturaRepositoryImpl db) {
+        new PDF(f, db).vygeneruj();
     }
 
     @Override
     public Faktura getFakturaById(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            return db.getFaktura(id);
+        } catch (Exception ex) {
+            //Logger.getLogger(FakturaServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
     @Override
     public List<Faktura> getFaktury() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            return db.getListFaktur();
+        } catch (Exception ex) {
+            //Logger.getLogger(FakturaServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
     @Override
     public void createFaktura(Faktura f) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void updateFaktura(Faktura f) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            db.zmenFakturu(f);
+        } catch (Exception ex) {
+            //Logger.getLogger(FakturaServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public void deleteFaktura(int id) {
+        try {
+            db.smazFaktura(id);
+        } catch (Exception ex) {
+            //Logger.getLogger(FakturaServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public Polozka getPolozkaById(int id) {
+        try {
+            return db.getPolozka(id);
+        } catch (Exception ex) {
+            //Logger.getLogger(FakturaServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    @Override
+    public List<Polozka> getPolozky() {
+        try {
+            return db.getListPolozek();
+        } catch (Exception ex) {
+            Logger.getLogger(FakturaServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    @Override
+    public void createPolozka(Polozka p) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void updatePolozka(Polozka p) {
+        try {
+            db.zmenPolozku(p);
+        } catch (Exception ex) {
+            //Logger.getLogger(FakturaServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public void deletePolozka(int id) {
+        try {
+            db.smazPolozku(id);
+        } catch (Exception ex) {
+            //Logger.getLogger(FakturaServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

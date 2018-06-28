@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  *
  * @author Michal
  */
-public class Databaze implements FakturaRepository {
+public class FakturaRepositoryImpl implements FakturaRepository {
 
     private String driver = "com.mysql.jdbc.Driver";
     private Connection pripojeni;
@@ -32,7 +32,7 @@ public class Databaze implements FakturaRepository {
      * @param heslo heslo k DB
      * @throws Exception
      */
-    public Databaze(String url, String uzivatel, String heslo) throws Exception {
+    public FakturaRepositoryImpl(String url, String uzivatel, String heslo) throws Exception {
         try {
             Class.forName(driver);
             pripojeni = (Connection) DriverManager.getConnection(url, uzivatel, heslo);
@@ -114,6 +114,13 @@ public class Databaze implements FakturaRepository {
         }
     }
 
+    /**
+     * vytvoreni pro precteni jednoho atributu z tabulky POMOCNE
+     * @param dotaz
+     * @param sloupec
+     * @return
+     * @throws Exception 
+     */
     private ArrayList<String> ziskatUdajeDB(String dotaz, String sloupec) throws Exception {
         ArrayList<String> vysledek = new ArrayList();
         try (Statement st = pripojeni.createStatement();
@@ -206,7 +213,7 @@ public class Databaze implements FakturaRepository {
      * @return
      * @throws Exception
      */
-    @Override
+//    @Override
     public Firma getUzivatel(int id) throws Exception {
         String dotaz = "SELECT * FROM Uzivatel WHERE id = '" + id + "';";
         Firma vystup;
@@ -227,7 +234,7 @@ public class Databaze implements FakturaRepository {
      * @return
      * @throws Exception
      */
-    @Override
+//    @Override
     public Firma getUzivatel(String login, int heslo) throws Exception {
         String dotaz = "SELECT * FROM Uzivatel WHERE login = '" + login + "' AND heslo = '" + heslo + "';";
         Firma vystup;
@@ -241,12 +248,12 @@ public class Databaze implements FakturaRepository {
         return vystup;
     }
 
-    @Override
+//    @Override
     public void smazUzivatele(int id) throws Exception {
         smazatDB("Uzivatel", "id", String.valueOf(id));
     }
 
-    @Override
+//    @Override
     public void zmenUzivatele(Firma uzivatel) throws Exception {
         upravitDB("Uzivatel", "nazev", String.valueOf(uzivatel.getNazev()), "id", String.valueOf(uzivatel.getId()));
         upravitDB("Uzivatel", "login", String.valueOf(uzivatel.getLogin()), "id", String.valueOf(uzivatel.getId()));
@@ -261,8 +268,12 @@ public class Databaze implements FakturaRepository {
         upravitDB("Uzivatel", "email", String.valueOf(uzivatel.getEmail()), "id", String.valueOf(uzivatel.getId()));
         upravitDB("Uzivatel", "cisloUctu", String.valueOf(uzivatel.getCisloUctu()), "id", String.valueOf(uzivatel.getId()));
     }
-
-    @Override
+ /**
+  * Ziskani listu Firem
+  * @return
+  * @throws Exception 
+  */
+//    @Override
     public ArrayList<Firma> getListUzivatel() throws Exception {
         String dotaz = "SELECT * FROM Uzivatel;";
         ArrayList<Firma> vystup = new ArrayList();
@@ -298,6 +309,12 @@ public class Databaze implements FakturaRepository {
         return vystup;
     }
 
+    /**
+     * ziskani listu polozek faktury
+     * @param idFaktury
+     * @return
+     * @throws Exception 
+     */
     private HashMap<Integer, Integer> getListPolozekF(int idFaktury) throws Exception {
         HashMap<Integer, Integer> vystup = new HashMap();
         String dotaz = "SELECT * FROM Polozka WHERE fkIdFaktura = '" + idFaktury + "';";
