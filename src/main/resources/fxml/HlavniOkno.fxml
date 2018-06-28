@@ -29,7 +29,7 @@
             <content>
               <AnchorPane fx:id="InformacePane" minHeight="0.0" minWidth="0.0" prefHeight="444.0" prefWidth="725.0" style="-fx-background-color: #78909C;">
                      <children>
-                        <Label layoutX="279.0" layoutY="14.0" text="Informace o uživateli">
+                        <Label layoutX="494.0" layoutY="18.0" text="Informace o uživateli">
                            <font>
                               <Font size="23.0" />
                            </font>
@@ -39,17 +39,17 @@
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="UliceText" layoutX="75.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ulice:" wrappingWidth="41.34375" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="122.8134765625">
+                        <Text fx:id="UliceText" layoutX="75.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ulice:" wrappingWidth="41.34375" AnchorPane.leftAnchor="72.0" AnchorPane.topAnchor="122.8134765625">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="MestoText" layoutX="77.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Město:" wrappingWidth="58.55029296875" AnchorPane.leftAnchor="77.0" AnchorPane.topAnchor="162.8134765625">
+                        <Text fx:id="MestoText" layoutX="77.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Město:" wrappingWidth="58.55029296875" AnchorPane.leftAnchor="72.0" AnchorPane.topAnchor="162.8134765625">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="PSCText" layoutX="78.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PSČ:" wrappingWidth="36.65673828125" AnchorPane.leftAnchor="78.0" AnchorPane.topAnchor="202.8134765625">
+                        <Text fx:id="PSCText" layoutX="78.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PSČ:" wrappingWidth="36.65673828125" AnchorPane.leftAnchor="72.0" AnchorPane.topAnchor="202.8134765625">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -59,32 +59,32 @@
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="MobilText" layoutX="390.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mobil:" wrappingWidth="49.34228515625" AnchorPane.rightAnchor="759.65771484375" AnchorPane.topAnchor="241.8134765625">
+                        <Text fx:id="MobilText" layoutX="393.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mobil:" wrappingWidth="49.34228515625" AnchorPane.rightAnchor="757.5771484375" AnchorPane.topAnchor="241.8134765625">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="CisloUctuText" layoutX="392.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Číslo účtu:" wrappingWidth="80.0" AnchorPane.rightAnchor="727.0" AnchorPane.topAnchor="161.8134765625">
+                        <Text fx:id="CisloUctuText" layoutX="393.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Číslo účtu:" wrappingWidth="80.0" AnchorPane.rightAnchor="727.0" AnchorPane.topAnchor="161.8134765625">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="EmailText" layoutX="394.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" wrappingWidth="42.4052734375" AnchorPane.rightAnchor="762.5947265625" AnchorPane.topAnchor="201.8134765625">
+                        <Text fx:id="EmailText" layoutX="393.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" wrappingWidth="42.4052734375" AnchorPane.rightAnchor="763.5947265625" AnchorPane.topAnchor="201.8134765625">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="ICOText" layoutX="399.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IČO:" wrappingWidth="33.58740234375" AnchorPane.rightAnchor="766.41259765625" AnchorPane.topAnchor="81.8134765625">
+                        <Text fx:id="ICOText" layoutX="393.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IČO:" wrappingWidth="33.58740234375" AnchorPane.rightAnchor="773.41259765625" AnchorPane.topAnchor="81.8134765625">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="DICText" layoutX="399.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DIČ:" wrappingWidth="32.79638671875" AnchorPane.rightAnchor="767.20361328125" AnchorPane.topAnchor="121.8134765625">
+                        <Text fx:id="DICText" layoutX="393.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DIČ:" wrappingWidth="33.79638671875" AnchorPane.rightAnchor="773.20361328125" AnchorPane.topAnchor="121.8134765625">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Label fx:id="nazevLabel" layoutX="133.0" layoutY="84.0" prefHeight="17.0" prefWidth="190.0" text="Label" AnchorPane.leftAnchor="133.0" AnchorPane.topAnchor="84.0" />
+                        <Label fx:id="nazevLabel" layoutX="131.0" layoutY="84.0" prefHeight="17.0" prefWidth="221.0" AnchorPane.leftAnchor="131.0" AnchorPane.topAnchor="84.0" />
                      </children></AnchorPane>
             </content>
           </Tab>
