@@ -136,34 +136,8 @@ public class HlavniOknoController implements Initializable {
     private ListView<?> PolozkZboziListView;
     
     @FXML
-    private Label nazevLabel;
+    private Text nazevLabel;
     
-    @FXML
-    private Label ulicevLabel;
-    
-    @FXML
-    private Label mestoLabel;
-    
-    @FXML
-    private Label pscLabel;
-    
-    @FXML
-    private Label statLabel;
-    
-    @FXML
-    private Label icoLabel;
-    
-    @FXML
-    private Label dicLabel;
-    
-    @FXML
-    private Label ucetLabel;
-    
-    @FXML
-    private Label emailLabel;
-    
-    @FXML
-    private Label mobilLabel;
 
     /**
      * Initializes the controller class.

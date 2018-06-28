@@ -84,16 +84,7 @@
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Label id="nazevLabel" fx:id="nazevLabel" layoutX="174.0" layoutY="82.0" prefHeight="17.0" prefWidth="221.0" AnchorPane.leftAnchor="174.0" AnchorPane.topAnchor="82.0" />
-                        <Label id="uliceLabel" fx:id="ulicevLabel" layoutX="171.0" layoutY="123.0" prefHeight="17.0" prefWidth="221.0" AnchorPane.leftAnchor="171.0" AnchorPane.topAnchor="123.0" />
-                        <Label id="mestoLabel" fx:id="mestoLabel" layoutX="158.0" layoutY="164.0" prefHeight="17.0" prefWidth="221.0" AnchorPane.leftAnchor="158.0" AnchorPane.topAnchor="164.0" />
-                        <Label id="pscLabel" fx:id="pscLabel" layoutX="155.0" layoutY="205.0" prefHeight="17.0" prefWidth="221.0" AnchorPane.leftAnchor="155.0" AnchorPane.topAnchor="205.0" />
-                        <Label id="statLabel" fx:id="statLabel" layoutX="151.0" layoutY="244.0" prefHeight="17.0" prefWidth="221.0" AnchorPane.leftAnchor="151.0" AnchorPane.topAnchor="244.0" />
-                        <Label id="icoLabel" fx:id="icoLabel" layoutX="566.0" layoutY="82.0" prefHeight="17.0" prefWidth="221.0" AnchorPane.rightAnchor="412.0" AnchorPane.topAnchor="82.0" />
-                        <Label id="dicLabel" fx:id="dicLabel" layoutX="550.0" layoutY="124.0" prefHeight="17.0" prefWidth="221.0" AnchorPane.rightAnchor="428.0" AnchorPane.topAnchor="124.0" />
-                        <Label id="ucetLabel" fx:id="ucetLabel" layoutX="556.0" layoutY="162.0" prefHeight="17.0" prefWidth="221.0" AnchorPane.rightAnchor="422.0" AnchorPane.topAnchor="162.0" />
-                        <Label id="emailLabel" fx:id="emailLabel" layoutX="555.0" layoutY="205.0" prefHeight="17.0" prefWidth="221.0" AnchorPane.rightAnchor="423.0" AnchorPane.topAnchor="205.0" />
-                        <Label id="mobilLabel" fx:id="mobilLabel" layoutX="551.0" layoutY="245.0" prefHeight="17.0" prefWidth="221.0" AnchorPane.rightAnchor="427.0" AnchorPane.topAnchor="245.0" />
+                        <Text id="nazevLabel" fx:id="nazevLabel" layoutX="142.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="232.13671875" />
                      </children></AnchorPane>
             </content>
           </Tab>
