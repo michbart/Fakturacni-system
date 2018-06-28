@@ -21,7 +21,7 @@ public class Firma {
     private String stat;
     private int ic;
     private int dic;
-    private int telefon;
+    private String telefon;
     private String email;
     private String cisloUctu;
 
@@ -42,7 +42,7 @@ public class Firma {
      * @param email
      * @param cisloUctu
      */
-    public Firma(int id, String nazev, String login, int heslo, String ulice, int psc, String mesto, String stat, int ic, int dic, int telefon, String email, String cisloUctu) {
+    public Firma(int id, String nazev, String login, int heslo, String ulice, int psc, String mesto, String stat, int ic, int dic, String telefon, String email, String cisloUctu) {
         this.id = id;
         this.nazev = nazev;
         this.login = login;
@@ -73,7 +73,7 @@ public class Firma {
      * @param email
      * @param cisloUctu
      */
-    public Firma(int id, String nazev, String ulice, int psc, String mesto, String stat, int ic, int dic, int telefon, String email, String cisloUctu) {
+    public Firma(int id, String nazev, String ulice, int psc, String mesto, String stat, int ic, int dic, String telefon, String email, String cisloUctu) {
         this.id = id;
         this.nazev = nazev;
         this.ulice = ulice;
@@ -140,7 +140,7 @@ public class Firma {
         return dic;
     }
 
-    public int getTelefon() {
+    public String getTelefon() {
         return telefon;
     }
 
@@ -180,7 +180,7 @@ public class Firma {
         this.dic = dic;
     }
 
-    public void setTelefon(int telefon) {
+    public void setTelefon(String telefon) {
         this.telefon = telefon;
     }
 

@@ -116,10 +116,11 @@ public class FakturaRepositoryImpl implements FakturaRepository {
 
     /**
      * vytvoreni pro precteni jednoho atributu z tabulky POMOCNE
+     *
      * @param dotaz
      * @param sloupec
      * @return
-     * @throws Exception 
+     * @throws Exception
      */
     private ArrayList<String> ziskatUdajeDB(String dotaz, String sloupec) throws Exception {
         ArrayList<String> vysledek = new ArrayList();
@@ -219,7 +220,7 @@ public class FakturaRepositoryImpl implements FakturaRepository {
         Firma vystup;
         try (Statement st = pripojeni.createStatement();
                 ResultSet rs = st.executeQuery(dotaz);) {
-            vystup = new Firma(rs.getInt("id"), rs.getString("nazev"), rs.getString("login"), rs.getInt("heslo"), rs.getString("ulice"), rs.getInt("psc"), rs.getString("mesto"), rs.getString("stat"), rs.getInt("ic"), rs.getInt("dic"), Integer.getInteger(rs.getString("telefon")), rs.getString("email"), rs.getString("cisloUctu"));
+            vystup = new Firma(rs.getInt("id"), rs.getString("nazev"), rs.getString("login"), rs.getInt("heslo"), rs.getString("ulice"), rs.getInt("psc"), rs.getString("mesto"), rs.getString("stat"), rs.getInt("ic"), rs.getInt("dic"), rs.getString("telefon"), rs.getString("email"), rs.getString("cisloUctu"));
         } catch (SQLException ex) {
             throw new Exception("Chyba při čtení z databáze: " + ex.getMessage());
         }
@@ -241,7 +242,7 @@ public class FakturaRepositoryImpl implements FakturaRepository {
 
         try (Statement st = pripojeni.createStatement();
                 ResultSet rs = st.executeQuery(dotaz);) {
-            vystup = new Firma(rs.getInt("id"), rs.getString("nazev"), rs.getString("login"), rs.getInt("heslo"), rs.getString("ulice"), rs.getInt("psc"), rs.getString("mesto"), rs.getString("stat"), rs.getInt("ic"), rs.getInt("dic"), Integer.getInteger(rs.getString("telefon")), rs.getString("email"), rs.getString("cisloUctu"));
+            vystup = new Firma(rs.getInt("id"), rs.getString("nazev"), rs.getString("login"), rs.getInt("heslo"), rs.getString("ulice"), rs.getInt("psc"), rs.getString("mesto"), rs.getString("stat"), rs.getInt("ic"), rs.getInt("dic"), rs.getString("telefon"), rs.getString("email"), rs.getString("cisloUctu"));
         } catch (SQLException ex) {
             throw new Exception("Chyba při čtení z databáze: " + ex.getMessage());
         }
@@ -268,11 +269,13 @@ public class FakturaRepositoryImpl implements FakturaRepository {
         upravitDB("Uzivatel", "email", String.valueOf(uzivatel.getEmail()), "id", String.valueOf(uzivatel.getId()));
         upravitDB("Uzivatel", "cisloUctu", String.valueOf(uzivatel.getCisloUctu()), "id", String.valueOf(uzivatel.getId()));
     }
- /**
-  * Ziskani listu Firem
-  * @return
-  * @throws Exception 
-  */
+
+    /**
+     * Ziskani listu Firem
+     *
+     * @return
+     * @throws Exception
+     */
 //    @Override
     public ArrayList<Firma> getListUzivatel() throws Exception {
         String dotaz = "SELECT * FROM Uzivatel;";
@@ -280,7 +283,7 @@ public class FakturaRepositoryImpl implements FakturaRepository {
         try (Statement st = pripojeni.createStatement();
                 ResultSet rs = st.executeQuery(dotaz);) {
             while (rs.next()) {
-                vystup.add(new Firma(rs.getInt("id"), rs.getString("nazev"), rs.getString("login"), rs.getInt("heslo"), rs.getString("ulice"), rs.getInt("psc"), rs.getString("mesto"), rs.getString("stat"), rs.getInt("ic"), rs.getInt("dic"), Integer.getInteger(rs.getString("telefon")), rs.getString("email"), rs.getString("cisloUctu")));
+                vystup.add(new Firma(rs.getInt("id"), rs.getString("nazev"), rs.getString("login"), rs.getInt("heslo"), rs.getString("ulice"), rs.getInt("psc"), rs.getString("mesto"), rs.getString("stat"), rs.getInt("ic"), rs.getInt("dic"), rs.getString("telefon"), rs.getString("email"), rs.getString("cisloUctu")));
             }
         } catch (SQLException ex) {
             throw new Exception("Chyba při čtení z databáze: " + ex.getMessage());
@@ -311,9 +314,10 @@ public class FakturaRepositoryImpl implements FakturaRepository {
 
     /**
      * ziskani listu polozek faktury
+     *
      * @param idFaktury
      * @return
-     * @throws Exception 
+     * @throws Exception
      */
     private HashMap<Integer, Integer> getListPolozekF(int idFaktury) throws Exception {
         HashMap<Integer, Integer> vystup = new HashMap();
@@ -355,6 +359,68 @@ public class FakturaRepositoryImpl implements FakturaRepository {
             throw new Exception("Chyba při čtení z databáze: " + ex.getMessage());
         }
         return vystup;
+    }
+
+    @Override
+    public void ulozFaktura(Faktura faktura) throws Exception {
+
+        HashMap<String, String> nazevHodnota = new HashMap();
+        nazevHodnota.put("cislo", String.valueOf(faktura.getCislo()));
+        nazevHodnota.put("typ", String.valueOf(faktura.getTyp()));
+        nazevHodnota.put("fkIdDodavatel", String.valueOf(faktura.getDodavatel().getId()));
+        nazevHodnota.put("fkIdOdberatel", String.valueOf(faktura.getOdberatel().getId()));
+        nazevHodnota.put("id", String.valueOf(faktura.getId()));
+        nazevHodnota.put("datumSplatnosti", faktura.getDatumSplatnosti());
+        nazevHodnota.put("zpusobPlatby", String.valueOf(faktura.getZpusobPlatby()));
+        zapsatDB("Faktura", nazevHodnota);
+        if (ziskatUdajeDB("SELECT * FROM Uzivatel WHERE id = '" + faktura.getDodavatel().getId() + "';", "id").isEmpty()) {
+            ulozFirma(faktura.getDodavatel());
+        }
+        if (ziskatUdajeDB("SELECT * FROM Uzivatel WHERE id = '" + faktura.getOdberatel().getId() + "';", "id").isEmpty()) {
+            ulozFirma(faktura.getOdberatel());
+        }
+
+        ulozPolozkyF(faktura.getPolozky(), Integer.valueOf(ziskatUdajeDB("SELECT * FROM Faktura WHERE cislo = '" + faktura.getCislo() + "';", "id").get(0)));
+
+    }
+
+    public void ulozFirma(Firma firma) throws Exception{
+        HashMap< String, String> nazevHodnota = new HashMap();
+        nazevHodnota.put("id", String.valueOf(firma.getId()));
+        nazevHodnota.put("nazev", firma.getNazev());
+        nazevHodnota.put("login", firma.getLogin());
+        nazevHodnota.put("heslo", String.valueOf(firma.getHeslo()));
+        nazevHodnota.put("ulice", firma.getUlice());
+        nazevHodnota.put("psc", String.valueOf(firma.getPsc()));
+        nazevHodnota.put("mesto", firma.getMesto());
+        nazevHodnota.put("stat", firma.getMesto());
+        nazevHodnota.put("ic", String.valueOf(firma.getIc()));
+        nazevHodnota.put("dic", String.valueOf(firma.getDic()));
+        nazevHodnota.put("telefon", firma.getTelefon());
+        nazevHodnota.put("email", firma.getEmail());
+        nazevHodnota.put("cisloUctu", firma.getCisloUctu());
+        zapsatDB("Polozka", nazevHodnota);
+    }
+//int id, String nazev, String login, int heslo, String ulice, int psc, String mesto, String stat, int ic, int dic, int telefon, String email, String cisloUctu) {
+    @Override
+    public void ulozPolozka(Polozka polozka) throws Exception {
+        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        HashMap< String, String> nazevHodnota = new HashMap();
+        nazevHodnota.put("cena", String.valueOf(polozka.getCena()));
+        nazevHodnota.put("nazev", polozka.getNazev());
+        nazevHodnota.put("cena", polozka.getMernaJednotka());
+        zapsatDB("Polozka", nazevHodnota);
+    }
+
+    private void ulozPolozkyF(HashMap<Integer, Integer> polozky, int idFaktury) throws Exception {
+        HashMap<String, String> zapis = new HashMap();
+        for (int idPolozky : polozky.keySet()) {
+            zapis.clear();
+            zapis.put("pocetKs", String.valueOf(polozky.get(idPolozky)));
+            zapis.put("fkIdFaktura", String.valueOf(idFaktury));
+            zapis.put("fkIdPolozka", String.valueOf(idPolozky));
+            zapsatDB("FakturaPolozka", zapis);
+        }        
     }
 
 }
