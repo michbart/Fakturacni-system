@@ -43,7 +43,7 @@ import javafx.util.StringConverter;
  * @author Tomáš
  */
 public class HlavniOknoController implements Initializable {
-
+    
     private View v;
     private Controller c;
     private FakturaRepositoryImpl db;
@@ -51,115 +51,115 @@ public class HlavniOknoController implements Initializable {
     private HashMap<Integer, Integer> polozky;
     private Faktura f;
     private FirmaRepositoryMock firmaMock;
-
+    
     @FXML
     private Button ZavritBtn;
-
+    
     @FXML
     private Button UlozitBtn;
-
+    
     @FXML
     private Button PDFBtn;
-
+    
     @FXML
     private Tab InformaceTab;
-
+    
     @FXML
     private AnchorPane InformacePane;
-
+    
     @FXML
     private Text NazevText;
-
+    
     @FXML
     private Text UliceText;
-
+    
     @FXML
     private Text MestoText;
-
+    
     @FXML
     private Text PSCText;
-
+    
     @FXML
     private Text StatText;
-
+    
     @FXML
     private Text MobilText;
-
+    
     @FXML
     private Text CisloUctuText;
-
+    
     @FXML
     private Text EmailText;
-
+    
     @FXML
     private Text ICOText;
-
+    
     @FXML
     private Text DICText;
-
+    
     @FXML
     private Tab VytvorFakturuTab;
-
+    
     @FXML
     private AnchorPane VytvorFakturuPane;
-
+    
     @FXML
     private TextField PopisZboziTextField;
-
+    
     @FXML
     private TextField PocetKsZboziTextField;
-
+    
     @FXML
     private TextField CenaKusZboziTField;
-
+    
     @FXML
     private Button DalsiPolozkaBtn;
-
+    
     @FXML
     private DatePicker datumSplatnostiDate;
-
+    
     @FXML
     private Tab SeznamFakturTab;
-
+    
     @FXML
     private ListView<?> SeznamFakturListView;
-
+    
     @FXML
     private Tab KontaktyTab;
-
+    
     @FXML
     private ListView<?> KontaktyListView;
-
+    
     @FXML
     private ListView<?> PolozkZboziListView;
-
+    
     @FXML
     private Text nazevLabel;
-
+    
     @FXML
     private Text uliceLabel;
-
+    
     @FXML
     private Text mestoLabel;
-
+    
     @FXML
     private Text pscLabel;
-
+    
     @FXML
     private Text statLabel;
-
+    
     @FXML
     private Text icoLabel;
-
+    
     @FXML
     private Text dicLabel;
-
+    
     @FXML
     private Text ucetLabel;
-
+    
     @FXML
     private Text emailLabel;
-
+    
     @FXML
     private Text mobilLabel;
     @FXML
@@ -183,7 +183,7 @@ public class HlavniOknoController implements Initializable {
         nastavDodavatele();
         naplnPlatbu();
     }
-
+    
     public HlavniOknoController() throws Exception {
         Thread nacteniDB = new Thread(new Runnable() {
             public void run() {
@@ -200,9 +200,12 @@ public class HlavniOknoController implements Initializable {
         polozky = new HashMap<>();
         polozky.put(1, 2);
         c = new ControllerClass();
-
+        
     }
-
+    
+    /**
+     * Nastavi udaje o dodavateli
+     */
     private void nastavDodavatele() {
         nazevLabel.setText(firmaMock.getFirmy().get(0).getNazev());
         uliceLabel.setText(firmaMock.getFirmy().get(0).getUlice());
@@ -215,7 +218,7 @@ public class HlavniOknoController implements Initializable {
         emailLabel.setText(firmaMock.getFirmy().get(0).getEmail());
         mobilLabel.setText(firmaMock.getFirmy().get(0).getTelefon());
     }
-
+    
     private void naplnFirmy() {
         ZakaznikComboBox.getItems().addAll(firmaMock.getFirmy());
         ZakaznikComboBox.setConverter(new StringConverter<Firma>() {
@@ -223,7 +226,7 @@ public class HlavniOknoController implements Initializable {
             public String toString(Firma f) {
                 return f.getNazev();
             }
-
+            
             @Override
             // not used...
             public Firma fromString(String s) {
@@ -231,21 +234,21 @@ public class HlavniOknoController implements Initializable {
             }
         });
     }
-
+    
     private void naplnPlatbu() {
         ZpusobUhradyComboBox.getItems().addAll(v.getPlatba());
     }
-
+    
     @FXML
     private void ZavritClickedBtn(ActionEvent event) {
         Stage stage = (Stage) ZavritBtn.getScene().getWindow();
         stage.close();
     }
-
+    
     @FXML
     private void UlozitClickedBtn(ActionEvent event) {
     }
-
+    
     @FXML
     private void PDFClickedBtn(ActionEvent event) {
         Faktura fa = new Faktura(100, 2000, firmaMock.getFirmy().get(0), ZakaznikComboBox.getSelectionModel().getSelectedItem(), polozky, datumSplatnostiDate.getValue().toString(), ZpusobUhradyComboBox.getValue(), 1);
@@ -253,9 +256,9 @@ public class HlavniOknoController implements Initializable {
         c.exportAsPDF(fa, db);
         c.createFaktura(fa);
     }
-
+    
     @FXML
     private void DalsiPolozkaClickedBtn(ActionEvent event) {
     }
-
+    
 }
