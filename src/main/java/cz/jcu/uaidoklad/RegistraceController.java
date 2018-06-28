@@ -62,6 +62,10 @@ public class RegistraceController implements Initializable {
         // TODO
     }    
 
+    /**
+     * Vraceni se na uvodni okno
+     * @param event 
+     */
     @FXML
     private void StornoClickedBtn(ActionEvent event) {
         //otevre se uvodni okno
@@ -84,6 +88,10 @@ public class RegistraceController implements Initializable {
    
     }
 
+    /**
+     * prokliknuti k hlavnimu oknu 
+     * @param event 
+     */
     @FXML
     private void RegistrovatClickedBtn(ActionEvent event) {
         try {

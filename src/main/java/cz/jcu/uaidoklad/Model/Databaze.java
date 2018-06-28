@@ -23,7 +23,6 @@ public class Databaze implements CompanyInvoiceRepository {
 
     private String driver = "com.mysql.jdbc.Driver";
     private Connection pripojeni;
-    
 
     /**
      * Constructor - pripojeni k DB
@@ -95,7 +94,6 @@ public class Databaze implements CompanyInvoiceRepository {
             throw new Exception("Nastala chyba při mazání v databázi." + ex.getMessage());
         }
     }
-     
 
     /**
      * prepsani atributu v DB
@@ -165,8 +163,22 @@ public class Databaze implements CompanyInvoiceRepository {
 
     @Override
     public ArrayList<Faktura> getListFaktur() throws Exception {
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<Faktura> vystup = new ArrayList();
+        String dotaz = "SELECT * FROM Faktura ;";
+        try (Statement st = pripojeni.createStatement();
+                ResultSet rs = st.executeQuery(dotaz);) {
+            while (rs.next()) {
+                vystup.add(new Faktura(rs.getInt("id"), rs.getInt("cislo"), this.getListPolozekF(rs.getInt("id")), rs.getString("datumSplatnosti"), rs.getString("zpusobPlatby"))); 
+            }
+        } catch (SQLException ex) {
+            throw new Exception("Chyba při čtení z databáze: " + ex.getMessage());
+        }
+        for (Faktura f : vystup) {
+            String dotaz2 = "SELECT * FROM Faktura WHERE idRecept = '" + f.getId() + "';";
+            f.setDodavatel(this.getUzivatel(Integer.valueOf(ziskatUdajeDB(dotaz2, "dodavatel").get(0))));
+            f.setOdberatel(this.getUzivatel(Integer.valueOf(ziskatUdajeDB(dotaz2, "odberatel").get(0))));
+        }
+        return vystup;
     }
 
     @Override
@@ -177,7 +189,7 @@ public class Databaze implements CompanyInvoiceRepository {
         upravitDB("Faktura", "polozky", String.valueOf(faktura.getPolozky()), "id", String.valueOf(faktura.getId()));
         upravitDB("Faktura", "datumSplatnosti", String.valueOf(faktura.getDatumSplatnosti()), "id", String.valueOf(faktura.getId()));
         upravitDB("Faktura", "zpusobPlatby", String.valueOf(faktura.getZpusobPlatby()), "id", String.valueOf(faktura.getId()));
-      
+
     }
 
     /**
@@ -224,10 +236,10 @@ public class Databaze implements CompanyInvoiceRepository {
     }
 
     @Override
-    public void smazUzivatele(int id) throws Exception{
-        
-            smazatDB("Uzivatel", "id", String.valueOf(id));
-     
+    public void smazUzivatele(int id) throws Exception {
+
+        smazatDB("Uzivatel", "id", String.valueOf(id));
+
     }
 
     @Override
@@ -244,7 +256,7 @@ public class Databaze implements CompanyInvoiceRepository {
         upravitDB("Uzivatel", "telefon", String.valueOf(uzivatel.getTelefon()), "id", String.valueOf(uzivatel.getId()));
         upravitDB("Uzivatel", "email", String.valueOf(uzivatel.getEmail()), "id", String.valueOf(uzivatel.getId()));
         upravitDB("Uzivatel", "cisloUctu", String.valueOf(uzivatel.getCisloUctu()), "id", String.valueOf(uzivatel.getId()));
-        
+
     }
 
     @Override
@@ -268,13 +280,13 @@ public class Databaze implements CompanyInvoiceRepository {
         upravitDB("Polozka", "nazev", String.valueOf(polozka.getNazev()), "id", String.valueOf(polozka.getId()));
         upravitDB("Polozka", "cena", String.valueOf(polozka.getCena()), "id", String.valueOf(polozka.getId()));
         upravitDB("Polozka", "mernaJednotka", String.valueOf(polozka.getMernaJednotka()), "id", String.valueOf(polozka.getId()));
-        
+
     }
 
     @Override
     public void smazPolozku(int id) throws Exception {
         smazatDB("Polozka", "id", String.valueOf(id));
-        
+
     }
 
     @Override

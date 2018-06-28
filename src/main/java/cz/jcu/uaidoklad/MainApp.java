@@ -12,6 +12,12 @@ import cz.jcu.uaidoklad.Model.FakturaA;
 
 public class MainApp extends Application {
 
+    
+    /**
+     * 
+     * @param stage
+     * @throws Exception 
+     */
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
