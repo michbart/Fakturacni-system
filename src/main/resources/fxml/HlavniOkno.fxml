@@ -14,23 +14,7 @@
         <URL value="@/styles/hlavniokno.css" />
     </stylesheets>
    <children>
-      <Button fx:id="ZavritBtn" layoutX="500.0" layoutY="550.0" mnemonicParsing="false" onAction="#ZavritClickedBtn" prefHeight="40.0" prefWidth="86.0" style="-fx-background-color: #78909C;" text="Zavřít">
-         <font>
-            <Font size="13.0" />
-         </font></Button>
-      <Button fx:id="UlozitBtn" layoutX="280.0" layoutY="550.0" mnemonicParsing="false" onAction="#UlozitClickedBtn" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #78909C;" text="Uložit">
-         <font>
-            <Font size="13.0" />
-         </font></Button>
-      <Button fx:id="UpravitBtn" layoutX="170.0" layoutY="550.0" mnemonicParsing="false" onAction="#UpravitClickedBtn" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #78909C;" text="Upravit">
-         <font>
-            <Font size="13.0" />
-         </font></Button>
-      <Button fx:id="PDFBtn" layoutX="390.0" layoutY="550.0" mnemonicParsing="false" onAction="#PDFClickedBtn" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #78909C;" text="PDF">
-         <font>
-            <Font size="13.0" />
-         </font></Button>
-      <TabPane prefHeight="536.0" prefWidth="768.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="650.0" prefWidth="801.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="-26.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-41.0" AnchorPane.topAnchor="0.0">
         <tabs>
           <Tab fx:id="InformaceTab" text="Informace">
             <content>
@@ -118,14 +102,34 @@
                         <TextField fx:id="PocetKsZboziTextField" layoutX="570.0" layoutY="150.0" prefHeight="25.0" prefWidth="31.0" promptText="ks" style="-fx-background-color: #CFD8DC;" />
                         <TextField fx:id="CenaKusZboziTField" layoutX="615.0" layoutY="150.0" prefHeight="25.0" prefWidth="69.0" promptText="Cena" style="-fx-background-color: #CFD8DC;" />
                         <Button fx:id="DalsiPolozkaBtn" layoutX="695.0" layoutY="150.0" mnemonicParsing="false" onAction="#DalsiPolozkaClickedBtn" style="-fx-background-color: #455A64;" text="+" />
-                        <ChoiceBox fx:id="ZpusobUhradyChoiceBox" layoutX="495.0" layoutY="76.0" opacity="0.77" prefWidth="150.0" style="-fx-background-color: #455A64;" />
-                        <Label layoutX="384.0" layoutY="78.0" text="Způsob úhrady:">
+                        <ChoiceBox fx:id="ZpusobUhradyChoiceBox" layoutX="566.0" layoutY="76.0" opacity="0.77" prefWidth="150.0" style="-fx-background-color: #455A64;" />
+                        <Label layoutX="431.0" layoutY="78.0" text="Způsob úhrady:">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
                         <DatePicker fx:id="datumSplatnostiDate" layoutX="191.0" layoutY="76.0" promptText="Datum splatnosti" style="-fx-background-color: #455A64;" />
                         <ListView fx:id="PolozkZboziListView" layoutX="210.0" layoutY="185.0" prefHeight="322.0" prefWidth="506.0" style="-fx-background-color: #90A4AE;" />
+                        <Button fx:id="ZavritBtn" layoutX="650.0" layoutY="550.0" mnemonicParsing="false" onAction="#ZavritClickedBtn" prefHeight="40.0" prefWidth="86.0" style="-fx-background-color: #455A64;" text="Zavřít">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="PDFBtn" layoutX="550.0" layoutY="550.0" mnemonicParsing="false" onAction="#PDFClickedBtn" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #455A64;" text="PDF">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="UlozitBtn" layoutX="450.0" layoutY="550.0" mnemonicParsing="false" onAction="#UlozitClickedBtn" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #455A64;" text="Uložit">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="UpravitBtn" layoutX="350.0" layoutY="550.0" mnemonicParsing="false" onAction="#UpravitClickedBtn" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #455A64;" text="Upravit">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Button>
                      </children></AnchorPane>
             </content>
           </Tab>
