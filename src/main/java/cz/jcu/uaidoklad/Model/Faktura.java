@@ -41,6 +41,15 @@ public abstract class Faktura implements Serializable {
         this.datumSplatnosti = datumSplatnosti;
         this.zpusobPlatby = zpusobPlatby;
     }
+    
+    public Faktura(int id, int cislo, HashMap<Integer, Integer> polozky, String datumSplatnosti, String zpusobPlatby) {
+        this.id = id;
+        this.polozky = polozky;
+        this.cislo = cislo;
+        this.datumSplatnosti = datumSplatnosti;
+        this.zpusobPlatby = zpusobPlatby;
+    }
+    
 
     public abstract int blokDodavatelX();
 
