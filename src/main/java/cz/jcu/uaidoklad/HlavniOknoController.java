@@ -162,6 +162,9 @@ public class HlavniOknoController implements Initializable {
     @FXML
     private Text emailLabel;
     
+    @FXML
+    private Text mobilLabel;
+    
 
     /**
      * Initializes the controller class.
