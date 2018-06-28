@@ -164,9 +164,11 @@ public class HlavniOknoController implements Initializable {
         polozky.put(1, 2);
         c = new ControllerClass();
         firmaMock = new FirmaRepositoryMock();
+        nastavDodavatele();
     }
     private void nastavDodavatele(){
         
+        nazevLabel.setText(firmaMock.getFirmy().get(0).getNazev());
     }
 
     @FXML
