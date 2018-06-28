@@ -11,6 +11,7 @@ import cz.jcu.uaidoklad.Model.Faktura;
 import cz.jcu.uaidoklad.Model.FakturaRepository;
 import cz.jcu.uaidoklad.Model.FakturaRepositoryImpl;
 import cz.jcu.uaidoklad.Model.Firma;
+import cz.jcu.uaidoklad.Model.FirmaRepositoryMock;
 import cz.jcu.uaidoklad.View.View;
 import java.net.URL;
 import java.util.HashMap;
@@ -43,6 +44,7 @@ public class HlavniOknoController implements Initializable {
     Firma f1;
     HashMap<Integer, Integer> polozky;
     Faktura f;
+    FirmaRepositoryMock firmaMock;
 
     @FXML
     private Button ZavritBtn;
@@ -158,6 +160,10 @@ public class HlavniOknoController implements Initializable {
         polozky = new HashMap<>();
         polozky.put(1, 2);
         c = new ControllerClass();
+        firmaMock = new FirmaRepositoryMock();
+    }
+    private void nastavDodavatele(){
+        
     }
 
     @FXML
