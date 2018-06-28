@@ -162,6 +162,12 @@ public class Databaze implements CompanyInvoiceRepository {
         smazatDB("Faktura", "id", String.valueOf(id));
     }
 
+    /**
+     * ziskani listu faktur z DB
+     *
+     * @return
+     * @throws Exception
+     */
     @Override
     public ArrayList<Faktura> getListFaktur() throws Exception {
         ArrayList<Faktura> vystup = new ArrayList();
@@ -169,7 +175,7 @@ public class Databaze implements CompanyInvoiceRepository {
         try (Statement st = pripojeni.createStatement();
                 ResultSet rs = st.executeQuery(dotaz);) {
             while (rs.next()) {
-                vystup.add(new Faktura(rs.getInt("id"), rs.getInt("cislo"), rs.getString("datumSplatnosti"), rs.getString("zpusobPlatby"), rs.getInt("typ"))); 
+                vystup.add(new Faktura(rs.getInt("id"), rs.getInt("cislo"), rs.getString("datumSplatnosti"), rs.getString("zpusobPlatby"), rs.getInt("typ")));
             }
         } catch (SQLException ex) {
             throw new Exception("Chyba při čtení z databáze: " + ex.getMessage());
@@ -204,7 +210,6 @@ public class Databaze implements CompanyInvoiceRepository {
     public Uzivatel getUzivatel(int id) throws Exception {
         String dotaz = "SELECT * FROM Uzivatel WHERE id = '" + id + "';";
         Uzivatel vystup;
-
         try (Statement st = pripojeni.createStatement();
                 ResultSet rs = st.executeQuery(dotaz);) {
             vystup = new Uzivatel(rs.getInt("id"), rs.getString("nazev"), rs.getString("login"), rs.getInt("heslo"), rs.getString("ulice"), rs.getInt("psc"), rs.getString("mesto"), rs.getString("stat"), rs.getInt("ic"), rs.getInt("dic"), Integer.getInteger(rs.getString("telefon")), rs.getString("email"), rs.getString("cisloUctu"));
@@ -238,9 +243,7 @@ public class Databaze implements CompanyInvoiceRepository {
 
     @Override
     public void smazUzivatele(int id) throws Exception {
-
         smazatDB("Uzivatel", "id", String.valueOf(id));
-
     }
 
     @Override
@@ -267,13 +270,30 @@ public class Databaze implements CompanyInvoiceRepository {
 
     @Override
     public ArrayList<Polozka> getListPolozek() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<Polozka> vystup = new ArrayList();
+        String dotaz = "SELECT * FROM Polozka WHERE fkIdFaktura = '" + idFaktury + "';";
+        try (Statement st = pripojeni.createStatement();
+                ResultSet rs = st.executeQuery(dotaz);) {
+            while (rs.next()) {
+                vystup.add(new Polozka(rs.getInt("id"),rs.getString("nazev"),rs.getDouble("cena"),rs.getString("mernaJednotka")));//int id, String nazev, double cena, String mernaJednotka
+            }
+        } catch (SQLException ex) {
+            throw new Exception("Chyba při čtení z databáze: " + ex.getMessage());
+        }
+        return vystup;
     }
 
-    
-    private HashMap<Integer, Integer> getListPolozekF(int idFaktury) {
+    private HashMap<Integer, Integer> getListPolozekF(int idFaktury) throws Exception {
         HashMap<Integer, Integer> vystup = new HashMap();
-
+        String dotaz = "SELECT * FROM Polozka WHERE fkIdFaktura = '" + idFaktury + "';";
+        try (Statement st = pripojeni.createStatement();
+                ResultSet rs = st.executeQuery(dotaz);) {
+            while (rs.next()) {
+                vystup.put(rs.getInt("fkIdPolozka"), rs.getInt("pocetKs"));
+            }
+        } catch (SQLException ex) {
+            throw new Exception("Chyba při čtení z databáze: " + ex.getMessage());
+        }
         return vystup;
     }
 
@@ -293,12 +313,12 @@ public class Databaze implements CompanyInvoiceRepository {
 
     @Override
     public Polozka getPolozka(int id) throws Exception {
-    String dotaz = "SELECT * FROM Polozka WHERE id = '" + id + "';";
+        String dotaz = "SELECT * FROM Polozka WHERE id = '" + id + "';";
         Polozka vystup;
 
         try (Statement st = pripojeni.createStatement();
                 ResultSet rs = st.executeQuery(dotaz);) {
-            vystup = new Polozka(rs.getInt("id"),rs.getString("nazev"), rs.getDouble("cena") , rs.getString("mernaJednotka"));
+            vystup = new Polozka(rs.getInt("id"), rs.getString("nazev"), rs.getDouble("cena"), rs.getString("mernaJednotka"));
         } catch (SQLException ex) {
             throw new Exception("Chyba při čtení z databáze: " + ex.getMessage());
         }
