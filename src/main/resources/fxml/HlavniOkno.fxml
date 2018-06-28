@@ -41,57 +41,52 @@
                               <Font size="23.0" />
                            </font>
                         </Label>
-                        <Text fx:id="NazevText" layoutX="90.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Název" wrappingWidth="160.53125">
+                        <Text fx:id="NazevText" layoutX="80.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Název:" wrappingWidth="52.53125">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="UliceText" layoutX="90.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ulice" wrappingWidth="161.34375">
+                        <Text fx:id="UliceText" layoutX="80.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ulice:" wrappingWidth="41.34375">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="MestoText" layoutX="90.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Město" wrappingWidth="160.55029296875">
+                        <Text fx:id="MestoText" layoutX="80.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Město:" wrappingWidth="58.55029296875">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="PSCText" layoutX="90.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PSČ" wrappingWidth="161.65673828125">
+                        <Text fx:id="PSCText" layoutX="80.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PSČ:" wrappingWidth="36.65673828125">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="StatText" layoutX="90.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stát" wrappingWidth="160.7666015625">
+                        <Text fx:id="StatText" layoutX="80.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stát:" wrappingWidth="33.7666015625">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="MobilText" layoutX="300.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mobil" wrappingWidth="163.34228515625">
+                        <Text fx:id="MobilText" layoutX="400.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mobil:" wrappingWidth="49.34228515625">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="CisloUctuText" layoutX="300.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Číslo účtu" wrappingWidth="171.8046875">
+                        <Text fx:id="CisloUctuText" layoutX="400.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Číslo účtu:" wrappingWidth="80.0">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="EmailText" layoutX="300.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="172.4052734375">
+                        <Text fx:id="EmailText" layoutX="400.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" wrappingWidth="42.4052734375">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="ICOText" layoutX="300.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IČO" wrappingWidth="193.58740234375">
+                        <Text fx:id="ICOText" layoutX="400.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IČO:" wrappingWidth="33.58740234375">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <Text fx:id="DICText" layoutX="300.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DIČ" wrappingWidth="191.79638671875">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Text>
-                        <Text fx:id="LoginText" layoutX="300.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" wrappingWidth="201.80419921875">
+                        <Text fx:id="DICText" layoutX="400.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DIČ:" wrappingWidth="32.79638671875">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -115,7 +110,6 @@
                            </font>
                         </Label>
                         <TextField fx:id="DatumSplatnostiTField" layoutX="210.0" layoutY="76.0" promptText="Datum splatnosti" style="-fx-background-color: #CFD8DC;" />
-                        <TextField fx:id="ZpusobUhradyTField" layoutX="405.0" layoutY="76.0" promptText="Způsob úhrady" style="-fx-background-color: #CFD8DC;" />
                         <Label layoutX="210.0" layoutY="116.0" text="Položky">
                            <font>
                               <Font size="15.0" />
@@ -125,6 +119,12 @@
                         <TextField fx:id="PocetKsZboziTextField" layoutX="570.0" layoutY="150.0" prefHeight="25.0" prefWidth="31.0" promptText="ks" style="-fx-background-color: #CFD8DC;" />
                         <TextField fx:id="CenaKusZboziTField" layoutX="615.0" layoutY="150.0" prefHeight="25.0" prefWidth="69.0" promptText="Cena" style="-fx-background-color: #CFD8DC;" />
                         <Button fx:id="DalsiPolozkaBtn" layoutX="695.0" layoutY="150.0" mnemonicParsing="false" onAction="#DalsiPolozkaClickedBtn" style="-fx-background-color: #455A64;" text="+" />
+                        <ChoiceBox fx:id="ZpusobUhradyChoiceBox" layoutX="495.0" layoutY="76.0" opacity="0.77" prefWidth="150.0" style="-fx-background-color: #455A64;" />
+                        <Label layoutX="384.0" layoutY="78.0" text="Způsob úhrady:">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
                      </children></AnchorPane>
             </content>
           </Tab>
@@ -133,28 +133,6 @@
                   <ListView fx:id="SeznamFakturListView" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #78909C;" />
                </content>
             </Tab>
-          <Tab fx:id="PridatKontaktTab" style="-fx-background-color: #78909C;" text="Přidat kontakt">
-            <content>
-              <AnchorPane fx:id="PridatKontaktPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #78909C;">
-                     <children>
-                        <Label layoutX="264.0" layoutY="14.0" text="Informace o odběrateli">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="NazevOdberateleTField" layoutX="15.0" layoutY="50.0" promptText="Název" />
-                        <TextField fx:id="UliceOdberateleTField" layoutX="15.0" layoutY="90.0" promptText="Ulice" />
-                        <TextField fx:id="MestoOdberateleTField" layoutX="15.0" layoutY="130.0" promptText="Město" />
-                        <TextField fx:id="PSCOdberateleTField" layoutX="15.0" layoutY="170.0" promptText="PSČ" />
-                        <TextField fx:id="StatOdberateleTField" layoutX="15.0" layoutY="210.0" promptText="Stát" />
-                        <TextField fx:id="MobilOdberateleTField" layoutX="190.0" layoutY="50.0" promptText="Mobil" />
-                        <TextField fx:id="EmailOdberateleTField" layoutX="190.0" layoutY="90.0" promptText="Email" />
-                        <TextField fx:id="ICOOdberateleTField" layoutX="190.0" layoutY="130.0" promptText="IČO" />
-                        <TextField fx:id="DICOdberateleTField" layoutX="190.0" layoutY="170.0" promptText="DIČ" />
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
             <Tab fx:id="KontaktyTab" style="-fx-background-color: #78909C;" text="Kontakty">
                <content>
                   <ListView fx:id="KontaktyListView" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #78909C;" />

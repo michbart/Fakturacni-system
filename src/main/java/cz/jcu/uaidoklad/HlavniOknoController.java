@@ -59,40 +59,7 @@ public class HlavniOknoController implements Initializable {
     
     @FXML
     private AnchorPane VytvorFakturuPane;
-    
-    @FXML
-    private Tab PridatKontaktTab;
-    
-    @FXML
-    private AnchorPane PridatKontaktPane;
-    
-    @FXML
-    private TextField NazevOdberateleTField;
-    
-    @FXML
-    private TextField UliceOdberateleTField;
-    
-    @FXML
-    private TextField MestoOdberateleTField;
-    
-    @FXML
-    private TextField PSCOdberateleTField;
-    
-    @FXML
-    private TextField StatOdberateleTField;
-    
-    @FXML
-    private TextField MobilOdberateleTField;
-    
-    @FXML
-    private TextField EmailOdberateleTField;
-    
-    @FXML
-    private TextField ICOOdberateleTField;
-    
-    @FXML
-    private TextField DICOdberateleTField;
-    
+        
     @FXML
     private Text NazevText;
     
@@ -162,8 +129,8 @@ public class HlavniOknoController implements Initializable {
     }    
 
     /**
-     * 
-     * @param event, odhlaseni a vraceni se na uvodni okno
+     * Odhlaseni a vraceni se na uvodni okno
+     * @param event
      */
     @FXML
     private void OdhlasitClickedBtn(ActionEvent event) {

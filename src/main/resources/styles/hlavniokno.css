@@ -5,3 +5,22 @@
 .mainFxmlClass {
 
 }
+
+.button:hover {
+    -fx-scale-y: 1.08;
+}
+
+.button:pressed {
+    -fx-scale-y: 0.93;
+    -fx-scale-x: 0.93;
+}
+
+.tab:hover {
+    -fx-scale-y: 1.05;
+}
+
+.tab:pressed {
+    -fx-scale-y: 0.93;
+    -fx-scale-x: 0.93;
+
+}
