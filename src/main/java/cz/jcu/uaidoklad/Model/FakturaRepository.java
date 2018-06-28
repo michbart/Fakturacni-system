@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public interface FakturaRepository {
 
-    public Faktura getFakruta(int id) throws Exception;
+    public Faktura getFaktura(int id) throws Exception;
 
     public void smazFaktura(int id) throws Exception;
 
