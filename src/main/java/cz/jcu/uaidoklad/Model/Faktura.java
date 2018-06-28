@@ -68,6 +68,19 @@ public class Faktura implements Serializable {
         this.cislo = cislo;
         this.datumSplatnosti = datumSplatnosti;
         this.zpusobPlatby = zpusobPlatby;
+        vyberTyp(typ);
+    }
+
+    public Faktura(int id, int cislo, HashMap<Integer, Integer> polozky, String datumSplatnosti, String zpusobPlatby, int typ) {
+        this.id = id;
+        this.polozky = polozky;
+        this.cislo = cislo;
+        this.datumSplatnosti = datumSplatnosti;
+        this.zpusobPlatby = zpusobPlatby;
+        vyberTyp(typ);
+    }
+
+    private void vyberTyp(int typ){
         switch (typ) {
             case 1: {
                 BLOK_DODAVATEL_X = 50;
@@ -109,15 +122,7 @@ public class Faktura implements Serializable {
                 break;
         }
     }
-
-    public Faktura(int id, int cislo, HashMap<Integer, Integer> polozky, String datumSplatnosti, String zpusobPlatby) {
-        this.id = id;
-        this.polozky = polozky;
-        this.cislo = cislo;
-        this.datumSplatnosti = datumSplatnosti;
-        this.zpusobPlatby = zpusobPlatby;
-    }
-
+    
     public int getBLOK_DODAVATEL_X() {
         return BLOK_DODAVATEL_X;
     }

@@ -67,7 +67,7 @@ public class PDF {
      * Nastavuje konstanty pro dany typ faktury
      */
     public void nastavKonstanty() {
-        BLOK_DODAVATEL_X = fakt.blokDodavatelX();
+        BLOK_DODAVATEL_X = fakt.getBLOK_DODAVATEL_X();
         BLOK_DODAVATEL_Y = fakt.blokDodavatelY();
         BLOK_ODBERATEL_X = fakt.blokOdberatelX();
         BLOK_ODBERATEL_Y = fakt.blokOdberatelY();
