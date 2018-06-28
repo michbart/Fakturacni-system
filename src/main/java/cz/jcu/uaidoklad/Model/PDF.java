@@ -68,17 +68,17 @@ public class PDF {
      */
     public void nastavKonstanty() {
         BLOK_DODAVATEL_X = fakt.getBLOK_DODAVATEL_X();
-        BLOK_DODAVATEL_Y = fakt.blokDodavatelY();
-        BLOK_ODBERATEL_X = fakt.blokOdberatelX();
-        BLOK_ODBERATEL_Y = fakt.blokOdberatelY();
-        BLOK_INFO_X = fakt.blokInfoX();
-        BLOK_INFO_Y = fakt.blokInfoY();
-        BLOK_POLOZKY_X = fakt.blokPolozkyX();
-        BLOK_POLOZKY_Y = fakt.blokPolozkyY();
-        BLOK_CELKEM_X = fakt.blokCelkemX();
-        BLOK_CELKEM_Y = fakt.blokCelkemY();
-        BLOK_QR_X = fakt.blokQrX();
-        BLOK_QR_Y = fakt.blokQrY();
+        BLOK_DODAVATEL_Y = fakt.getBLOK_DODAVATEL_Y();
+        BLOK_ODBERATEL_X = fakt.getBLOK_ODBERATEL_X();
+        BLOK_ODBERATEL_Y = fakt.getBLOK_ODBERATEL_Y();
+        BLOK_INFO_X = fakt.getBLOK_INFO_X();
+        BLOK_INFO_Y = fakt.getBLOK_INFO_Y();
+        BLOK_POLOZKY_X = fakt.getBLOK_POLOZKY_X();
+        BLOK_POLOZKY_Y = fakt.getBLOK_POLOZKY_Y();
+        BLOK_CELKEM_X = fakt.getBLOK_CELKEM_X();
+        BLOK_CELKEM_Y = fakt.getBLOK_CELKEM_Y();
+        BLOK_QR_X = fakt.getBLOK_QR_X();
+        BLOK_QR_Y = fakt.getBLOK_QR_Y();
     }
 
     /**
@@ -149,12 +149,12 @@ public class PDF {
         cs.newLineAtOffset(100, 50);
         cs.showText("26.6.2018"); //TODO
         cs.newLineAtOffset(0, -15);
-        cs.showText("30.6.2018"); //TODO
+        cs.showText(fakt.getDatumSplatnosti()); //TODO
         cs.newLineAtOffset(0, -15);
-        cs.showText("Prevodem"); //TODO
+        cs.showText(fakt.getZpusobPlatby()); //TODO
         cs.newLineAtOffset(0, -20);
         cs.setFont(fontBold, 10);
-        cs.showText("1234567890/0800"); //TODO
+        cs.showText(fakt.getDodavatel().getCisloUctu()); //TODO
         cs.endText();
     }
 

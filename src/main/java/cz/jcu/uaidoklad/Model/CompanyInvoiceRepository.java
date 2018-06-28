@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author NikolaKraus
  */
-public interface DBInterface {
+public interface CompanyInvoiceRepository {
 
     public Faktura getFakruta(int id) throws Exception;
 
