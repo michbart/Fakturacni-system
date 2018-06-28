@@ -90,19 +90,13 @@ public class HlavniOknoController implements Initializable {
     
     @FXML
     private Text DICText;
-    
-    @FXML
-    private Text LoginText;
-    
+      
     @FXML
     private ChoiceBox<?> KontaktChoiceBox;
     
     @FXML
     private TextField DatumSplatnostiTField;
-    
-    @FXML
-    private TextField ZpusobUhradyTField;
-    
+        
     @FXML
     private TextField PopisZboziTextField;
     
@@ -120,6 +114,8 @@ public class HlavniOknoController implements Initializable {
     
     @FXML
     private ListView<?> KontaktyListView;
+    @FXML
+    private ChoiceBox<?> ZpusobUhradyChoiceBox;
 
     /**
      * Initializes the controller class.

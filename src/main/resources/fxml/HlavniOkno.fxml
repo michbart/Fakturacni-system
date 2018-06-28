@@ -32,7 +32,7 @@
          </font></Button>
       <TabPane prefHeight="536.0" prefWidth="768.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab fx:id="InformaceTab" style="-fx-background-color: #78909C;" text="Informace">
+          <Tab fx:id="InformaceTab" text="Informace">
             <content>
               <AnchorPane fx:id="InformacePane" minHeight="0.0" minWidth="0.0" prefHeight="444.0" prefWidth="725.0" style="-fx-background-color: #78909C;">
                      <children>
@@ -94,7 +94,7 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-          <Tab fx:id="VytvorFakturuTab" style="-fx-background-color: #78909C;" text="Vytvořit fakturu">
+          <Tab fx:id="VytvorFakturuTab" text="Vytvořit fakturu">
             <content>
               <AnchorPane fx:id="VytvorFakturuPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #78909C;">
                      <children>
@@ -109,7 +109,6 @@
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="DatumSplatnostiTField" layoutX="210.0" layoutY="76.0" promptText="Datum splatnosti" style="-fx-background-color: #CFD8DC;" />
                         <Label layoutX="210.0" layoutY="116.0" text="Položky">
                            <font>
                               <Font size="15.0" />
@@ -125,15 +124,17 @@
                               <Font size="15.0" />
                            </font>
                         </Label>
+                        <DatePicker fx:id="datumSplatnostiDate" layoutX="191.0" layoutY="76.0" promptText="Datum splatnosti" style="-fx-background-color: #455A64;" />
+                        <ListView layoutX="210.0" layoutY="185.0" prefHeight="322.0" prefWidth="506.0" style="-fx-background-color: #90A4AE;" />
                      </children></AnchorPane>
             </content>
           </Tab>
-            <Tab fx:id="SeznamFakturTab" style="-fx-background-color: #78909C;" text="Seznam faktur">
+            <Tab fx:id="SeznamFakturTab" text="Seznam faktur">
                <content>
                   <ListView fx:id="SeznamFakturListView" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #78909C;" />
                </content>
             </Tab>
-            <Tab fx:id="KontaktyTab" style="-fx-background-color: #78909C;" text="Kontakty">
+            <Tab fx:id="KontaktyTab" text="Kontakty">
                <content>
                   <ListView fx:id="KontaktyListView" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #78909C;" />
                </content>
