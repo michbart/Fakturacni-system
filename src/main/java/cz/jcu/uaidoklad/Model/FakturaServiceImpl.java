@@ -69,5 +69,48 @@ public class FakturaServiceImpl implements FakturaService {
             //Logger.getLogger(FakturaServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    @Override
+    public Polozka getPolozkaById(int id) {
+        try {
+            return db.getPolozka(id);
+        } catch (Exception ex) {
+            //Logger.getLogger(FakturaServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    @Override
+    public List<Polozka> getPolozky() {
+        try {
+            return db.getListPolozek();
+        } catch (Exception ex) {
+            Logger.getLogger(FakturaServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    @Override
+    public void createPolozka(Polozka p) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void updatePolozka(Polozka p) {
+        try {
+            db.zmenPolozku(p);
+        } catch (Exception ex) {
+            //Logger.getLogger(FakturaServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public void deletePolozka(int id) {
+        try {
+            db.smazPolozku(id);
+        } catch (Exception ex) {
+            //Logger.getLogger(FakturaServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
 }
