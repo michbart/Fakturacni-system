@@ -6,6 +6,7 @@
 package cz.jcu.uaidoklad.Model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -22,6 +23,7 @@ public class Faktura implements Serializable {
     private String datumSplatnosti;
     private String zpusobPlatby;
     private int typ;
+    private ArrayList<String> platba;
     /* X a Y pozice zacatku bloku informaci o dodavateli */
     private int BLOK_DODAVATEL_X;
     private int BLOK_DODAVATEL_Y;
@@ -50,6 +52,9 @@ public class Faktura implements Serializable {
     private int BLOK_CELKEM2_X;
     private int BLOK_CELKEM2_Y;
 
+    public Faktura(){
+        naplnPlatbu();
+    }
     /**
      * Konstruktor nove faktury
      *
@@ -69,8 +74,8 @@ public class Faktura implements Serializable {
         this.cislo = cislo;
         this.datumSplatnosti = datumSplatnosti;
         this.zpusobPlatby = zpusobPlatby;
-        this.typ=typ;
-        vyberTyp(typ);
+        this.typ = typ;
+        vyberTyp(typ);  
     }
 
     public Faktura(int id, int cislo, String datumSplatnosti, String zpusobPlatby, int typ) {
@@ -78,11 +83,18 @@ public class Faktura implements Serializable {
         this.cislo = cislo;
         this.datumSplatnosti = datumSplatnosti;
         this.zpusobPlatby = zpusobPlatby;
-        this.typ=typ;
+        this.typ = typ;
         vyberTyp(typ);
     }
 
-    private void vyberTyp(int typ){
+    private void naplnPlatbu(){
+        platba = new ArrayList<>();
+        platba.add("Prevodem");
+        platba.add("Hotove");
+        platba.add("Kartou");
+    }
+    
+    private void vyberTyp(int typ) {
         switch (typ) {
             case 1: {
                 BLOK_DODAVATEL_X = 50;
@@ -125,11 +137,14 @@ public class Faktura implements Serializable {
         }
     }
 
+    public ArrayList<String> getPlatba() {
+        return platba;
+    }
+
     public int getTyp() {
         return typ;
     }
-    
-    
+
     public int getBLOK_DODAVATEL_X() {
         return BLOK_DODAVATEL_X;
     }
@@ -201,8 +216,6 @@ public class Faktura implements Serializable {
     public int getBLOK_CELKEM2_Y() {
         return BLOK_CELKEM2_Y;
     }
-
-    
 
     /**
      * Getter pro ziskani ID faktury

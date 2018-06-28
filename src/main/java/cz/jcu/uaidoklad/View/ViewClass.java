@@ -7,6 +7,7 @@ package cz.jcu.uaidoklad.View;
 
 import cz.jcu.uaidoklad.Model.Faktura;
 import cz.jcu.uaidoklad.Model.FakturaService;
+import cz.jcu.uaidoklad.Model.FakturaServiceImpl;
 import cz.jcu.uaidoklad.Model.Polozka;
 import java.util.List;
 
@@ -18,7 +19,8 @@ public class ViewClass implements View {
 
     FakturaService fs;
 
-    public ViewClass() {
+    public ViewClass() throws Exception {
+        fs = new FakturaServiceImpl();
     }
     
     
@@ -40,6 +42,11 @@ public class ViewClass implements View {
     @Override
     public List<Polozka> getPolozky() {
         return fs.getPolozky();
+    }
+
+    @Override
+    public List<String> getPlatba() {
+        return fs.getPlatba();
     }
     
 }

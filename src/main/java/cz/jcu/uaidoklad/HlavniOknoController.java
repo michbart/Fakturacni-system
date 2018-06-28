@@ -39,20 +39,19 @@ import javafx.stage.Stage;
  */
 public class HlavniOknoController implements Initializable {
 
-    View v;
-    Controller c;
-    FakturaRepositoryImpl db;
-    Firma f1;
-    HashMap<Integer, Integer> polozky;
-    Faktura f;
-    FirmaRepositoryMock firmaMock;
+    private View v;
+    private Controller c;
+    private FakturaRepositoryImpl db;
+    private Firma f1;
+    private HashMap<Integer, Integer> polozky;
+    private Faktura f;
+    private FirmaRepositoryMock firmaMock;
 
     @FXML
     private Button ZavritBtn;
 
     @FXML
     private Button UlozitBtn;
-
 
     @FXML
     private Button PDFBtn;
@@ -206,6 +205,10 @@ public class HlavniOknoController implements Initializable {
         mobilLabel.setText(firmaMock.getFirmy().get(0).getTelefon());
     }
 
+    private void naplnPlatbu(){
+        v.getPlatba();
+    }    
+    
     @FXML
     private void ZavritClickedBtn(ActionEvent event) {
         Stage stage = (Stage) ZavritBtn.getScene().getWindow();

@@ -14,7 +14,8 @@ import java.util.List;
  * @author Michal
  */
 public interface View {
-
+    List<String> getPlatba();
+    
     Faktura getFakturaById(int id);
 
     List<Faktura> getFaktury();
