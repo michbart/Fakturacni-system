@@ -33,9 +33,6 @@ public class FirmaRepositoryMock implements FirmaRepository {
         return firmy;
     }
 
-    public void setFirmy(ArrayList<Firma> firmy) {
-        this.firmy = firmy;
-    }
     
     
 }

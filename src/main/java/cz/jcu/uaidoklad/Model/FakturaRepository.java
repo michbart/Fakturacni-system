@@ -21,13 +21,13 @@ public interface FakturaRepository {
 
     public void zmenFakturu(Faktura faktura) throws Exception;
 
-    public Firma getUzivatel(int id) throws Exception;
+    //public Firma getUzivatel(int id) throws Exception;
 
-    public Firma getUzivatel(String login, int heslo) throws Exception;
+    //public Firma getUzivatel(String login, int heslo) throws Exception;
 
-    public void smazUzivatele(int id)throws Exception;
+    //public void smazUzivatele(int id)throws Exception;
 
-    public void zmenUzivatele(Firma uzivatel) throws Exception;
+    //public void zmenUzivatele(Firma uzivatel) throws Exception;
 
     public ArrayList<Firma> getListUzivatel() throws Exception;
 
