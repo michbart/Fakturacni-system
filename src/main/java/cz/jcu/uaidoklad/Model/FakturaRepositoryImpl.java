@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  *
  * @author Michal
  */
-public class Databaze implements FakturaRepository {
+public class FakturaRepositoryImpl implements FakturaRepository {
 
     private String driver = "com.mysql.jdbc.Driver";
     private Connection pripojeni;
@@ -32,7 +32,7 @@ public class Databaze implements FakturaRepository {
      * @param heslo heslo k DB
      * @throws Exception
      */
-    public Databaze(String url, String uzivatel, String heslo) throws Exception {
+    public FakturaRepositoryImpl(String url, String uzivatel, String heslo) throws Exception {
         try {
             Class.forName(driver);
             pripojeni = (Connection) DriverManager.getConnection(url, uzivatel, heslo);
@@ -273,7 +273,7 @@ public class Databaze implements FakturaRepository {
   * @return
   * @throws Exception 
   */
-    @Override
+//    @Override
     public ArrayList<Firma> getListUzivatel() throws Exception {
         String dotaz = "SELECT * FROM Uzivatel;";
         ArrayList<Firma> vystup = new ArrayList();

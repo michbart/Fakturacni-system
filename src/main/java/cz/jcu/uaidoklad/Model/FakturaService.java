@@ -23,5 +23,5 @@ public interface FakturaService {
     
     void deleteFaktura(int id);
     
-    void exportAsPDF(Faktura f, Databaze db);
+    void exportAsPDF(Faktura f, FakturaRepositoryImpl db);
 }

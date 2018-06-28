@@ -19,7 +19,7 @@ public class FakturaServiceImpl implements FakturaService {
     private Faktura fa = new Faktura(1,12345, dod, odb, polozky, "dnes", "prevodem",1);
     
     @Override
-    public void exportAsPDF(Faktura f, Databaze db) {
+    public void exportAsPDF(Faktura f, FakturaRepositoryImpl db) {
         new PDF(fa, db).vygeneruj();
     }
 
