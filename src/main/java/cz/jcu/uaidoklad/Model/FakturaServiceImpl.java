@@ -53,7 +53,11 @@ public class FakturaServiceImpl implements FakturaService {
 
     @Override
     public void createFaktura(Faktura f) {
-        
+        try {
+            db.ulozFaktura(f);
+        } catch (Exception ex) {
+            //Logger.getLogger(FakturaServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -96,7 +100,11 @@ public class FakturaServiceImpl implements FakturaService {
 
     @Override
     public void createPolozka(Polozka p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            db.ulozPolozka(p);
+        } catch (Exception ex) {
+            //Logger.getLogger(FakturaServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
