@@ -7,25 +7,34 @@ package cz.jcu.uaidoklad.Model;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Michal
  */
 public class FakturaServiceImpl implements FakturaService {
-    Firma dod = new Firma(1, "nazev", "ulice", 555, "mesto", "stat", 123, 456, 1111111, "email","123/0900");
-    Firma odb = new Firma(2, "nazev2", "ulice2", 555, "mesto2", "stat2", 123, 456, 1111111, "email2", "123/0900");
-    HashMap<Integer, Integer> polozky = new HashMap<>();
-    private Faktura fa = new Faktura(1,12345, dod, odb, polozky, "dnes", "prevodem",1);
+    
+    private FakturaRepository db;
+    
+    public FakturaServiceImpl() throws Exception{
+        db = new Databaze("sql7.freemysqlhosting.net", "sql7244879", "CBmxSwfY9y");
+    }
     
     @Override
     public void exportAsPDF(Faktura f, Databaze db) {
-        new PDF(fa, db).vygeneruj();
+        new PDF(f, db).vygeneruj();
     }
 
     @Override
     public Faktura getFakturaById(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            return db.getFaktura(id);
+        } catch (Exception ex) {
+            //Logger.getLogger(FakturaServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
     @Override
