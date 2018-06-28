@@ -287,7 +287,7 @@ public class PDF {
                 "Cislo faktury: " + fakt.getCislo() + "\n"
                 + "Bankovni spojeni: " + fakt.getDodavatel().getCisloUctu() + "\n"
                 + "Datum splatnosti: " + fakt.getDatumSplatnosti(),
-                 200, 200));
+                 150, 150));
         BufferedImage bim = ImageIO.read(bais);
         PDImageXObject pdImage = LosslessFactory.createFromImage(document, bim);
         cs.drawImage(pdImage, BLOK_QR_X, BLOK_QR_Y);
@@ -300,7 +300,7 @@ public class PDF {
      */
     private void ukonciZapis() throws IOException {
         cs.close();
-        document.save("ha" + ".pdf");
+        document.save(fakt.getCislo() + ".pdf");
         document.close();
     }
 }

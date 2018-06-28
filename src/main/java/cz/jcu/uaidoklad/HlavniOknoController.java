@@ -140,8 +140,9 @@ public class HlavniOknoController implements Initializable {
     }
     public HlavniOknoController() throws Exception{
         db = new FakturaRepositoryImpl("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7244879?characterEncoding=UTF-8", "sql7244879","CBmxSwfY9y");
-        f1 = new Firma(1, "nazev", "ulice", 555, "mesto", "stat", 123, 456, 1111111, "email", "123/0900");
-        f = new Faktura(1,20,f1,f1, polozky,"30.2.2019", "prevodem",1);
+        
+        f1 = new Firma(1, "nazev", "ulice", 555, "mesto", "stat", 123, 456, "1111111", "email", "123/0900");
+        f = new Faktura(1,201800001,f1,f1, polozky,"30.2.2019", "prevodem",1);
         polozky = new HashMap<>();
         polozky.put(1,2);
         c = new ControllerClass();
