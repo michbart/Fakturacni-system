@@ -399,7 +399,7 @@ public class FakturaRepositoryImpl implements FakturaRepository {
         nazevHodnota.put("telefon", firma.getTelefon());
         nazevHodnota.put("email", firma.getEmail());
         nazevHodnota.put("cisloUctu", firma.getCisloUctu());
-        zapsatDB("Polozka", nazevHodnota);
+        zapsatDB("Firma", nazevHodnota);
     }
 //int id, String nazev, String login, int heslo, String ulice, int psc, String mesto, String stat, int ic, int dic, int telefon, String email, String cisloUctu) {
     @Override
