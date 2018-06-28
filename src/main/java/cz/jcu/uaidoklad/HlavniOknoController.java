@@ -16,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
@@ -93,10 +94,7 @@ public class HlavniOknoController implements Initializable {
       
     @FXML
     private ChoiceBox<?> KontaktChoiceBox;
-    
-    @FXML
-    private TextField DatumSplatnostiTField;
-        
+           
     @FXML
     private TextField PopisZboziTextField;
     
@@ -116,6 +114,8 @@ public class HlavniOknoController implements Initializable {
     private ListView<?> KontaktyListView;
     @FXML
     private ChoiceBox<?> ZpusobUhradyChoiceBox;
+    @FXML
+    private DatePicker datumSplatnostiDate;
 
     /**
      * Initializes the controller class.
