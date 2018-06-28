@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class FXMLController implements Initializable {
+    
 
     @FXML
     private Button PrihlasitBtn;
@@ -33,22 +34,8 @@ public class FXMLController implements Initializable {
     }
 
     /**
-     * metoda kotrolujici, jestli je zadany text v text fieldu
-     */
-    /*
-    void kontrola() {
-        String login = loginTextField.getText();
-        String heslo = HesloTextField.getText();
-
-        Boolean kontrola = login.isEmpty() || heslo.isEmpty();
-        if (kontrola) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setContentText("Nezadali jste heslo nebo login.");
-            alert.showAndWait();
-            return ;
-        }
-    }
+     * 
+     * @param event, udalost pri kliknuti na tlacitko prihlasit
      */
     @FXML
     private void PrihlasitClickedBtn(ActionEvent event) {
@@ -83,20 +70,13 @@ public class FXMLController implements Initializable {
         stage.close();
 
     }
+    /**
+     * 
+     * @param event, udalost pri kliknuti na registraci
+     */
 
     @FXML
     private void RegistrovatClickedBtn(ActionEvent event) {
-        String login = loginTextField.getText();
-        String heslo = HesloPassField.getText();
-
-        Boolean kontrola = login.isEmpty() || heslo.isEmpty();
-        if (kontrola) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setContentText("Nezadali jste heslo nebo login.");
-            alert.showAndWait();
-            return;
-        }
 
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/Registrace.fxml"));

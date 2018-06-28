@@ -14,9 +14,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -48,8 +51,6 @@ public class HlavniOknoController implements Initializable {
     @FXML
     private AnchorPane VytvorFakturuPane;
     @FXML
-    private AnchorPane SeznamFakturPane;
-    @FXML
     private Tab PridatKontaktTab;
     @FXML
     private AnchorPane PridatKontaktPane;
@@ -72,7 +73,45 @@ public class HlavniOknoController implements Initializable {
     @FXML
     private TextField DICOdberateleTField;
     @FXML
-    private AnchorPane KontaktyPane;
+    private Text NazevText;
+    @FXML
+    private Text UliceText;
+    @FXML
+    private Text MestoText;
+    @FXML
+    private Text PSCText;
+    @FXML
+    private Text StatText;
+    @FXML
+    private Text MobilText;
+    @FXML
+    private Text CisloUctuText;
+    @FXML
+    private Text EmailText;
+    @FXML
+    private Text ICOText;
+    @FXML
+    private Text DICText;
+    @FXML
+    private Text LoginText;
+    @FXML
+    private ChoiceBox<?> KontaktChoiceBox;
+    @FXML
+    private TextField DatumSplatnostiTField;
+    @FXML
+    private TextField ZpusobUhradyTField;
+    @FXML
+    private TextField PopisZboziTextField;
+    @FXML
+    private TextField PocetKsZboziTextField;
+    @FXML
+    private TextField CenaKusZboziTField;
+    @FXML
+    private Button DalsiPolozkaBtn;
+    @FXML
+    private ListView<?> SeznamFakturListView;
+    @FXML
+    private ListView<?> KontaktyListView;
 
     /**
      * Initializes the controller class.
@@ -82,6 +121,10 @@ public class HlavniOknoController implements Initializable {
         // TODO
     }    
 
+    /**
+     * 
+     * @param event, odhlaseni a vraceni se na uvodni okno
+     */
     @FXML
     private void OdhlasitClickedBtn(ActionEvent event) {
         //otevre se uvodni okno
@@ -113,6 +156,10 @@ public class HlavniOknoController implements Initializable {
 
     @FXML
     private void PDFClickedBtn(ActionEvent event) {
+    }
+
+    @FXML
+    private void DalsiPolozkaClickedBtn(ActionEvent event) {
     }
     
 }
