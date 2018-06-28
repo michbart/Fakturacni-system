@@ -135,7 +135,7 @@ public class Databaze implements FakturaRepository {
      * @throws Exception Chyba pri cteni z DB
      */
     @Override
-    public Faktura getFakruta(int id) throws Exception {
+    public Faktura getFaktura(int id) throws Exception {
         String dotaz = "SELECT * FROM Faktura WHERE idRecept = '" + id + "';";
         //String typFaktury = ziskatUdajeDB(dotaz, "typ").get(0);
         Firma Dodavatel = this.getUzivatel(Integer.valueOf(ziskatUdajeDB(dotaz, "dodavatel").get(0)));
