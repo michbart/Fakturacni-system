@@ -12,27 +12,55 @@ import java.util.HashMap;
  *
  * @author Michal
  */
-public abstract class Faktura implements Serializable {
+public class Faktura implements Serializable {
 
-    protected int id;
-    protected Uzivatel dodavatel;
-    protected Uzivatel odberatel;
-    protected HashMap<Integer, Integer> polozky;
-    protected int cislo;
-    protected String datumSplatnosti;
-    protected String zpusobPlatby;
+    private int id;
+    private Uzivatel dodavatel;
+    private Uzivatel odberatel;
+    private HashMap<Integer, Integer> polozky;
+    private int cislo;
+    private String datumSplatnosti;
+    private String zpusobPlatby;
+    /* X a Y pozice zacatku bloku informaci o dodavateli */
+    private int BLOK_DODAVATEL_X;
+    private int BLOK_DODAVATEL_Y;
+    /* X a Y pozice zacatku bloku informaci o odberateli */
+    private int BLOK_ODBERATEL_X;
+    private int BLOK_ODBERATEL_Y;
+    /* X a Y pozice zacatku bloku info (data splatnosti)  */
+    private int BLOK_INFO_X;
+    private int BLOK_INFO_Y;
+    /* X a Y pozice zacatku bloku polozek */
+    private int BLOK_POLOZKY_X;
+    private int BLOK_POLOZKY_Y;
+    /* X a Y pozice zacatku bloku celkem (cena bez dph a s dph*/
+    private int BLOK_CELKEM_X;
+    private int BLOK_CELKEM_Y;
+    /* X a Y pozice zacatku bloku QR kodu */
+    private int BLOK_QR_X;
+    private int BLOK_QR_Y;
+    /* X a Y pozice cisla faktury (FAKTURA 2016-04 danovy doklad) */
+    private int BLOK_CISLA_X;
+    private int BLOK_CISLA_Y;
+    /* X a Y pozice zacatku bloku info (ucet, var. symbol, zpusob platby)  */
+    private int BLOK_INFO2_X;
+    public int BLOK_INFO2_Y;
+    /* X a Y pozice zacatku bloku celkem (cena vcetne dph - zvyraznena) */
+    private int BLOK_CELKEM2_X;
+    private int BLOK_CELKEM2_Y;
 
     /**
      * Konstruktor nove faktury
+     *
      * @param id
      * @param cislo
      * @param dodavatel
      * @param odberatel
      * @param polozky
      * @param datumSplatnosti
-     * @param zpusobPlatby 
+     * @param zpusobPlatby
      */
-    public Faktura(int id, int cislo, Uzivatel dodavatel, Uzivatel odberatel, HashMap<Integer, Integer> polozky, String datumSplatnosti, String zpusobPlatby) {
+    public Faktura(int id, int cislo, Uzivatel dodavatel, Uzivatel odberatel, HashMap<Integer, Integer> polozky, String datumSplatnosti, String zpusobPlatby, int typ) {
         this.id = id;
         this.dodavatel = dodavatel;
         this.odberatel = odberatel;
@@ -40,52 +68,134 @@ public abstract class Faktura implements Serializable {
         this.cislo = cislo;
         this.datumSplatnosti = datumSplatnosti;
         this.zpusobPlatby = zpusobPlatby;
+        vyberTyp(typ);
     }
-    
-    public Faktura(int id, int cislo, HashMap<Integer, Integer> polozky, String datumSplatnosti, String zpusobPlatby) {
+
+    public Faktura(int id, int cislo, HashMap<Integer, Integer> polozky, String datumSplatnosti, String zpusobPlatby, int typ) {
         this.id = id;
         this.polozky = polozky;
         this.cislo = cislo;
         this.datumSplatnosti = datumSplatnosti;
         this.zpusobPlatby = zpusobPlatby;
+        vyberTyp(typ);
+    }
+
+    private void vyberTyp(int typ){
+        switch (typ) {
+            case 1: {
+                BLOK_DODAVATEL_X = 50;
+                BLOK_DODAVATEL_Y = 750;
+                BLOK_ODBERATEL_X = 300;
+                BLOK_ODBERATEL_Y = 630;
+                BLOK_INFO_X = 50;
+                BLOK_INFO_Y = 650;
+                BLOK_POLOZKY_X = 50;
+                BLOK_POLOZKY_Y = 390;
+                BLOK_CELKEM_X = 300;
+                BLOK_CELKEM_Y = 50;
+                BLOK_QR_X = 70;
+                BLOK_QR_Y = 420;
+                break;
+            }
+            case 2: {
+                BLOK_CISLA_X = 548;
+                BLOK_CISLA_Y = 746;
+                BLOK_DODAVATEL_X = 30;
+                BLOK_DODAVATEL_Y = 315;
+                BLOK_ODBERATEL_X = 390;
+                BLOK_ODBERATEL_Y = 654;
+                BLOK_QR_X = 515;
+                BLOK_QR_Y = 300;
+                BLOK_INFO_X = 373;
+                BLOK_INFO_Y = 654;
+                BLOK_INFO2_X = 30;
+                BLOK_INFO2_Y = 755;
+                BLOK_POLOZKY_X = 30;
+                BLOK_POLOZKY_Y = 593;
+                BLOK_CELKEM_X = 391;
+                BLOK_CELKEM_Y = 462;
+                BLOK_CELKEM2_X = 30;
+                BLOK_CELKEM2_Y = 752;
+                break;
+            }
+            default:
+                break;
+        }
     }
     
+    public int getBLOK_DODAVATEL_X() {
+        return BLOK_DODAVATEL_X;
+    }
 
-    public abstract int blokDodavatelX();
+    public int getBLOK_DODAVATEL_Y() {
+        return BLOK_DODAVATEL_Y;
+    }
 
-    public abstract int blokDodavatelY();
+    public int getBLOK_ODBERATEL_X() {
+        return BLOK_ODBERATEL_X;
+    }
 
-    public abstract int blokOdberatelX();
+    public int getBLOK_ODBERATEL_Y() {
+        return BLOK_ODBERATEL_Y;
+    }
 
-    public abstract int blokOdberatelY();
+    public int getBLOK_INFO_X() {
+        return BLOK_INFO_X;
+    }
 
-    public abstract int blokInfoX();
+    public int getBLOK_INFO_Y() {
+        return BLOK_INFO_Y;
+    }
 
-    public abstract int blokInfoY();
+    public int getBLOK_POLOZKY_X() {
+        return BLOK_POLOZKY_X;
+    }
 
-    public abstract int blokPolozkyX();
+    public int getBLOK_POLOZKY_Y() {
+        return BLOK_POLOZKY_Y;
+    }
 
-    public abstract int blokPolozkyY();
+    public int getBLOK_CELKEM_X() {
+        return BLOK_CELKEM_X;
+    }
 
-    public abstract int blokCelkemX();
+    public int getBLOK_CELKEM_Y() {
+        return BLOK_CELKEM_Y;
+    }
 
-    public abstract int blokCelkemY();
+    public int getBLOK_QR_X() {
+        return BLOK_QR_X;
+    }
 
-    public abstract int blokQrX();
+    public int getBLOK_QR_Y() {
+        return BLOK_QR_Y;
+    }
 
-    public abstract int blokQrY();
+    public int getBLOK_CISLA_X() {
+        return BLOK_CISLA_X;
+    }
+
+    public int getBLOK_CISLA_Y() {
+        return BLOK_CISLA_Y;
+    }
+
+    public int getBLOK_INFO2_X() {
+        return BLOK_INFO2_X;
+    }
+
+    public int getBLOK_INFO2_Y() {
+        return BLOK_INFO2_Y;
+    }
+
+    public int getBLOK_CELKEM2_X() {
+        return BLOK_CELKEM2_X;
+    }
+
+    public int getBLOK_CELKEM2_Y() {
+        return BLOK_CELKEM2_Y;
+    }
+
     
-    public abstract int blokInfo2X();
-    
-    public abstract int blokInfo2Y();
-    
-    public abstract int blokCelkem2X();
-    
-    public abstract int blokCelkem2Y();
-    
-    public abstract int blokCislaX();
-    
-    public abstract int blokCislaY();
 
     /**
      * Getter pro ziskani ID faktury
@@ -112,11 +222,10 @@ public abstract class Faktura implements Serializable {
     public void setDatumSplatnosti(String datumSplatnosti) {
         this.datumSplatnosti = datumSplatnosti;
     }
-    
-    public String getZpusobPlatby(){
+
+    public String getZpusobPlatby() {
         return zpusobPlatby;
     }
-    
 
     /**
      * Getter pro ziskani cisla faktury
