@@ -7,6 +7,7 @@ package cz.jcu.uaidoklad.Controller;
 
 import cz.jcu.uaidoklad.Model.PDF;
 import cz.jcu.uaidoklad.Model.Faktura;
+import cz.jcu.uaidoklad.Model.FakturaRepositoryImpl;
 import cz.jcu.uaidoklad.Model.FakturaService;
 import cz.jcu.uaidoklad.Model.Firma;
 
@@ -21,6 +22,21 @@ public class ControllerClass implements Controller {
     @Override
     public void createFaktura(Faktura f) {
         fs.createFaktura(f);
+    }
+
+    @Override
+    public void updateFaktura(Faktura f) {
+        fs.updateFaktura(f);
+    }
+
+    @Override
+    public void deleteFaktura(int id) {
+        fs.deleteFaktura(id);
+    }
+
+    @Override
+    public void exportAsPDF(Faktura f, FakturaRepositoryImpl db) {
+        fs.exportAsPDF(f, db);
     }
 
     
