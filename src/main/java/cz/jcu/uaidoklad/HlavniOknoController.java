@@ -15,6 +15,8 @@ import cz.jcu.uaidoklad.View.View;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -34,13 +36,14 @@ import javafx.stage.Stage;
  * @author Tomáš
  */
 public class HlavniOknoController implements Initializable {
+
     View v;
     Controller c;
     FakturaRepositoryImpl db;
     Firma f1;
-    HashMap<Integer,Integer> polozky;
+    HashMap<Integer, Integer> polozky;
     Faktura f;
-    
+
     @FXML
     private Button ZavritBtn;
 
@@ -127,7 +130,7 @@ public class HlavniOknoController implements Initializable {
 
     @FXML
     private ListView<?> KontaktyListView;
-    
+
     @FXML
     private ListView<?> PolozkZboziListView;
 
@@ -138,16 +141,25 @@ public class HlavniOknoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-    public HlavniOknoController() throws Exception{
-        db = new FakturaRepositoryImpl("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7244879?characterEncoding=UTF-8", "sql7244879","CBmxSwfY9y");
-        
+
+    public HlavniOknoController() throws Exception {
+        Thread nacteniDB = new Thread(new Runnable(){
+            public void run(){
+                try {
+                    db = new FakturaRepositoryImpl("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7244879?characterEncoding=UTF-8", "sql7244879", "CBmxSwfY9y");
+                } catch (Exception ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+        });
+        nacteniDB.start();
         f1 = new Firma(1, "nazev", "ulice", 555, "mesto", "stat", 123, 456, "1111111", "email", "123/0900");
-        f = new Faktura(1,201800001,f1,f1, polozky,"30.2.2019", "prevodem",1);
+        f = new Faktura(1, 201800001, f1, f1, polozky, "30.2.2019", "prevodem", 1);
         polozky = new HashMap<>();
-        polozky.put(1,2);
+        polozky.put(1, 2);
         c = new ControllerClass();
     }
-    
+
     @FXML
     private void ZavritClickedBtn(ActionEvent event) {
         Stage stage = (Stage) ZavritBtn.getScene().getWindow();
