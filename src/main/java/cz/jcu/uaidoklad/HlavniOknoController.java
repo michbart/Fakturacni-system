@@ -167,7 +167,8 @@ public class HlavniOknoController implements Initializable {
         nastavDodavatele();
     }
     private void nastavDodavatele(){
-        
+        String neco="necoooo";
+        nazevLabel.setText(neco);
         
     }
 
