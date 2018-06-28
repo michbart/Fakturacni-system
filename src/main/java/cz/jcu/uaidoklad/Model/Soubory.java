@@ -18,30 +18,18 @@ import java.io.ObjectOutputStream;
  */
 public class Soubory {
     
-    private String cestaKSouborum;
-    
-    
-    
-    /**
-     * 
-     * @param cestaKSouborum
-     * @throws Exception 
-     */
+    private String cestaKSouboru;
     
     public Soubory(String cestaKSouborum) throws Exception {
-        File soubor = new File(cestaKSouborum);
-        if (!soubor.isDirectory()){
-            if (soubor.mkdirs()){
-                throw new Exception("Nastala chyba pri tvorbe adresare");
-            }
-        }
+        this.cestaKSouboru = cestaKSouboru;
+        overeniCesty(cestaKSouboru);
     }
     
-    
+   
     
   
  /**
-  * 
+  * Overi cestu k souboru
   * @param cesta
   * @throws Exception 
   */
@@ -58,7 +46,7 @@ public class Soubory {
     
 
     /**
-     * 
+     * Ulozi obj faktura do souboru
      * @param faktura
      * @throws Exception 
      */
@@ -66,9 +54,9 @@ public class Soubory {
     
     void ulozeniFaktury(Faktura faktura) throws Exception {
         
-   // TO DO: zatim neznam parametr faktury pri ukladani -> faktura.ziskatNazev();
+    overeniCesty(cestaKSouboru);
    
-    try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(new File(cestaKSouborum + faktura + ".dat")));) {
+    try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(new File(cestaKSouboru + cisloFaktury + ".dat")));) {
             oos.writeObject(faktura);
         } catch (Exception e) {
             throw new Exception("Nastala chyba pri ukladani faktury do souboru.");
@@ -79,12 +67,15 @@ public class Soubory {
 
 
 /**
- *  TO DO: opet parametr nazevFaktury
+ *  Nacte obj faktura ze souboru
  */
 
     Faktura nacistFakturu(String nazevFaktury) throws Exception {
+        
         Faktura faktura;
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(new File(cestaKSouborum + nazevFaktury + ".dat")));) {
+        
+        overeniCesty(cestaKSouboru);
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(new File(cestaKSouboru + cisloFaktury + ".dat")));) {
             faktura = (Faktura) ois.readObject();
         } catch (Exception ex) {
             throw new Exception("Nastala chyba nacitani faktury ze souboru.");
