@@ -23,6 +23,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
@@ -50,8 +51,6 @@ public class HlavniOknoController implements Initializable {
     @FXML
     private Button UlozitBtn;
 
-    @FXML
-    private Button UpravitBtn;
 
     @FXML
     private Button PDFBtn;
@@ -133,6 +132,9 @@ public class HlavniOknoController implements Initializable {
 
     @FXML
     private ListView<?> PolozkZboziListView;
+    
+    @FXML
+    private Label nazevLabel;
 
     /**
      * Initializes the controller class.
@@ -170,9 +172,6 @@ public class HlavniOknoController implements Initializable {
     private void UlozitClickedBtn(ActionEvent event) {
     }
 
-    @FXML
-    private void UpravitClickedBtn(ActionEvent event) {
-    }
 
     @FXML
     private void PDFClickedBtn(ActionEvent event) {
