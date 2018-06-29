@@ -10,6 +10,7 @@ import cz.jcu.uaidoklad.Controller.ControllerClass;
 import cz.jcu.uaidoklad.Model.Faktura;
 import cz.jcu.uaidoklad.Model.FakturaRepository;
 import cz.jcu.uaidoklad.Model.FakturaRepositoryImpl;
+import cz.jcu.uaidoklad.Model.FakturaRepositoryMock;
 import cz.jcu.uaidoklad.Model.Firma;
 import cz.jcu.uaidoklad.Model.FirmaRepositoryMock;
 import cz.jcu.uaidoklad.View.View;
@@ -53,6 +54,7 @@ public class HlavniOknoController implements Initializable {
     private HashMap<Integer, Integer> polozky;
     private Faktura f;
     private FirmaRepositoryMock firmaMock;
+    private FakturaRepositoryMock fakturaMock;
 
     @FXML
     private Button ZavritBtn;
@@ -181,6 +183,7 @@ public class HlavniOknoController implements Initializable {
         }
         ZakaznikComboBox.getItems().clear();
         firmaMock = new FirmaRepositoryMock();
+        fakturaMock = new FakturaRepositoryMock();
         naplnFirmy();
         nastavDodavatele();
         naplnPlatbu();
@@ -254,7 +257,7 @@ public class HlavniOknoController implements Initializable {
     private void PDFClickedBtn(ActionEvent event) {
         Alert alert;
         try {
-            Faktura fa = new Faktura(101, 2001, firmaMock.getFirmy().get(0), ZakaznikComboBox.getSelectionModel().getSelectedItem(), polozky, datumSplatnostiDate.getValue().toString(), ZpusobUhradyComboBox.getValue(), 1);
+            Faktura fa = new Faktura(101, 2001, firmaMock.getFirmy().get(0), ZakaznikComboBox.getSelectionModel().getSelectedItem(), fakturaMock.getFaktura(1).getPolozky(), datumSplatnostiDate.getValue().toString(), ZpusobUhradyComboBox.getValue(), 1);
 
             c.exportAsPDF(fa, db);
             c.createFaktura(fa);
