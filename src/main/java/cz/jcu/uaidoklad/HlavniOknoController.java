@@ -11,6 +11,7 @@ import cz.jcu.uaidoklad.Model.Faktura;
 import cz.jcu.uaidoklad.Model.FakturaRepository;
 import cz.jcu.uaidoklad.Model.FakturaRepositoryImpl;
 import cz.jcu.uaidoklad.Model.FakturaRepositoryMock;
+import cz.jcu.uaidoklad.Model.FakturaService;
 import cz.jcu.uaidoklad.Model.Firma;
 import cz.jcu.uaidoklad.Model.FirmaRepositoryMock;
 import cz.jcu.uaidoklad.View.View;
@@ -22,6 +23,9 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -38,10 +42,12 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
+import org.omg.CORBA.portable.ValueFactory;
 
 /**
  * FXML Controller class
@@ -52,12 +58,10 @@ public class HlavniOknoController implements Initializable {
 
     private View v;
     private Controller c;
-    private FakturaRepositoryImpl db;
     private HashMap<Integer, Integer> polozky;
     private Faktura f;
-    private FirmaRepositoryMock firmaMock;
-    private FakturaRepositoryMock fakturaMock;
-
+    private FakturaService fakturaService;
+    private ObservableList<Firma> oListStavaka;
     @FXML
     private Button ZavritBtn;
 
@@ -129,6 +133,13 @@ public class HlavniOknoController implements Initializable {
 
     @FXML
     private Tab KontaktyTab;
+    
+    @FXML
+    private ListView<?> SeznamFakturListView;
+
+    @FXML
+
+    private ListView<?> KontaktyListView;
 
     @FXML
     private ListView<?> PolozkZboziListView;
@@ -167,9 +178,9 @@ public class HlavniOknoController implements Initializable {
     @FXML
     private ComboBox<String> ZpusobUhradyComboBox;
     @FXML
-    private TableView<?> tabulkaKontaky;
+    private TableView<Firma> tabulkaKontaky;
     @FXML
-    private TableColumn<?, ?> nazevKontak;
+    private TableColumn<Firma, String> nazevKontak;
     @FXML
     private TableColumn<?, ?> uliceKontakty;
     @FXML
@@ -213,11 +224,12 @@ public class HlavniOknoController implements Initializable {
             //Logger.getLogger(HlavniOknoController.class.getName()).log(Level.SEVERE, null, ex);
         }
         ZakaznikComboBox.getItems().clear();
-        firmaMock = new FirmaRepositoryMock();
-        fakturaMock = new FakturaRepositoryMock();
+        
+        fakturaService = new FakturaRepositoryMock();
         naplnFirmy();
         nastavDodavatele();
         naplnPlatbu();
+        oListStavaka = FXCollections.observableArrayList(fakturaService.getFirmy());
         naplnListFirem();
         naplnListFaktur();
     }
@@ -275,7 +287,14 @@ public class HlavniOknoController implements Initializable {
 
     }
 
-    private void naplnListFirem() {
+    
+    private void naplnListFirem(){
+        for(Firma f : firmaMock.getFirmy()){
+            tabulkaKontaky.setItems(oListStavaka);
+       nazevKontak.setText(value);
+        }
+            
+       
 
     }
 
@@ -297,7 +316,7 @@ public class HlavniOknoController implements Initializable {
     private void PDFClickedBtn(ActionEvent event) {
         Alert alert;
         try {
-            Faktura fa = new Faktura(101, 2001, firmaMock.getFirmy().get(0), ZakaznikComboBox.getSelectionModel().getSelectedItem(), fakturaMock.getFaktura(1).getPolozky(), datumSplatnostiDate.getValue().toString(), ZpusobUhradyComboBox.getValue(), 1);
+            Faktura fa = new Faktura(101, 2001, firmaMock.getFirmy().get(0), ZakaznikComboBox.getSelectionModel().getSelectedItem(), fakturaService.getFaktura(1).getPolozky(), datumSplatnostiDate.getValue().toString(), ZpusobUhradyComboBox.getValue(), 1);
 
             c.exportAsPDF(fa, db);
             c.createFaktura(fa);
