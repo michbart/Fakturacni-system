@@ -38,7 +38,7 @@ public class PDF {
     private PDFont fontNormal = PDType1Font.HELVETICA;
     private PDFont fontBold = PDType1Font.HELVETICA_BOLD;
     private PDPageContentStream cs;
-    private FakturaRepositoryImpl db;
+    private FakturaService db;
     private FakturaRepositoryMock fakturaMock;
     private float celkovaCena = 0;
     public int BLOK_DODAVATEL_X;
@@ -54,7 +54,7 @@ public class PDF {
     public int BLOK_QR_X;
     public int BLOK_QR_Y;
 
-    public PDF(Faktura f, FakturaRepositoryImpl db) {
+    public PDF(Faktura f, FakturaService db) {
         this.fakt = f;
         this.db = db;
         document = new PDDocument();

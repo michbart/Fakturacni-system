@@ -41,7 +41,7 @@ public class ControllerClass implements Controller {
     }
 
     @Override
-    public void exportAsPDF(Faktura f, FakturaRepositoryImpl db) {
+    public void exportAsPDF(Faktura f, FakturaService db) {
         fs.exportAsPDF(f, db);
     }
 

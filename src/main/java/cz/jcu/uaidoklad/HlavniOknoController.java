@@ -221,11 +221,9 @@ public class HlavniOknoController implements Initializable {
         try {
             v = new ViewClass();
             c = new ControllerClass();
-<<<<<<< HEAD
-            fakturaService =  new FakturaServiceImpl();
-=======
+
             fakturaService = new FakturaServiceImpl();
->>>>>>> bb848f8e416eeac3fda2d3b60de5b49f44c3249c
+
         } catch (Exception ex) {
             //Logger.getLogger(HlavniOknoController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -244,11 +242,8 @@ public class HlavniOknoController implements Initializable {
         Thread nacteniDB = new Thread(new Runnable() {
             public void run() {
                 try {
-<<<<<<< HEAD
-                    db = new FakturaServiceImpl("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7244879?characterEncoding=UTF-8", "sql7244879", "CBmxSwfY9y");
-=======
+
                     db = new FakturaServiceImpl();//FakturaRepositoryImpl("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7244879?characterEncoding=UTF-8", "sql7244879", "CBmxSwfY9y");
->>>>>>> bb848f8e416eeac3fda2d3b60de5b49f44c3249c
                 } catch (Exception ex) {
                     System.out.println(ex.getMessage());
                 }
@@ -256,7 +251,7 @@ public class HlavniOknoController implements Initializable {
         });
         nacteniDB.start();
 
-        polozky = new HashMap<>();
+        polozky = new HashMap();
         polozky.put(1, 2);
 
     }
@@ -328,7 +323,7 @@ public class HlavniOknoController implements Initializable {
         try {
             Faktura fa = new Faktura(101, 2001, fakturaService.getFirmy().get(0), ZakaznikComboBox.getSelectionModel().getSelectedItem(), fakturaService.getFakturaById(1).getPolozky(), datumSplatnostiDate.getValue().toString(), ZpusobUhradyComboBox.getValue(), 1);
 
-            c.exportAsPDF(fa, (FakturaRepositoryImpl) db);
+            c.exportAsPDF(fa, db);
             c.createFaktura(fa);
             alert = new Alert(AlertType.INFORMATION, "Faktura č." + fa.getCislo() + " byla vygenerována", ButtonType.OK);
             alert.showAndWait();

@@ -27,7 +27,7 @@ public class FakturaServiceImpl implements FakturaService {
     }
     
     @Override
-    public void exportAsPDF(Faktura f, FakturaRepositoryImpl db) {
+    public void exportAsPDF(Faktura f, FakturaService db) {
         try {
             new PDF(f, db).vygeneruj();
         } catch (Exception ex) {

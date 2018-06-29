@@ -7,6 +7,7 @@ package cz.jcu.uaidoklad.Controller;
 
 import cz.jcu.uaidoklad.Model.Faktura;
 import cz.jcu.uaidoklad.Model.FakturaRepositoryImpl;
+import cz.jcu.uaidoklad.Model.FakturaService;
 import cz.jcu.uaidoklad.Model.Firma;
 
 /**
@@ -17,5 +18,5 @@ public interface Controller {
     void createFaktura(Faktura f);
     void updateFaktura(Faktura f);
     void deleteFaktura(int id);
-    void exportAsPDF(Faktura f, FakturaRepositoryImpl db);
+    void exportAsPDF(Faktura f, FakturaService db);
 }
