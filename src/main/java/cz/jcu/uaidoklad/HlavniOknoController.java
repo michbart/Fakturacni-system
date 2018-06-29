@@ -178,6 +178,7 @@ public class HlavniOknoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         try {
             v = new ViewClass();
+            c = new ControllerClass();
         } catch (Exception ex) {
             //Logger.getLogger(HlavniOknoController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -187,6 +188,8 @@ public class HlavniOknoController implements Initializable {
         naplnFirmy();
         nastavDodavatele();
         naplnPlatbu();
+        naplnListFirem();
+        naplnListFaktur();
     }
 
     public HlavniOknoController() throws Exception {
@@ -203,7 +206,7 @@ public class HlavniOknoController implements Initializable {
 
         polozky = new HashMap<>();
         polozky.put(1, 2);
-        c = new ControllerClass();
+        
 
     }
 
@@ -237,6 +240,14 @@ public class HlavniOknoController implements Initializable {
                 return null;
             }
         });
+    }
+    
+    private void naplnListFaktur(){
+        
+    }
+    
+    private void naplnListFirem(){
+        
     }
 
     private void naplnPlatbu() {
