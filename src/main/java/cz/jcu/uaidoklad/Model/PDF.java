@@ -39,6 +39,7 @@ public class PDF {
     private PDFont fontBold = PDType1Font.HELVETICA_BOLD;
     private PDPageContentStream cs;
     private FakturaRepositoryImpl db;
+    private FakturaRepositoryMock fakturaMock;
     private float celkovaCena = 0;
     public int BLOK_DODAVATEL_X;
     public int BLOK_DODAVATEL_Y;
@@ -59,6 +60,7 @@ public class PDF {
         document = new PDDocument();
         page = new PDPage();
         document.addPage(page);
+        fakturaMock = new FakturaRepositoryMock();
         try {
             cs = new PDPageContentStream(document, page);
         } catch (IOException ex) {
@@ -96,7 +98,7 @@ public class PDF {
             vypisOdberatele();
             vypisInfoFaktura();
             vypisInfoPolozky();
-            //vypisPolozky();
+            vypisPolozky();
             vykresliQRkod();
             vypisCelkem();
             ukonciZapis();
@@ -130,7 +132,7 @@ public class PDF {
         cs.setFont(fontBold, 12);
         cs.showText("Celkem k uhrade: ");
         cs.newLineAtOffset(160, 0);
-        cs.showText(String.valueOf(celkovaCena + " Kc"));
+        cs.showText(String.valueOf(String.valueOf(celkovaCena).format("%.02f", celkovaCena) + " Kc"));
         cs.endText();
     }
 
@@ -261,13 +263,14 @@ public class PDF {
         cs.newLineAtOffset(BLOK_POLOZKY_X, BLOK_POLOZKY_Y - 20);
         for (int id : fakt.getPolozky().keySet()) {
             try {
-                po = db.getPolozka(id);//polozka
+                //po = db.getPolozka(id);//polozka
+                po = fakturaMock.getPolozka(id);
                 pocet = fakt.getPolozky().get(id);
                 cs.showText(po.getNazev());
                 cs.newLineAtOffset(275, 0);
                 cs.showText(String.valueOf(pocet));
                 cs.newLineAtOffset(40, 0);
-                cs.showText(String.valueOf(po.getCena()));
+                cs.showText(String.valueOf(po.getCena()).format("%.02f", po.getCena()));
                 cs.newLineAtOffset(75, 0);
                 cs.showText("21");
                 cs.newLineAtOffset(50, 0);
