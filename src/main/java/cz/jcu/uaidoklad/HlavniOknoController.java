@@ -47,7 +47,6 @@ public class HlavniOknoController implements Initializable {
     private View v;
     private Controller c;
     private FakturaRepositoryImpl db;
-
     private HashMap<Integer, Integer> polozky;
     private Faktura f;
     private FirmaRepositoryMock firmaMock;
@@ -195,7 +194,6 @@ public class HlavniOknoController implements Initializable {
             }
         });
         nacteniDB.start();
-        
 
         polozky = new HashMap<>();
         polozky.put(1, 2);
@@ -251,7 +249,7 @@ public class HlavniOknoController implements Initializable {
     
     @FXML
     private void PDFClickedBtn(ActionEvent event) {
-        Faktura fa = new Faktura(100, 2000, firmaMock.getFirmy().get(0), ZakaznikComboBox.getSelectionModel().getSelectedItem(), polozky, datumSplatnostiDate.getValue().toString(), ZpusobUhradyComboBox.getValue(), 1);
+        Faktura fa = new Faktura(101, 2001, firmaMock.getFirmy().get(0), ZakaznikComboBox.getSelectionModel().getSelectedItem(), polozky, datumSplatnostiDate.getValue().toString(), ZpusobUhradyComboBox.getValue(), 1);
         
         c.exportAsPDF(fa, db);
         c.createFaktura(fa);

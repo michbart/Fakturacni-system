@@ -47,8 +47,8 @@ public class FirmaRepositoryMock implements FirmaRepository {
     }
 
     private void vytvorFirmy() {
-        f1 = new Firma(1, "ENGEL strojírenska spol. s r.o.", "Ceskobudejovicka", 15319, "Kaplice", "Ceska republika", 62497219, 456, "1234567890", "email@email.cz", "1234567/0300");
-        f2 = new Firma(2, "nazev1", "ulice", 123, "mesto1", "stat1", 123, 456, "1111111", "email1", "123456789/0900");
+        f1 = new Firma(2, "Ammeraal Beltech EuroFAB", "Hruskove dvory 80", 58601, "Jihlava", "Ceska republika", 12377684, 4563, "123456789", "mail@gmail.com", "123456789/0900");
+        f2 = new Firma(1, "ENGEL strojirenska spol. s r.o.", "Ceskobudejovicka 314", 15319, "Kaplice", "Ceska republika", 62497219, 456, "1234567890", "email@email.cz", "1234567/0300"); 
         f3 = new Firma(3, "nazev2", "ulice2", 456, "mesto2", "stat2", 123, 456, "1111111", "email2", "123456789/0900");
         f4 = new Firma(4, "nazev3", "ulice3", 789, "mesto3", "stat3", 123, 456, "1111111", "email3", "123456789/0900");
         f5 = new Firma(5, "nazev4", "ulice4", 135, "mesto4", "stat4", 123, 456, "1111111", "email4", "123456789/0900");
