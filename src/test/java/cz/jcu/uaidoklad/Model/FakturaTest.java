@@ -29,7 +29,7 @@ public class FakturaTest {
         for (int i = 0; i < 10; i++) {
             polozky.put(i, i);
         }
-        Faktura instance = new Faktura(42, 4242, frm.getFirmy().get(0), frm.getFirmy().get(1), polozky, "qwert", "qasdfg", 1) {
+        Faktura instance = new Faktura(42, 4242, frm.getFirmy().get(0), frm.getFirmy().get(1), polozky, "qwert", "qasdfg", 1); 
         int expResult = 1;
         int result = instance.getTyp();
         assertEquals(expResult, result);

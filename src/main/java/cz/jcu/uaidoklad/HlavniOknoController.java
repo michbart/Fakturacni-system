@@ -47,7 +47,7 @@ public class HlavniOknoController implements Initializable {
     private View v;
     private Controller c;
     private FakturaRepositoryImpl db;
-    private Firma f1;
+
     private HashMap<Integer, Integer> polozky;
     private Faktura f;
     private FirmaRepositoryMock firmaMock;
@@ -195,8 +195,8 @@ public class HlavniOknoController implements Initializable {
             }
         });
         nacteniDB.start();
-        f1 = new Firma(1, "nazev", "ulice", 555, "mesto", "stat", 123, 456, "1111111", "email", "123/0900");
-        f = new Faktura(1, 201800001, f1, f1, polozky, "30.2.2019", "prevodem", 1);
+        
+
         polozky = new HashMap<>();
         polozky.put(1, 2);
         c = new ControllerClass();

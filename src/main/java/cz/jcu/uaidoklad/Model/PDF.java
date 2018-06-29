@@ -96,7 +96,7 @@ public class PDF {
             vypisOdberatele();
             vypisInfoFaktura();
             vypisInfoPolozky();
-            //vypisPolozky();
+            vypisPolozky();
             vykresliQRkod();
             vypisCelkem();
             ukonciZapis();

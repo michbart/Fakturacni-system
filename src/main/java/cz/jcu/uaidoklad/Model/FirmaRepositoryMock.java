@@ -46,10 +46,10 @@ public class FirmaRepositoryMock implements FirmaRepository {
 
     private void vytvorFirmy() {
         f1 = new Firma(1, "ENGEL strojírenská spol. s r.o.", "Českobudějovická", 15319, "Kaplice", "Česká republika", 62497219, 456, "1234567890", "email@email.cz", "1234567/0300");
-        f2 = new Firma(2, "qwert", "ulice", 123, "mesto", "stat", 123, 456, "1111111", "email", "123/0900");
-        f3 = new Firma(3, "yuiop", "ulice", 456, "mesto", "stat", 123, 456, "1111111", "email", "123/0900");
-        f4 = new Firma(4, "asdfg", "ulice2", 789, "mesto2", "stat2", 123, 456, "1111111", "email2", "123/0900");
-        f5 = new Firma(5, "hjklzx", "ulice2", 135, "mesto2", "stat2", 123, 456, "1111111", "email2", "123/0900");
+        f2 = new Firma(2, "nazev1", "ulice", 123, "mesto1", "stat1", 123, 456, "1111111", "email1", "123456789/0900");
+        f3 = new Firma(3, "nazev2", "ulice2", 456, "mesto2", "stat2", 123, 456, "1111111", "email2", "123456789/0900");
+        f4 = new Firma(4, "nazev3", "ulice3", 789, "mesto3", "stat3", 123, 456, "1111111", "email3", "123456789/0900");
+        f5 = new Firma(5, "nazev4", "ulice4", 135, "mesto4", "stat4", 123, 456, "1111111", "email4", "123456789/0900");
     }
     public String getNazev(Firma f){
         return f.getNazev();
