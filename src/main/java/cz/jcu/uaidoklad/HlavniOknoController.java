@@ -221,12 +221,13 @@ public class HlavniOknoController implements Initializable {
         try {
             v = new ViewClass();
             c = new ControllerClass();
+            fakturaService =  new FakturaServiceImpl();
         } catch (Exception ex) {
             //Logger.getLogger(HlavniOknoController.class.getName()).log(Level.SEVERE, null, ex);
         }
         ZakaznikComboBox.getItems().clear();
         
-        fakturaService =  new FakturaRepositoryImpl();
+        
         naplnFirmy();
         nastavDodavatele();
         naplnPlatbu();
@@ -239,7 +240,7 @@ public class HlavniOknoController implements Initializable {
         Thread nacteniDB = new Thread(new Runnable() {
             public void run() {
                 try {
-                    db = new FakturaRepositoryImpl("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7244879?characterEncoding=UTF-8", "sql7244879", "CBmxSwfY9y");
+                    db = new FakturaServiceImpl("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7244879?characterEncoding=UTF-8", "sql7244879", "CBmxSwfY9y");
                 } catch (Exception ex) {
                     System.out.println(ex.getMessage());
                 }
