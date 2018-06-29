@@ -297,7 +297,8 @@ public class PDF {
         ByteArrayInputStream bais = new ByteArrayInputStream(kod.getQRCodeImage(
                 "Cislo faktury: " + fakt.getCislo() + "\n"
                 + "Bankovni spojeni: " + fakt.getDodavatel().getCisloUctu() + "\n"
-                + "Datum splatnosti: " + fakt.getDatumSplatnosti(),
+                + "Datum splatnosti: " + fakt.getDatumSplatnosti() + "\n"
+                + "Castka k uhrade: " + String.valueOf(celkovaCena).format("%.02f", celkovaCena) + " Kc",
                  150, 150));
         BufferedImage bim = ImageIO.read(bais);
         PDImageXObject pdImage = LosslessFactory.createFromImage(document, bim);
