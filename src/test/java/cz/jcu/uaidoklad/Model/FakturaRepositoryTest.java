@@ -46,21 +46,21 @@ public class FakturaRepositoryTest {
         assertEquals(expResult, result);
     }
 
-//    /**
-//     * Test of smazFaktura method, of class FakturaRepository.
-//     */
-//    @Test
-//    public void testSmazFaktura() throws Exception {
-//        System.out.println("smazFaktura");
-//        int id = 12345;
-//        Faktura faktura = new Faktura(id, 523456, new Firma(2, "nazev1", "ulice", 123, "mesto1", "stat1", 123, 456, "1111111", "email1", "123456789/0900"),new Firma(3, "nazev2", "ulice2", 456, "mesto2", "stat2", 123, 456, "1111111", "email2", "123456789/0900"), new HashMap(), "32.13.0000", "qwert", 2);
-//        FakturaRepository instance = new FakturaRepositoryMock();
-//        instance.ulozFaktura(faktura);
-//        assertEquals(instance.getFaktura(id).getCislo(), faktura.getCislo());
-//        instance.smazFaktura(id);
-//        System.out.println("qwertyuiop[poiuytreasdfghjkllkjuhgfdsdfghjkl,mbvchjhvbjhbjbvbnjbvbjhbvbjhbjkjhgv---"+instance.getFaktura(id));
-//        assertEquals(instance.getFaktura(id), null);
-//    }
+    /**
+     * Test of smazFaktura method, of class FakturaRepository.
+     */
+    @Test
+    public void testSmazFaktura() throws Exception {
+        System.out.println("smazFaktura");
+        int id = 12345;
+        Faktura faktura = new Faktura(id, 523456, new Firma(2, "nazev1", "ulice", 123, "mesto1", "stat1", 123, 456, "1111111", "email1", "123456789/0900"),new Firma(3, "nazev2", "ulice2", 456, "mesto2", "stat2", 123, 456, "1111111", "email2", "123456789/0900"), new HashMap(), "32.13.0000", "qwert", 2);
+        FakturaRepository instance = new FakturaRepositoryMock();
+        instance.ulozFaktura(faktura);
+        assertEquals(instance.getFaktura(id).getCislo(), faktura.getCislo());
+        instance.smazFaktura(id);
+        System.out.println("qwertyuiop[poiuytreasdfghjkllkjuhgfdsdfghjkl,mbvchjhvbjhbjbvbnjbvbjhbvbjhbjkjhgv---"+instance.getFaktura(id));
+        assertEquals(instance.getFaktura(id), null);
+    }
 //
 //    /**
 //     * Test of getListFaktur method, of class FakturaRepository.
