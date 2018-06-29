@@ -13,7 +13,7 @@ import cz.jcu.uaidoklad.Model.FakturaRepositoryImpl;
 import cz.jcu.uaidoklad.Model.FakturaRepositoryMock;
 import cz.jcu.uaidoklad.Model.FakturaService;
 import cz.jcu.uaidoklad.Model.Firma;
-import cz.jcu.uaidoklad.Model.FirmaRepositoryMock;
+import cz.jcu.uaidoklad.Model.*;
 import cz.jcu.uaidoklad.View.View;
 import cz.jcu.uaidoklad.View.ViewClass;
 import java.net.URL;
@@ -61,6 +61,7 @@ public class HlavniOknoController implements Initializable {
     private HashMap<Integer, Integer> polozky;
     private Faktura f;
     private FakturaService fakturaService;
+    private FakturaService db;
     private ObservableList<Firma> oListStavaka;
     @FXML
     private Button ZavritBtn;
@@ -225,7 +226,7 @@ public class HlavniOknoController implements Initializable {
         }
         ZakaznikComboBox.getItems().clear();
         
-        fakturaService = new FakturaRepositoryMock();
+        fakturaService =  new FakturaRepositoryImpl();
         naplnFirmy();
         nastavDodavatele();
         naplnPlatbu();
@@ -255,20 +256,20 @@ public class HlavniOknoController implements Initializable {
      * Nastavi udaje o dodavateli
      */
     private void nastavDodavatele() {
-        nazevLabel.setText(firmaMock.getFirmy().get(0).getNazev());
-        uliceLabel.setText(firmaMock.getFirmy().get(0).getUlice());
-        pscLabel.setText(String.valueOf(firmaMock.getFirmy().get(0).getPsc()));
-        mestoLabel.setText(firmaMock.getFirmy().get(0).getMesto());
-        statLabel.setText(firmaMock.getFirmy().get(0).getStat());
-        icoLabel.setText(String.valueOf(firmaMock.getFirmy().get(0).getIc()));
-        dicLabel.setText(String.valueOf(firmaMock.getFirmy().get(0).getDic()));
-        ucetLabel.setText(firmaMock.getFirmy().get(0).getCisloUctu());
-        emailLabel.setText(firmaMock.getFirmy().get(0).getEmail());
-        mobilLabel.setText(firmaMock.getFirmy().get(0).getTelefon());
+        nazevLabel.setText(fakturaService.getFirmy().get(0).getNazev());
+        uliceLabel.setText(fakturaService.getFirmy().get(0).getUlice());
+        pscLabel.setText(String.valueOf(fakturaService.getFirmy().get(0).getPsc()));
+        mestoLabel.setText(fakturaService.getFirmy().get(0).getMesto());
+        statLabel.setText(fakturaService.getFirmy().get(0).getStat());
+        icoLabel.setText(String.valueOf(fakturaService.getFirmy().get(0).getIc()));
+        dicLabel.setText(String.valueOf(fakturaService.getFirmy().get(0).getDic()));
+        ucetLabel.setText(fakturaService.getFirmy().get(0).getCisloUctu());
+        emailLabel.setText(fakturaService.getFirmy().get(0).getEmail());
+        mobilLabel.setText(fakturaService.getFirmy().get(0).getTelefon());
     }
 
     private void naplnFirmy() {
-        ZakaznikComboBox.getItems().addAll(firmaMock.getFirmy());
+        ZakaznikComboBox.getItems().addAll(fakturaService.getFirmy());
         ZakaznikComboBox.setConverter(new StringConverter<Firma>() {
             @Override
             public String toString(Firma f) {
@@ -289,9 +290,9 @@ public class HlavniOknoController implements Initializable {
 
     
     private void naplnListFirem(){
-        for(Firma f : firmaMock.getFirmy()){
+        for(Firma f : fakturaService.getFirmy()){
             tabulkaKontaky.setItems(oListStavaka);
-       nazevKontak.setText(value);
+       //nazevKontak.setText(value);
         }
             
        
@@ -316,9 +317,9 @@ public class HlavniOknoController implements Initializable {
     private void PDFClickedBtn(ActionEvent event) {
         Alert alert;
         try {
-            Faktura fa = new Faktura(101, 2001, firmaMock.getFirmy().get(0), ZakaznikComboBox.getSelectionModel().getSelectedItem(), fakturaService.getFaktura(1).getPolozky(), datumSplatnostiDate.getValue().toString(), ZpusobUhradyComboBox.getValue(), 1);
+            Faktura fa = new Faktura(101, 2001, fakturaService.getFirmy().get(0), ZakaznikComboBox.getSelectionModel().getSelectedItem(), fakturaService.getFakturaById(1).getPolozky(), datumSplatnostiDate.getValue().toString(), ZpusobUhradyComboBox.getValue(), 1);
 
-            c.exportAsPDF(fa, db);
+            c.exportAsPDF(fa, (FakturaRepositoryImpl) db);
             c.createFaktura(fa);
             alert = new Alert(AlertType.INFORMATION, "Faktura č." + fa.getCislo() + " byla vygenerována", ButtonType.OK);
             alert.showAndWait();
