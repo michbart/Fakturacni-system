@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -13,12 +8,14 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1199.0" style="-fx-background-color: #455A64;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.jcu.uaidoklad.HlavniOknoController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1199.0" style="-fx-background-color: #455A64;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.jcu.uaidoklad.HlavniOknoController">
     <stylesheets>
         <URL value="@/styles/hlavniokno.css" />
     </stylesheets>
@@ -149,12 +146,38 @@
           </Tab>
             <Tab fx:id="SeznamFakturTab" text="Seznam faktur">
                <content>
-                  <ListView fx:id="SeznamFakturListView" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #78909C;" />
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TableView prefHeight="200.0" prefWidth="200.0">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="C1" />
+                            <TableColumn prefWidth="75.0" text="C2" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
                </content>
             </Tab>
             <Tab fx:id="KontaktyTab" text="Kontakty">
                <content>
-                  <ListView fx:id="KontaktyListView" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #78909C;" />
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tabulkaKontaky" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
+                          <columns>
+                            <TableColumn fx:id="nazevKontak" prefWidth="75.0" text="C1" />
+                            <TableColumn fx:id="uliceKontakty" prefWidth="75.0" text="C2" />
+                              <TableColumn fx:id="psc" prefWidth="75.0" text="C1" />
+                              <TableColumn fx:id="mesto" prefWidth="75.0" text="C2" />
+                              <TableColumn fx:id="stat" prefWidth="75.0" text="C1" />
+                              <TableColumn fx:id="ico" prefWidth="75.0" text="C2" />
+                              <TableColumn fx:id="dic" prefWidth="75.0" text="C1" />
+                              <TableColumn fx:id="telefon" prefWidth="75.0" text="C2" />
+                              <TableColumn fx:id="email" prefWidth="75.0" text="C1" />
+                              <TableColumn fx:id="cisloUctu" prefWidth="75.0" text="C2" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
                </content>
             </Tab>
         </tabs>

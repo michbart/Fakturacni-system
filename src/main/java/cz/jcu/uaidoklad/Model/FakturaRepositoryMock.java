@@ -13,7 +13,7 @@ import java.util.HashMap;
  * @author NikolaKraus
  */
 public class FakturaRepositoryMock implements FakturaRepository {
-    
+
     private Firma f1;
     private Firma f2;
     private Firma f3;
@@ -25,9 +25,9 @@ public class FakturaRepositoryMock implements FakturaRepository {
     private Faktura fa1;
     private Faktura fa2;
 
-    private HashMap<Integer,Firma> firmy;
-    private HashMap<Integer,Faktura> faktury;
-    private HashMap<Integer,Polozka> polozky;
+    private HashMap<Integer, Firma> firmy;
+    private HashMap<Integer, Faktura> faktury;
+    private HashMap<Integer, Polozka> polozky;
 
     public FakturaRepositoryMock() {
         firmy = new HashMap();
@@ -54,11 +54,11 @@ public class FakturaRepositoryMock implements FakturaRepository {
     }
 
     private void pridejFirmy() {
-        firmy.put(f1.getId(),f1);
-        firmy.put(f2.getId(),f2);
-        firmy.put(f3.getId(),f3);
-        firmy.put(f4.getId(),f4);
-        firmy.put(f5.getId(),f5);
+        firmy.put(f1.getId(), f1);
+        firmy.put(f2.getId(), f2);
+        firmy.put(f3.getId(), f3);
+        firmy.put(f4.getId(), f4);
+        firmy.put(f5.getId(), f5);
     }
 
     private void vytvorFaktury() {
@@ -71,8 +71,8 @@ public class FakturaRepositoryMock implements FakturaRepository {
     }
 
     private void pridejFaktury() {
-        faktury.put(fa1.getId(),fa1);
-        faktury.put(fa2.getId(),fa2);
+        faktury.put(fa1.getId(), fa1);
+        faktury.put(fa2.getId(), fa2);
     }
 
     private void vytvorPolozky() {
@@ -83,9 +83,9 @@ public class FakturaRepositoryMock implements FakturaRepository {
     }
 
     private void pridejPolozky() {
-        polozky.put(p1.getId(),p1);
-        polozky.put(p2.getId(),p2);
-        polozky.put(p3.getId(),p3);
+        polozky.put(p1.getId(), p1);
+        polozky.put(p2.getId(), p2);
+        polozky.put(p3.getId(), p3);
     }
 
     @Override
@@ -100,13 +100,13 @@ public class FakturaRepositoryMock implements FakturaRepository {
 
     @Override
     public void smazFaktura(int id) throws Exception {
-       faktury.remove(id);
+        faktury.remove(id);
     }
 
     @Override
     public ArrayList<Faktura> getListFaktur() throws Exception {
         ArrayList<Faktura> vystup = new ArrayList();
-        for (int p:faktury.keySet()) {
+        for (int p : faktury.keySet()) {
             vystup.add(faktury.get(p));
         }
         return vystup;
@@ -120,7 +120,7 @@ public class FakturaRepositoryMock implements FakturaRepository {
     @Override
     public ArrayList<Polozka> getListPolozek() throws Exception {
         ArrayList<Polozka> vystup = new ArrayList();
-        for (int p:polozky.keySet()) {
+        for (int p : polozky.keySet()) {
             vystup.add(polozky.get(p));
         }
         return vystup;
@@ -128,12 +128,12 @@ public class FakturaRepositoryMock implements FakturaRepository {
 
     @Override
     public void ulozPolozka(Polozka polozka) throws Exception {
-        polozky.put(polozka.getId(),polozka);
+        polozky.put(polozka.getId(), polozka);
     }
 
     @Override
     public void zmenPolozku(Polozka polozka) throws Exception {
-        polozky.put(polozka.getId(),polozka);
+        polozky.put(polozka.getId(), polozka);
     }
 
     @Override

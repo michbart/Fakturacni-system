@@ -31,6 +31,8 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
@@ -120,14 +122,10 @@ public class HlavniOknoController implements Initializable {
     @FXML
     private Tab SeznamFakturTab;
     
-    @FXML
-    private ListView<?> SeznamFakturListView;
     
     @FXML
     private Tab KontaktyTab;
     
-    @FXML
-    private ListView<?> KontaktyListView;
     
     @FXML
     private ListView<?> PolozkZboziListView;
@@ -165,6 +163,28 @@ public class HlavniOknoController implements Initializable {
     private ComboBox<Firma> ZakaznikComboBox;
     @FXML
     private ComboBox<String> ZpusobUhradyComboBox;
+    @FXML
+    private TableView<?> tabulkaKontaky;
+    @FXML
+    private TableColumn<?, ?> nazevKontak;
+    @FXML
+    private TableColumn<?, ?> uliceKontakty;
+    @FXML
+    private TableColumn<?, ?> psc;
+    @FXML
+    private TableColumn<?, ?> mesto;
+    @FXML
+    private TableColumn<?, ?> stat;
+    @FXML
+    private TableColumn<?, ?> ico;
+    @FXML
+    private TableColumn<?, ?> dic;
+    @FXML
+    private TableColumn<?, ?> telefon;
+    @FXML
+    private TableColumn<?, ?> email;
+    @FXML
+    private TableColumn<?, ?> cisloUctu;
 
     /**
      * Initializes the controller class.
