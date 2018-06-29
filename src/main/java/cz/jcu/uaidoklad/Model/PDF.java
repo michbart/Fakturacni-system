@@ -39,7 +39,7 @@ public class PDF {
     private PDFont fontBold = PDType1Font.HELVETICA_BOLD;
     private PDPageContentStream cs;
     private FakturaRepositoryImpl db;
-    private double celkovaCena = 0;
+    private float celkovaCena = 0;
     public int BLOK_DODAVATEL_X;
     public int BLOK_DODAVATEL_Y;
     public int BLOK_ODBERATEL_X;
@@ -273,7 +273,7 @@ public class PDF {
                 cs.newLineAtOffset(50, 0);
                 cena = pocet * po.getCena() * 1.21;
                 celkovaCena += cena;
-                cs.showText(String.valueOf(cena).format("%.02d", cena));
+                cs.showText(String.valueOf(cena).format("%.02f", cena));
                 cs.newLineAtOffset(-440, -20);
             } catch (Exception ex) {
                 //Logger.getLogger(PDF.class.getName()).log(Level.SEVERE, null, ex);
