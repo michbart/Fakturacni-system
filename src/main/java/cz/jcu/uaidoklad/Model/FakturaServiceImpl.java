@@ -18,9 +18,11 @@ public class FakturaServiceImpl implements FakturaService {
     
     private FakturaRepository db;
     private Faktura fakt;
+    private FirmaRepository firmRepos;
     
     public FakturaServiceImpl() throws Exception{
-        db = new FakturaRepositoryImpl("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7244879?characterEncoding=UTF-8", "sql7244879", "CBmxSwfY9y");
+        db = new FakturaRepositoryMock();//new FakturaRepositoryImpl("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7244879?characterEncoding=UTF-8", "sql7244879", "CBmxSwfY9y");
+        firmRepos = new FirmaRepositoryMock();
         fakt = new Faktura();
     }
     
@@ -130,6 +132,11 @@ public class FakturaServiceImpl implements FakturaService {
     @Override
     public List<String> getPlatba() {
         return fakt.getPlatba();
+    }
+
+    @Override
+    public List<Firma> getFirmy() {
+        return firmRepos.getFirmy();
     }
     
 }
