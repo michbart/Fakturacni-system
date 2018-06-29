@@ -141,7 +141,10 @@ public class HlavniOknoController implements Initializable {
     private ListView<?> SeznamFakturListView;
 
 
+
+
     @FXML
+
     private ListView<?> KontaktyListView;
 
     @FXML
@@ -202,6 +205,18 @@ public class HlavniOknoController implements Initializable {
     private TableColumn<?, ?> email;
     @FXML
     private TableColumn<?, ?> cisloUctu;
+    @FXML
+    private TableView<?> tableFaktura;
+    @FXML
+    private TableColumn<?, ?> cisloFaktury;
+    @FXML
+    private TableColumn<?, ?> datumSplatnosti;
+    @FXML
+    private TableColumn<?, ?> nazevDodavatele;
+    @FXML
+    private TableColumn<?, ?> nazevOdberatele;
+    @FXML
+    private TableColumn<?, ?> zpusobPlatby;
 
     /**
      * Initializes the controller class.
@@ -238,7 +253,6 @@ public class HlavniOknoController implements Initializable {
 
         polozky = new HashMap<>();
         polozky.put(1, 2);
-        
 
     }
 
@@ -273,16 +287,18 @@ public class HlavniOknoController implements Initializable {
             }
         });
     }
-    
-    private void naplnListFaktur(){
-        
+
+    private void naplnListFaktur() {
+
     }
+
     
     private void naplnListFirem(){
 //        for(Firma f : firmaMock.getFirmy()){
 //            nazevKontak.setCellValueFactory(firmaMock -> new ReadOnlyStringWrapper(firmaMock.getNazev(f)));
 //        }
        
+
     }
 
     private void naplnPlatbu() {
@@ -311,12 +327,12 @@ public class HlavniOknoController implements Initializable {
             alert.showAndWait();
 
             if (alert.getResult() == ButtonType.OK) {
-               alert.close();
+                alert.close();
             }
         } catch (Exception e) {
             alert = new Alert(AlertType.ERROR, "Chyba při vytváření PDF.\n Zkontrolujte, zda jste vyplnili všechny pole", ButtonType.OK);
             if (alert.getResult() == ButtonType.OK) {
-               alert.close();
+                alert.close();
             }
         }
 

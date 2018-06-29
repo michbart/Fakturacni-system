@@ -148,10 +148,13 @@
                <content>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <TableView prefHeight="200.0" prefWidth="200.0">
+                        <TableView fx:id="tableFaktura" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="C1" />
-                            <TableColumn prefWidth="75.0" text="C2" />
+                            <TableColumn fx:id="cisloFaktury" prefWidth="75.0" text="C1" />
+                            <TableColumn fx:id="datumSplatnosti" prefWidth="75.0" text="C2" />
+                              <TableColumn fx:id="nazevDodavatele" prefWidth="75.0" text="C1" />
+                              <TableColumn fx:id="nazevOdberatele" prefWidth="75.0" text="C2" />
+                              <TableColumn fx:id="zpusobPlatby" prefWidth="75.0" text="C1" />
                           </columns>
                         </TableView>
                      </children>
