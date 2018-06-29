@@ -15,6 +15,8 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -36,8 +38,14 @@ public class QRkodTest {
         int height = 9;
         QRkod instance = new QRkod();
         String expResult = text;
-        byte[] result = instance.getQRCodeImage(text, width, height);
-        assertArrayEquals(expResult, decodeQRCode(result));
+        byte[] resultB = instance.getQRCodeImage(text, width, height);
+        String result = null;
+        try {
+            result = decodeQRCode(resultB);
+        } catch (IOException ex) {
+            Logger.getLogger(QRkodTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        assertEquals(expResult, result);
         
     }
     
