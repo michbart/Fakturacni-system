@@ -26,11 +26,11 @@ public class MainApp extends Application {
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/hlavniokno.css");
        
-<<<<<<< HEAD
+
         //stage.getIcons().add(new Image("/cz.jcu.uaidoklad/java.jfif"));
-=======
+
         //stage.getIcons().add(new Image("/main/java/cz.jcu.uaidoklad/java.jfif"));
->>>>>>> 212bb26e426e58bed9cff95acb681973a2bbc3c7
+
         stage.setTitle("UAIdoklad");
         stage.setScene(scene);
         stage.show();
