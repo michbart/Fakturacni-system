@@ -22,6 +22,7 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -38,6 +39,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -126,25 +128,22 @@ public class HlavniOknoController implements Initializable {
 
     @FXML
     private Tab SeznamFakturTab;
-<<<<<<< HEAD
+
     
     
     @FXML
     private Tab KontaktyTab;
     
     
-=======
+
 
     @FXML
     private ListView<?> SeznamFakturListView;
 
-    @FXML
-    private Tab KontaktyTab;
 
     @FXML
     private ListView<?> KontaktyListView;
 
->>>>>>> 4280f70420a1c95842ca1d3a73a275aafca46037
     @FXML
     private ListView<?> PolozkZboziListView;
 
@@ -184,7 +183,7 @@ public class HlavniOknoController implements Initializable {
     @FXML
     private TableView<?> tabulkaKontaky;
     @FXML
-    private TableColumn<?, ?> nazevKontak;
+    private TableColumn<Firma, String> nazevKontak;
     @FXML
     private TableColumn<?, ?> uliceKontakty;
     @FXML
@@ -280,7 +279,10 @@ public class HlavniOknoController implements Initializable {
     }
     
     private void naplnListFirem(){
-        
+//        for(Firma f : firmaMock.getFirmy()){
+//            nazevKontak.setCellValueFactory(firmaMock -> new ReadOnlyStringWrapper(firmaMock.getNazev(f)));
+//        }
+       
     }
 
     private void naplnPlatbu() {
