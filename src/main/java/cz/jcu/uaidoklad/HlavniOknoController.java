@@ -24,7 +24,10 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -43,122 +46,122 @@ import javafx.util.StringConverter;
  * @author Tomáš
  */
 public class HlavniOknoController implements Initializable {
-    
+
     private View v;
     private Controller c;
     private FakturaRepositoryImpl db;
     private HashMap<Integer, Integer> polozky;
     private Faktura f;
     private FirmaRepositoryMock firmaMock;
-    
+
     @FXML
     private Button ZavritBtn;
-    
+
     @FXML
     private Button UlozitBtn;
-    
+
     @FXML
     private Button PDFBtn;
-    
+
     @FXML
     private Tab InformaceTab;
-    
+
     @FXML
     private AnchorPane InformacePane;
-    
+
     @FXML
     private Text NazevText;
-    
+
     @FXML
     private Text UliceText;
-    
+
     @FXML
     private Text MestoText;
-    
+
     @FXML
     private Text PSCText;
-    
+
     @FXML
     private Text StatText;
-    
+
     @FXML
     private Text MobilText;
-    
+
     @FXML
     private Text CisloUctuText;
-    
+
     @FXML
     private Text EmailText;
-    
+
     @FXML
     private Text ICOText;
-    
+
     @FXML
     private Text DICText;
-    
+
     @FXML
     private Tab VytvorFakturuTab;
-    
+
     @FXML
     private AnchorPane VytvorFakturuPane;
-    
+
     @FXML
     private TextField PopisZboziTextField;
-    
+
     @FXML
     private TextField PocetKsZboziTextField;
-    
+
     @FXML
     private TextField CenaKusZboziTField;
-    
+
     @FXML
     private Button DalsiPolozkaBtn;
-    
+
     @FXML
     private DatePicker datumSplatnostiDate;
-    
+
     @FXML
     private Tab SeznamFakturTab;
-    
+
     @FXML
     private ListView<?> SeznamFakturListView;
-    
+
     @FXML
     private Tab KontaktyTab;
-    
+
     @FXML
     private ListView<?> KontaktyListView;
-    
+
     @FXML
     private ListView<?> PolozkZboziListView;
-    
+
     @FXML
     private Text nazevLabel;
-    
+
     @FXML
     private Text uliceLabel;
-    
+
     @FXML
     private Text mestoLabel;
-    
+
     @FXML
     private Text pscLabel;
-    
+
     @FXML
     private Text statLabel;
-    
+
     @FXML
     private Text icoLabel;
-    
+
     @FXML
     private Text dicLabel;
-    
+
     @FXML
     private Text ucetLabel;
-    
+
     @FXML
     private Text emailLabel;
-    
+
     @FXML
     private Text mobilLabel;
     @FXML
@@ -182,7 +185,7 @@ public class HlavniOknoController implements Initializable {
         nastavDodavatele();
         naplnPlatbu();
     }
-    
+
     public HlavniOknoController() throws Exception {
         Thread nacteniDB = new Thread(new Runnable() {
             public void run() {
@@ -198,9 +201,9 @@ public class HlavniOknoController implements Initializable {
         polozky = new HashMap<>();
         polozky.put(1, 2);
         c = new ControllerClass();
-        
+
     }
-    
+
     /**
      * Nastavi udaje o dodavateli
      */
@@ -216,7 +219,7 @@ public class HlavniOknoController implements Initializable {
         emailLabel.setText(firmaMock.getFirmy().get(0).getEmail());
         mobilLabel.setText(firmaMock.getFirmy().get(0).getTelefon());
     }
-    
+
     private void naplnFirmy() {
         ZakaznikComboBox.getItems().addAll(firmaMock.getFirmy());
         ZakaznikComboBox.setConverter(new StringConverter<Firma>() {
@@ -224,7 +227,7 @@ public class HlavniOknoController implements Initializable {
             public String toString(Firma f) {
                 return f.getNazev();
             }
-            
+
             @Override
             // not used...
             public Firma fromString(String s) {
@@ -232,31 +235,46 @@ public class HlavniOknoController implements Initializable {
             }
         });
     }
-    
+
     private void naplnPlatbu() {
         ZpusobUhradyComboBox.getItems().addAll(v.getPlatba());
     }
-    
+
     @FXML
     private void ZavritClickedBtn(ActionEvent event) {
         Stage stage = (Stage) ZavritBtn.getScene().getWindow();
         stage.close();
     }
-    
+
     @FXML
     private void UlozitClickedBtn(ActionEvent event) {
     }
-    
+
     @FXML
     private void PDFClickedBtn(ActionEvent event) {
-        Faktura fa = new Faktura(101, 2001, firmaMock.getFirmy().get(0), ZakaznikComboBox.getSelectionModel().getSelectedItem(), polozky, datumSplatnostiDate.getValue().toString(), ZpusobUhradyComboBox.getValue(), 1);
-        
-        c.exportAsPDF(fa, db);
-        c.createFaktura(fa);
+        Alert alert;
+        try {
+            Faktura fa = new Faktura(101, 2001, firmaMock.getFirmy().get(0), ZakaznikComboBox.getSelectionModel().getSelectedItem(), polozky, datumSplatnostiDate.getValue().toString(), ZpusobUhradyComboBox.getValue(), 1);
+
+            c.exportAsPDF(fa, db);
+            c.createFaktura(fa);
+            alert = new Alert(AlertType.INFORMATION, "Faktura č." + fa.getCislo() + " byla vygenerována", ButtonType.OK);
+            alert.showAndWait();
+
+            if (alert.getResult() == ButtonType.OK) {
+               alert.close();
+            }
+        } catch (Exception e) {
+            alert = new Alert(AlertType.ERROR, "Chyba při vytváření PDF.\n Zkontrolujte, zda jste vyplnili všechny pole", ButtonType.OK);
+            if (alert.getResult() == ButtonType.OK) {
+               alert.close();
+            }
+        }
+
     }
-    
+
     @FXML
     private void DalsiPolozkaClickedBtn(ActionEvent event) {
     }
-    
+
 }
