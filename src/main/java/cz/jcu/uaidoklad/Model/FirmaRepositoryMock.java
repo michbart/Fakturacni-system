@@ -31,6 +31,8 @@ public class FirmaRepositoryMock implements FirmaRepository {
 
     public FirmaRepositoryMock() {
         firmy = new ArrayList<>();
+        faktury = new ArrayList();
+        polozky = new ArrayList();
         vytvorFirmy();
         pridejFirmy();
         vytvorFaktury();
@@ -73,6 +75,7 @@ public class FirmaRepositoryMock implements FirmaRepository {
     }
 
     private void pridejFaktury() {
+        System.out.println("tu"+fa1.getId());
         faktury.add(fa1);
         faktury.add(fa2);
     }
