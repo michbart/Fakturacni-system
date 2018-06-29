@@ -62,7 +62,7 @@ public class HlavniOknoController implements Initializable {
     private Faktura f;
     private FakturaService fakturaService;
     private FakturaService db;
-    private ObservableList<Firma> oListStavaka;
+    private ObservableList<Firma> listFirem;
     @FXML
     private Button ZavritBtn;
 
@@ -135,12 +135,6 @@ public class HlavniOknoController implements Initializable {
     @FXML
     private Tab KontaktyTab;
     
-    @FXML
-    private ListView<?> SeznamFakturListView;
-
-    @FXML
-
-    private ListView<?> KontaktyListView;
 
     @FXML
     private ListView<?> PolozkZboziListView;
@@ -212,6 +206,10 @@ public class HlavniOknoController implements Initializable {
     private TableColumn<?, ?> nazevOdberatele;
     @FXML
     private TableColumn<?, ?> zpusobPlatby;
+    @FXML
+    private TableColumn<?, ?> cisloFaktury1;
+    @FXML
+    private TableColumn<?, ?> cisloFaktury2;
 
     /**
      * Initializes the controller class.
@@ -233,7 +231,7 @@ public class HlavniOknoController implements Initializable {
         naplnFirmy();
         nastavDodavatele();
         naplnPlatbu();
-        oListStavaka = FXCollections.observableArrayList(fakturaService.getFirmy());
+        listFirem = FXCollections.observableArrayList(fakturaService.getFirmy());
         naplnListFirem();
         naplnListFaktur();
     }
@@ -242,7 +240,6 @@ public class HlavniOknoController implements Initializable {
         Thread nacteniDB = new Thread(new Runnable() {
             public void run() {
                 try {
-
                     db = new FakturaServiceImpl();//FakturaRepositoryImpl("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7244879?characterEncoding=UTF-8", "sql7244879", "CBmxSwfY9y");
                 } catch (Exception ex) {
                     System.out.println(ex.getMessage());
@@ -295,12 +292,9 @@ public class HlavniOknoController implements Initializable {
     
     private void naplnListFirem(){
         for(Firma f : fakturaService.getFirmy()){
-            tabulkaKontaky.setItems(oListStavaka);
+            tabulkaKontaky.setItems(listFirem);
        //nazevKontak.setText(value);
         }
-            
-       
-
     }
 
     private void naplnPlatbu() {

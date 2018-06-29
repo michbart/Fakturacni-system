@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1199.0" style="-fx-background-color: #455A64;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.jcu.uaidoklad.HlavniOknoController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1199.0" style="-fx-background-color: #455A64;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.jcu.uaidoklad.HlavniOknoController">
     <stylesheets>
         <URL value="@/styles/hlavniokno.css" />
     </stylesheets>
@@ -150,11 +150,13 @@
                      <children>
                         <TableView fx:id="tableFaktura" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
                           <columns>
-                            <TableColumn fx:id="cisloFaktury" prefWidth="75.0" text="C1" />
-                            <TableColumn fx:id="datumSplatnosti" prefWidth="75.0" text="C2" />
-                              <TableColumn fx:id="nazevDodavatele" prefWidth="75.0" text="C1" />
-                              <TableColumn fx:id="nazevOdberatele" prefWidth="75.0" text="C2" />
-                              <TableColumn fx:id="zpusobPlatby" prefWidth="75.0" text="C1" />
+                            <TableColumn fx:id="cisloFaktury" prefWidth="125.0" text="Číslo" />
+                            <TableColumn fx:id="datumSplatnosti" prefWidth="126.0" text="Dodavatel" />
+                              <TableColumn fx:id="nazevDodavatele" prefWidth="158.0" text="Odběratel" />
+                              <TableColumn fx:id="nazevOdberatele" prefWidth="321.0" text="Položky" />
+                              <TableColumn fx:id="zpusobPlatby" prefWidth="161.0" text="Datum splatnosti" />
+                              <TableColumn fx:id="cisloFaktury1" prefWidth="133.0" text="Způsob platby" />
+                              <TableColumn fx:id="cisloFaktury2" prefWidth="124.0" text="Typ faktury" />
                           </columns>
                         </TableView>
                      </children>
@@ -167,16 +169,16 @@
                      <children>
                         <TableView fx:id="tabulkaKontaky" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
                           <columns>
-                            <TableColumn fx:id="nazevKontak" prefWidth="75.0" text="C1" />
-                            <TableColumn fx:id="uliceKontakty" prefWidth="75.0" text="C2" />
-                              <TableColumn fx:id="psc" prefWidth="75.0" text="C1" />
-                              <TableColumn fx:id="mesto" prefWidth="75.0" text="C2" />
-                              <TableColumn fx:id="stat" prefWidth="75.0" text="C1" />
-                              <TableColumn fx:id="ico" prefWidth="75.0" text="C2" />
-                              <TableColumn fx:id="dic" prefWidth="75.0" text="C1" />
-                              <TableColumn fx:id="telefon" prefWidth="75.0" text="C2" />
-                              <TableColumn fx:id="email" prefWidth="75.0" text="C1" />
-                              <TableColumn fx:id="cisloUctu" prefWidth="75.0" text="C2" />
+                            <TableColumn fx:id="nazevKontak" prefWidth="155.0" text="Název" />
+                            <TableColumn fx:id="uliceKontakty" prefWidth="111.0" text="Ulice" />
+                              <TableColumn fx:id="psc" prefWidth="66.0" text="PSČ" />
+                              <TableColumn fx:id="mesto" prefWidth="110.0" text="Město" />
+                              <TableColumn fx:id="stat" prefWidth="125.0" text="Stát" />
+                              <TableColumn fx:id="ico" prefWidth="106.0" text="IČO" />
+                              <TableColumn fx:id="dic" prefWidth="84.0" text="DIČ" />
+                              <TableColumn fx:id="telefon" prefWidth="121.0" text="Telefon" />
+                              <TableColumn fx:id="email" prefWidth="135.0" text="Email" />
+                              <TableColumn fx:id="cisloUctu" prefWidth="135.0" text="Číslo účtu" />
                           </columns>
                         </TableView>
                      </children>
