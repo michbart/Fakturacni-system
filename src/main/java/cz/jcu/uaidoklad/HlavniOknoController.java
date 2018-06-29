@@ -126,25 +126,10 @@ public class HlavniOknoController implements Initializable {
 
     @FXML
     private Tab SeznamFakturTab;
-<<<<<<< HEAD
-    
-    
-    @FXML
-    private Tab KontaktyTab;
-    
-    
-=======
-
-    @FXML
-    private ListView<?> SeznamFakturListView;
 
     @FXML
     private Tab KontaktyTab;
 
-    @FXML
-    private ListView<?> KontaktyListView;
-
->>>>>>> 4280f70420a1c95842ca1d3a73a275aafca46037
     @FXML
     private ListView<?> PolozkZboziListView;
 
@@ -203,6 +188,18 @@ public class HlavniOknoController implements Initializable {
     private TableColumn<?, ?> email;
     @FXML
     private TableColumn<?, ?> cisloUctu;
+    @FXML
+    private TableView<?> tableFaktura;
+    @FXML
+    private TableColumn<?, ?> cisloFaktury;
+    @FXML
+    private TableColumn<?, ?> datumSplatnosti;
+    @FXML
+    private TableColumn<?, ?> nazevDodavatele;
+    @FXML
+    private TableColumn<?, ?> nazevOdberatele;
+    @FXML
+    private TableColumn<?, ?> zpusobPlatby;
 
     /**
      * Initializes the controller class.
@@ -239,7 +236,6 @@ public class HlavniOknoController implements Initializable {
 
         polozky = new HashMap<>();
         polozky.put(1, 2);
-        
 
     }
 
@@ -274,13 +270,13 @@ public class HlavniOknoController implements Initializable {
             }
         });
     }
-    
-    private void naplnListFaktur(){
-        
+
+    private void naplnListFaktur() {
+
     }
-    
-    private void naplnListFirem(){
-        
+
+    private void naplnListFirem() {
+
     }
 
     private void naplnPlatbu() {
@@ -309,12 +305,12 @@ public class HlavniOknoController implements Initializable {
             alert.showAndWait();
 
             if (alert.getResult() == ButtonType.OK) {
-               alert.close();
+                alert.close();
             }
         } catch (Exception e) {
             alert = new Alert(AlertType.ERROR, "Chyba při vytváření PDF.\n Zkontrolujte, zda jste vyplnili všechny pole", ButtonType.OK);
             if (alert.getResult() == ButtonType.OK) {
-               alert.close();
+                alert.close();
             }
         }
 
